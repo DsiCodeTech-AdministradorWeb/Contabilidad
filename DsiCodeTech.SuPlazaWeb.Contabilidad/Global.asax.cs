@@ -1,3 +1,5 @@
+using DsiCodeTech.SuPlazaWeb.Contabilidad.Infraestructure;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +19,25 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad
             UnityConfig.RegisterComponents();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            AutomaperWebProfile.Run();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            GlobalConfiguration.Configuration
+                .Formatters
+                .JsonFormatter
+                .SerializerSettings
+                .ContractResolver = new JsonLowerCaseResolver()
+                {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                };
+        }
+    }
+    public class JsonLowerCaseResolver : DefaultContractResolver
+    {
+        protected override string ResolvePropertyName(string propertyName)
+        {
+            return propertyName.ToLower();
         }
     }
 }

@@ -175,6 +175,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handler\ExceptionHandler\SuPlazaExceptionFilterAttribute.cs" />
+    <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

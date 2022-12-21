@@ -102,3 +102,15 @@ C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\obj
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\obj\Debug\DsiCodeTech.SuPlazaWeb.Contabilidad.csproj.CopyComplete
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\obj\Debug\DsiCodeTech.SuPlazaWeb.Contabilidad.dll
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\obj\Debug\DsiCodeTech.SuPlazaWeb.Contabilidad.pdb
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\NLog.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\NLog.Web.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\Unity.Abstractions.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\Unity.Container.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\Unity.Mvc5.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\Unity.WebApi.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\NLog.xml
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\NLog.Web.xml
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\Unity.Abstractions.pdb
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\Unity.Container.pdb
