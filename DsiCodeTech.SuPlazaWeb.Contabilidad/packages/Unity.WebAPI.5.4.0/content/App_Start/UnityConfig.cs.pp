@@ -1,8 +1,8 @@
-using System.Web.Http;
+﻿using System.Web.Http;
 using Unity;
 using Unity.WebApi;
 
-namespace DsiCodeTech.SuPlazaWeb.Contabilidad
+namespace $rootnamespace$
 {
     public static class UnityConfig
     {
