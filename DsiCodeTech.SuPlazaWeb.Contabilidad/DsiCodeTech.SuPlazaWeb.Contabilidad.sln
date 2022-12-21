@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsiCodeTech.SuPlazaWeb.Cont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsiCodeTech.SuPlazaWeb.Domain", "..\DsiCodeTech.SuPlazaWeb.Domain\DsiCodeTech.SuPlazaWeb.Domain.csproj", "{530A6D1E-46C9-47DB-95D3-3B5A2B1F4F3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsiCodetech.SuPlazaWeb.Business", "..\DsiCodetech.SuPlazaWeb.Business\DsiCodetech.SuPlazaWeb.Business.csproj", "{F7D2A71D-5282-44F4-8903-6B68D9D31A9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsiCodeTech.SuPlazaWeb.Business", "..\DsiCodetech.SuPlazaWeb.Business\DsiCodeTech.SuPlazaWeb.Business.csproj", "{F7D2A71D-5282-44F4-8903-6B68D9D31A9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsiCodeTech.SuPlazaWeb.Repository", "..\DsiCodeTech.SuPlazaWeb.Repository\DsiCodeTech.SuPlazaWeb.Repository.csproj", "{BB94F8BE-2BFB-49AC-8DBF-17E6A48BC90A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{F7D2A71D-5282-44F4-8903-6B68D9D31A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7D2A71D-5282-44F4-8903-6B68D9D31A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7D2A71D-5282-44F4-8903-6B68D9D31A9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB94F8BE-2BFB-49AC-8DBF-17E6A48BC90A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB94F8BE-2BFB-49AC-8DBF-17E6A48BC90A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB94F8BE-2BFB-49AC-8DBF-17E6A48BC90A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB94F8BE-2BFB-49AC-8DBF-17E6A48BC90A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
