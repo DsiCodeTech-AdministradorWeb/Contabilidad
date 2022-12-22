@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\DsiCodeTech.SuPlazaWeb.Contabilidad\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,8 +47,17 @@
     <Compile Include="ArticuloDM.cs" />
     <Compile Include="Exception\BusinessException.cs" />
     <Compile Include="Extensions\PredicateBuilder.cs" />
+    <Compile Include="Filter\Page\PageRequest.cs" />
+    <Compile Include="Filter\Page\PageResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Filter\Model\" />
+    <Folder Include="Filter\Query\" />
+    <Folder Include="Filter\Sort\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
