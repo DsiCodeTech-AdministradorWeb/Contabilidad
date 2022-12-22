@@ -1,4 +1,5 @@
 ﻿using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure.Contract;
+using DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,7 +11,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.Infraestructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        //private readonly Dc_PosAdminEntities _dbContext;
+        private readonly  pos_adminEntities _dbContext;
 
         public UnitOfWork()
         {

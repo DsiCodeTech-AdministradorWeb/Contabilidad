@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9581c1d77fdc4c2688ee498c5ee8315f" Name="Diagram1" ZoomLevel="89">
+        <EntityTypeShape EntityType="pos_adminModel.articulo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.articulos" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.clasificacion" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.cliente" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.compra" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.compra_articulo" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.comprobante" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.condicion_pago" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.control_errores" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.ctrl_errores" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.direccion_proveedor" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.empleado" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.empresa" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.entidad" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.entrada" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.entrada_articulo" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.estadistica" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.factura" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.factura_articulo" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.factura_metodo_pago" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.factura_venta" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.generacion_codigos" Width="1.5" PointX="4.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.inventario_articulo" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.inventario_captura" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.inventario_fisico" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.inventario_fisico_articulo" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.kit_articulos" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.metodo_pago" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.movimiento_almacen" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.municipio" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.oferta" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.oferta_articulo" Width="1.5" PointX="2.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.orden" Width="1.5" PointX="8.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.orden_articulo" Width="1.5" PointX="10.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.pedido" Width="1.5" PointX="12.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.pedido_articulo" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.permiso" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.pos" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.pos_admin_settings" Width="1.5" PointX="4.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.pos_control" Width="1.5" PointX="16.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.precio_temporal" Width="1.5" PointX="16.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.promocion" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.promocion_articulo" Width="1.5" PointX="16.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.proveedor" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.salida" Width="1.5" PointX="18.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.salida_articulo" Width="1.5" PointX="18.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.unidad_medida" Width="1.5" PointX="18.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.uso_cfdi" Width="1.5" PointX="18.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.usuario" Width="1.5" PointX="16.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.usuario_permiso" Width="1.5" PointX="18.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.venta" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.venta_articulo" Width="1.5" PointX="6.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.venta_cancelada" Width="1.5" PointX="8.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.venta_cancelada_articulo" Width="1.5" PointX="10.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.venta_devolucion" Width="1.5" PointX="12.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.venta_devolucion_articulo" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.productos_sin_iva" Width="1.5" PointX="2.75" PointY="20.75" IsExpanded="true" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_articulos" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_captura" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_compra" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_entrada" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_estadistica" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_inventario_fisico" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_kit" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_oferta" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_pedido" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_pedido_anexo" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_promocion" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_salida" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_temporal" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_venta" />
+        <AssociationConnector Association="pos_adminModel.fk_articulo_venta_cancelada" />
+        <AssociationConnector Association="pos_adminModel.fk_articulos_kit" />
+        <AssociationConnector Association="pos_adminModel.fk_clasificacion_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_inventario_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_orden_articulo_anexo" />
+        <AssociationConnector Association="pos_adminModel.fk_orden_articulo_principal" />
+        <AssociationConnector Association="pos_adminModel.fk_proveedor_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_unidad_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_proveedor_articulos" />
+        <AssociationConnector Association="pos_adminModel.fk_unidad_articulos" />
+        <AssociationConnector Association="pos_adminModel.fk_clasificacion_subclasificacion" />
+        <AssociationConnector Association="pos_adminModel.fk_cliente_factura" />
+        <AssociationConnector Association="pos_adminModel.fk_cliente_municipio" />
+        <AssociationConnector Association="pos_adminModel.fk_compra_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_pedido_compra" />
+        <AssociationConnector Association="pos_adminModel.fk_proveedor_compra" />
+        <AssociationConnector Association="pos_adminModel.fk_factura_comprobante" />
+        <AssociationConnector Association="pos_adminModel.fk_factura_condicion_pago" />
+        <AssociationConnector Association="pos_adminModel.fk_municipio_direccion" />
+        <AssociationConnector Association="pos_adminModel.fk_proveedor_direccion" />
+        <AssociationConnector Association="pos_adminModel.fk_usuario_empleado" />
+        <AssociationConnector Association="pos_adminModel.fk_entidad_municipio" />
+        <AssociationConnector Association="pos_adminModel.fk_entrada_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_movimiento_entrada" />
+        <AssociationConnector Association="pos_adminModel.fk_usuario_entrada" />
+        <AssociationConnector Association="pos_adminModel.fk_factura_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_factura_uso_cfdi" />
+        <AssociationConnector Association="pos_adminModel.fk_factura_venta" />
+        <AssociationConnector Association="pos_adminModel.fk_factura_unidad" />
+        <AssociationConnector Association="pos_adminModel.fk_venta_factura" />
+        <AssociationConnector Association="pos_adminModel.fk_inventario_captura" />
+        <AssociationConnector Association="pos_adminModel.fk_inventario_fisico_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_proveedor_inventario_fisico" />
+        <AssociationConnector Association="pos_adminModel.fk_usuario_inventario" />
+        <AssociationConnector Association="pos_adminModel.fk_movimiento_salida" />
+        <AssociationConnector Association="pos_adminModel.fk_oferta_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_usuario_oferta" />
+        <AssociationConnector Association="pos_adminModel.fk_orden_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_order_proveedor" />
+        <AssociationConnector Association="pos_adminModel.fk_pedido_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_proveedor_pedido" />
+        <AssociationConnector Association="pos_adminModel.fk_permiso_usuario" />
+        <AssociationConnector Association="pos_adminModel.usuario_pos_control" />
+        <AssociationConnector Association="pos_adminModel.fk_promocion_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_promocion_venta_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_salida_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_usuario_salida" />
+        <AssociationConnector Association="pos_adminModel.fk_usuario_cambia_precio" />
+        <AssociationConnector Association="pos_adminModel.fk_usuario_cancelacion" />
+        <AssociationConnector Association="pos_adminModel.fk_usuario_devolucion_supervisor" />
+        <AssociationConnector Association="pos_adminModel.fk_usuario_devolucion_vendedor" />
+        <AssociationConnector Association="pos_adminModel.fk_usuario_permiso" />
+        <AssociationConnector Association="pos_adminModel.fk_usuario_venta" />
+        <AssociationConnector Association="pos_adminModel.fk_venta_cancelada_articulo_usuario" />
+        <AssociationConnector Association="pos_adminModel.fk_venta_cancelada_supervisor" />
+        <AssociationConnector Association="pos_adminModel.fk_venta_cancelada_vendedor" />
+        <AssociationConnector Association="pos_adminModel.fk_venta_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_venta_devolucion" />
+        <AssociationConnector Association="pos_adminModel.fk_venta_cancelada_articulo" />
+        <AssociationConnector Association="pos_adminModel.fk_venta_devolucion_articulo" />
+        <AssociationConnector Association="pos_adminModel.factura_metodo_pago1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

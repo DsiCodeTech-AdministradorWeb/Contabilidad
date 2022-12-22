@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,14 +58,220 @@
     <Compile Include="Infraestructure\Contract\IPagingAndSortingRepository.cs" />
     <Compile Include="Infraestructure\Contract\IUnitOfWork.cs" />
     <Compile Include="Infraestructure\UnitOfWork.cs" />
+    <Compile Include="PosContabilidad\articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\articulos.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\clasificacion.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\cliente.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\compra.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\compra_articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\comprobante.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\condicion_pago.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\control_errores.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\ctrl_errores.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\direccion_proveedor.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\empleado.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\empresa.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\entidad.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\entrada.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\entrada_articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\estadistica.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\factura.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\factura_articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\factura_metodo_pago.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\factura_venta.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\generacion_codigos.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\inventario_articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\inventario_captura.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\inventario_fisico.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\inventario_fisico_articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\kit_articulos.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\metodo_pago.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\movimiento_almacen.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\municipio.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\oferta.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\oferta_articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\orden.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\orden_articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\pedido.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\pedido_articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\permiso.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\pos.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\PosAdmin.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PosAdmin.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\PosAdmin.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\PosAdmin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PosAdmin.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\pos_admin_settings.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\pos_control.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\precio_temporal.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\productos_sin_iva.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\promocion.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\promocion_articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\proveedor.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\salida.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\salida_articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\unidad_medida.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\uso_cfdi.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\usuario.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\usuario_permiso.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\venta.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\venta_articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\venta_cancelada.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\venta_cancelada_articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\venta_devolucion.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\venta_devolucion_articulo.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="PosContabilidad\PosAdmin.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PosAdmin.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="PosContabilidad\PosAdmin.edmx.diagram">
+      <DependentUpon>PosAdmin.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="PosContabilidad\PosAdmin.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PosAdmin.edmx</DependentUpon>
+      <LastGenOutput>PosAdmin.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PosContabilidad\PosAdmin.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PosAdmin.edmx</DependentUpon>
+      <LastGenOutput>PosAdmin.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="PosContabilidad\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
