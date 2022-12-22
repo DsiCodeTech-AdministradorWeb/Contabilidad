@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ArticuloDM.cs" />
     <Compile Include="Exception\BusinessException.cs" />
+    <Compile Include="Extensions\PredicateBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
