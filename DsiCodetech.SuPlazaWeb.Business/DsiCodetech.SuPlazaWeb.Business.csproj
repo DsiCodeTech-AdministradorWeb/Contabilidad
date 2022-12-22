@@ -41,9 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticuloBusiness.cs" />
     <Compile Include="Interface\IArticuloBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DsiCodeTech.SuPlazaWeb.Repository\DsiCodeTech.SuPlazaWeb.Repository.csproj">
+      <Project>{BB94F8BE-2BFB-49AC-8DBF-17E6A48BC90A}</Project>
+      <Name>DsiCodeTech.SuPlazaWeb.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
