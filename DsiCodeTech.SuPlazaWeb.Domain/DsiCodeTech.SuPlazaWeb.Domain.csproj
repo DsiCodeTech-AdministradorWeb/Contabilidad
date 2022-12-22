@@ -49,12 +49,12 @@
     <Compile Include="Extensions\PredicateBuilder.cs" />
     <Compile Include="Filter\Page\PageRequest.cs" />
     <Compile Include="Filter\Page\PageResponse.cs" />
+    <Compile Include="Filter\Sort\Sorting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Filter\Model\" />
     <Folder Include="Filter\Query\" />
-    <Folder Include="Filter\Sort\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
