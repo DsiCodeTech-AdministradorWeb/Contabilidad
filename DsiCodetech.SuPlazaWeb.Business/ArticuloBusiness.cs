@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace DsiCodetech.SuPlazaWeb.Business
 {
+    /// <summary>
+    /// clase de negocio que implementa la interfaz de negocio
+    /// </summary>
     public class ArticuloBusiness:IArticuloBusiness
     {
         private readonly IUnitOfWork unitOfWork;
