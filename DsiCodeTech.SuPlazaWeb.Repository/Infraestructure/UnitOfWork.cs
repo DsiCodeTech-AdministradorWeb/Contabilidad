@@ -15,7 +15,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.Infraestructure
 
         public UnitOfWork()
         {
-           // _dbContext = new Dc_PosAdminEntities();
+            _dbContext = new pos_adminEntities();
         }
 
         public DbContext Db
