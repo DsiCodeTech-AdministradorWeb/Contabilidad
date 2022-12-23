@@ -27,5 +27,10 @@ namespace DsiCodetech.SuPlazaWeb.Business
             unitOfWork = _unitOfWork;
             repository = new ArticuloRepository(unitOfWork);
         }
+
+
+
+
+
     }
 }
