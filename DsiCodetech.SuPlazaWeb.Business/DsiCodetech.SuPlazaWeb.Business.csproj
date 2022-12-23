@@ -51,6 +51,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DsiCodeTech.SuPlazaWeb.Domain\DsiCodeTech.SuPlazaWeb.Domain.csproj">
+      <Project>{530A6D1E-46C9-47DB-95D3-3B5A2B1F4F3E}</Project>
+      <Name>DsiCodeTech.SuPlazaWeb.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DsiCodeTech.SuPlazaWeb.Repository\DsiCodeTech.SuPlazaWeb.Repository.csproj">
       <Project>{BB94F8BE-2BFB-49AC-8DBF-17E6A48BC90A}</Project>
       <Name>DsiCodeTech.SuPlazaWeb.Repository</Name>

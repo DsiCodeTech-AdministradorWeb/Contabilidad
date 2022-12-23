@@ -1,4 +1,5 @@
 ﻿using DsiCodetech.SuPlazaWeb.Business.Interface;
+using DsiCodeTech.SuPlazaWeb.Domain;
 using DsiCodeTech.SuPlazaWeb.Repository;
 using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure.Contract;
 using NLog;
@@ -32,9 +33,37 @@ namespace DsiCodetech.SuPlazaWeb.Business
             _logger = logger;
         }
 
+        public List<ArticuloDM> GetAllEntidades() 
+        {
+            return  this.repository.GetAll().Select( e=>  new ArticuloDM {
+                articulo_disponible = true,
+                cantidad_um = e.cantidad_um,
+                cod_asociado = e.cod_asociado,
+                cod_barras = e.cod_barras,
+                cod_interno = e.cod_interno,
+                cve_producto = e.cve_producto,
+                descripcion = e.descripcion,
+                descripcion_corta = e.descripcion_corta,
+                fecha_registro = e.fecha_registro,
+                id_clasificacion = e.id_clasificacion,
+                id_proveedor = e.id_proveedor,
+                id_unidad = e.id_unidad,
+                iva=e.iva,
+                kit=e.kit,
+                kit_fecha_fin=e.kit_fecha_fin.Value,
+                kit_fecha_ini=e.kit_fecha_ini.Value,
+                last_update_inventory = e.last_update_inventory,
+                precio_compra=e.precio_compra,
+                precio_venta=e.precio_venta,
+                puntos= e.puntos,
+                stock=e.stock,
+                stock_max=e.stock_max,
+                stock_min=e.stock_min,
+                tipo_articulo=e.tipo_articulo,
+                utilidad=e.utilidad,
+                visible=e.visible,
 
-
-
-
+            }).ToList();
+        }
     }
 }
