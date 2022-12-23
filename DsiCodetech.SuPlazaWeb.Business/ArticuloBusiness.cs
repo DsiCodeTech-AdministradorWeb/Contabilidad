@@ -33,6 +33,13 @@ namespace DsiCodetech.SuPlazaWeb.Business
             _logger = logger;
         }
 
+        /// <summary>
+        /// Este metodo se encarga de consultar todas las entidades de la tabla
+        /// articulos
+        /// </summary>
+        /// <returns>
+        /// una coleccion de todas las entidades del tipo articuloDM
+        /// </returns>
         public List<ArticuloDM> GetAllEntidades() 
         {
             return  this.repository.GetAll().Select( e=>  new ArticuloDM {
