@@ -1,6 +1,7 @@
 ﻿using DsiCodetech.SuPlazaWeb.Business.Interface;
 using DsiCodeTech.SuPlazaWeb.Repository;
 using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure.Contract;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +23,13 @@ namespace DsiCodetech.SuPlazaWeb.Business
         /// Implementacion del repositorio Articulo
         /// </summary>
         private readonly ArticuloRepository repository;
-        public ArticuloBusiness(IUnitOfWork _unitOfWork)
+        private readonly ILogger _logger;
+
+        public ArticuloBusiness(IUnitOfWork _unitOfWork, ILogger logger)
         {
             unitOfWork = _unitOfWork;
             repository = new ArticuloRepository(unitOfWork);
+            _logger = logger;
         }
 
 
