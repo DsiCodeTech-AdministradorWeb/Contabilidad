@@ -72,5 +72,11 @@ namespace DsiCodetech.SuPlazaWeb.Business
 
             }).ToList();
         }
+
+
+        public PageResponse<>
+
+
+
     }
 }

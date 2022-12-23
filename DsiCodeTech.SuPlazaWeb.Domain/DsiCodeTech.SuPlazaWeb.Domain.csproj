@@ -47,6 +47,7 @@
     <Compile Include="ArticuloDM.cs" />
     <Compile Include="Exception\BusinessException.cs" />
     <Compile Include="Extensions\PredicateBuilder.cs" />
+    <Compile Include="Filter\Model\ArticuloFilterDM.cs" />
     <Compile Include="Filter\Page\PageRequest.cs" />
     <Compile Include="Filter\Page\PageResponse.cs" />
     <Compile Include="Filter\Query\ArticuloQuery.cs" />
@@ -54,9 +55,7 @@
     <Compile Include="Filter\Sort\Sorting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Filter\Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
