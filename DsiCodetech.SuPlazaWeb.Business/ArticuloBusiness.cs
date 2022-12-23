@@ -1,11 +1,17 @@
 ﻿using DsiCodetech.SuPlazaWeb.Business.Interface;
 using DsiCodeTech.SuPlazaWeb.Domain;
+using DsiCodeTech.SuPlazaWeb.Domain.Extensions;
+using DsiCodeTech.SuPlazaWeb.Domain.Filter.Model;
+using DsiCodeTech.SuPlazaWeb.Domain.Filter.Page;
+using DsiCodeTech.SuPlazaWeb.Domain.Filter.Query;
 using DsiCodeTech.SuPlazaWeb.Repository;
 using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure.Contract;
+using DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad;
 using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -74,8 +80,31 @@ namespace DsiCodetech.SuPlazaWeb.Business
         }
 
 
-        public PageResponse<>
+        public PageResponse<ArticuloFilterDM> GetArticulosPaging(ArticuloQuery query)
+        {
+            var whereFunc = PredicateBuilder.False<articulo>();
+            Expression<Func<articulo, string>> orderByFunc = null;
+            IEnumerable<articulo> articulos = null;
+            bool isWhere = false;
+            int count = 0;
 
+            switch (query.Page.sort.Name) 
+            {
+                case "cod_barras":
+                    orderByFunc = articulo => articulo.cod_barras;
+                    break;
+                case "cod_asociado":
+                    orderByFunc=articulo => articulo.cod_asociado;
+                    break;
+                case "cod_interno":
+                    orderByFunc = articulo => articulo.cod_interno;
+                    break;
+
+            }
+
+
+
+        }
 
 
     }
