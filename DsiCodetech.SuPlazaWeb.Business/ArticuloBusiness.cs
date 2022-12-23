@@ -14,6 +14,9 @@ namespace DsiCodetech.SuPlazaWeb.Business
     /// </summary>
     public class ArticuloBusiness:IArticuloBusiness
     {
+        /// <summary>
+        /// implementacion de la unidad de trabajo
+        /// </summary>
         private readonly IUnitOfWork unitOfWork;
         private readonly ArticuloRepository repository;
         public ArticuloBusiness(IUnitOfWork _unitOfWork)
