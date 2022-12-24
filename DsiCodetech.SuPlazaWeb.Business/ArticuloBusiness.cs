@@ -79,6 +79,11 @@ namespace DsiCodetech.SuPlazaWeb.Business
             }).ToList();
         }
 
+        /// <summary>
+        /// Metodo que se encarga de consultar  todos los articulos realizando paginacion
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
 
         public PageResponse<ArticuloFilterDM> GetArticulosPaging(ArticuloQuery query)
         {
