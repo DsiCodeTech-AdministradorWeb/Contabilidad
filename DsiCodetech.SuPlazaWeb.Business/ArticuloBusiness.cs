@@ -110,10 +110,9 @@ namespace DsiCodetech.SuPlazaWeb.Business
                 default:
                     orderByFunc = articulo => articulo.descripcion_corta;
                     break;
-
-
             }
-
+            if(!String.IsNullOrEmpty(query.Cod_Barras))
+                whereFunc = whereFunc.Or(f=> f.cod_barras.StartsWith(query.Cod_Barras))
 
 
         }
