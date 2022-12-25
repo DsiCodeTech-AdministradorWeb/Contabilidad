@@ -10,16 +10,35 @@ using System.Threading.Tasks;
 
 namespace DsiCodeTech.SuPlazaWeb.Repository
 {
-    public class ArticuloRepository : BaseRepository<articulo>
+    public class ArticuloRepository : BaseRepository<articulo>, IPagingAndSortingRepository<articulo>
     {
         public ArticuloRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
 
         }
 
-        public IEnumerable<articulo> GetPaging(Expression<Func<articulo, string>> orderByFunc, int pageNumber, int pageSize)
+        public int Count(Expression<Func<articulo, bool>> whereCondition)
         {
-            throw new NotImplementedException();
+            return dbSet.AsExpandable().Where(whereCondition).Count();
+        }
+        public IEnumerable<articulo> GetPaging(Expression<Func<articulo, string>> orderBy, int page_number, int page_size)
+        {
+            return dbSet.OrderBy(orderBy).Skip((page_number - 1) * page_size).Take(page_size).AsEnumerable();
+        }
+
+        public IEnumerable<articulo> GetPaging(Expression<Func<articulo, bool>> where, Expression<Func<articulo, string>> orderBy, int page_number, int page_size)
+        {
+            return dbSet.AsExpandable().Where(where).OrderBy(orderBy).Skip((page_number - 1) * page_size).Take(page_size).AsEnumerable();
+        }
+
+        public IEnumerable<articulo> GetPagingDescending(Expression<Func<articulo, string>> orderBy, int page_number, int page_size)
+        {
+            return dbSet.OrderByDescending(orderBy).Skip((page_number - 1) * page_size).Take(page_size).AsEnumerable();
+        }
+
+        public IEnumerable<articulo> GetPagingDescending(Expression<Func<articulo, bool>> where, Expression<Func<articulo, string>> orderBy, int page_number, int page_size)
+        {
+            return dbSet.AsExpandable().Where(where).OrderByDescending(orderBy).Skip((page_number - 1) * page_size).Take(page_size).AsEnumerable();
         }
     }
 }
