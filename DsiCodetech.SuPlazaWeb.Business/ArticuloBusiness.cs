@@ -89,7 +89,7 @@ namespace DsiCodetech.SuPlazaWeb.Business
         {
             var whereFunc = PredicateBuilder.False<articulo>();
             Expression<Func<articulo, string>> orderByFunc = null;
-            IEnumerable<articulo> articulos = null;
+            IEnumerable<articulo> result = null;
             bool isWhere = false;
             int count = 0;
 
@@ -123,7 +123,15 @@ namespace DsiCodetech.SuPlazaWeb.Business
                 !String.IsNullOrEmpty(query.Cod_Asociado) || !String.IsNullOrEmpty(query.Cod_Interno)
                 || !String.IsNullOrEmpty(query.Descripcion))
                 isWhere = true;
+            switch (query.Page.sort.Direction)
+            {
+                case DsiCodeTech.SuPlazaWeb.Domain.Filter.Sort.Direction.Ascending:
+                    result = isWhere ?
+                        this.repository.GetPaging(whereFunc, orderByFunc, query.Page.pageNumber, query.Page.pageSize) :
+                        this.repository.GetPaging(orderByFunc, query.Page.pageNumber, query.Page.pageSize);
+                    break;
 
+            }
 
         }
 
