@@ -113,10 +113,12 @@ namespace DsiCodetech.SuPlazaWeb.Business
             }
             if (!String.IsNullOrEmpty(query.Cod_Barras))
                 whereFunc = whereFunc.Or(f => f.cod_barras.StartsWith(query.Cod_Barras));
-            if(!String.IsNullOrEmpty(query.Cod_Asociado))
-                whereFunc = whereFunc.Or(f=> f.cod_asociado.StartsWith(query.Cod_Asociado))
+            if (!String.IsNullOrEmpty(query.Cod_Asociado))
+                whereFunc = whereFunc.Or(f => f.cod_asociado.StartsWith(query.Cod_Asociado));
             if (!String.IsNullOrEmpty(query.Cod_Interno))
                 whereFunc = whereFunc.Or(f => f.cod_interno.StartsWith(query.Cod_Interno));
+            if (!String.IsNullOrEmpty(query.Descripcion))
+                whereFunc = whereFunc.Or(f => f.descripcion.StartsWith(query.Descripcion));
 
 
         }
