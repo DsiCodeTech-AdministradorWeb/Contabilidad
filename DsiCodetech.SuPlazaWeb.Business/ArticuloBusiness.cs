@@ -104,6 +104,13 @@ namespace DsiCodetech.SuPlazaWeb.Business
                 case "cod_interno":
                     orderByFunc = articulo => articulo.cod_interno;
                     break;
+                case "descripcion":
+                    orderByFunc = articulo => articulo.descripcion;
+                    break;
+                default:
+                    orderByFunc = articulo => articulo.descripcion_corta;
+                    break;
+
 
             }
 
