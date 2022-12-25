@@ -7,6 +7,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using LinqKit;
+using LinqKit.Core;
 
 namespace DsiCodeTech.SuPlazaWeb.Repository
 {
