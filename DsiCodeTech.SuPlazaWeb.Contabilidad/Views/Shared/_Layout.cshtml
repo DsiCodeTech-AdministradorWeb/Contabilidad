@@ -5,11 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
+    
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/bootstrap.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-brand navbar-fixed-top">
+    <div class="navbar navbar-dark navbar-fixed-top">    @*"navbar  navbar-fixed-top">*@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
@@ -38,7 +41,6 @@
 
     @Scripts.Render("~/bundles/jquery")
     @*@Scripts.Render("~/bundles/bootstrap")*@
-    @Scripts.Render("~/Scripts/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
