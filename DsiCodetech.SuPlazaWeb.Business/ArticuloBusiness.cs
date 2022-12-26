@@ -160,6 +160,8 @@ namespace DsiCodetech.SuPlazaWeb.Business
                      utilidad = item.utilidad,
                      visible = item.visible
                 }).ToList();
+                count = isWhere ? this.repository.Count(whereFunc) : this.repository.Count();
+                return new PageResponse<ArticuloFilterDM>(new List<ArticuloFilterDM>(), count, query.Page.pageNumber, query.Page.pageSize);
             }
 
         }
