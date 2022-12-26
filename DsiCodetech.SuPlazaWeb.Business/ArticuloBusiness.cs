@@ -132,6 +132,35 @@ namespace DsiCodetech.SuPlazaWeb.Business
                     break;
 
             }
+            if (result.Any())
+            {
+                List<ArticuloFilterDM> articulos = result.Select(item => new ArticuloFilterDM { 
+                     articulo_disponible = item.articulo_disponible,
+                     cantidad_um = item.cantidad_um,
+                     cod_asociado = item.cod_asociado,
+                     cod_barras = item.cod_barras,
+                     cod_interno = item.cod_interno,
+                     cve_producto = item.cve_producto,
+                     descripcion = item.descripcion,
+                     descripcion_corta = item.descripcion_corta,
+                     fecha_registro = item.fecha_registro,
+                     id_clasificacion = item.id_clasificacion,
+                     iva = item.iva,
+                     kit = item.kit,
+                     kit_fecha_fin=item.kit_fecha_fin.Value,
+                     kit_fecha_ini=item.kit_fecha_ini.Value,
+                     last_update_inventory = item.last_update_inventory,
+                     precio_compra = item.precio_compra,
+                     puntos = item.puntos,
+                     precio_venta = item.precio_venta,
+                     stock = item.stock,
+                     stock_max = item.stock_max,
+                     stock_min = item.stock_min,
+                     tipo_articulo=item.tipo_articulo,
+                     utilidad = item.utilidad,
+                     visible = item.visible
+                }).ToList();
+            }
 
         }
 
