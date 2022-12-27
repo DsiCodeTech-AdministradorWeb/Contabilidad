@@ -8,6 +8,10 @@
     $('#cantidad_um').prop('disabled', true);
     $('#precio_compra').prop('disabled', true);
     $('#utilidad').prop('disabled', true);
-
+    $('#precio_venta').prop('disabled', true);
+    $('tipo_articulo').prop('disabled', true);
+    $('#stock').prop('disabled', true);
+    $('#stock_min').prop('disabled', true);
+    $('#stock_max').prop('disabled', true);
 
 })
