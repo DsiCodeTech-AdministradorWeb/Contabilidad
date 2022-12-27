@@ -167,6 +167,41 @@ namespace DsiCodetech.SuPlazaWeb.Business
 
         }
 
+        /// <summary>
+        /// Este metodo se encarga de consultar  un articulo por codigo de barras
+        /// </summary>
+        /// <param name="codigo">codigo de barras</param>
+        /// <returns>la entidad del tipo ArticuloDM</returns>
+        public ArticuloDM GetArticuloByCodigoBarras(string codigo)
+        {
+            var result = repository.SingleOrDefault(p => p.cod_barras == codigo);
+            return new ArticuloDM{
+                cod_barras = result.cod_barras,
+               articulo_disponible = result.articulo_disponible,
+               cantidad_um = result.cantidad_um,
+               cod_asociado = result.cod_asociado,
+               cod_interno = result.cod_interno,
+               cve_producto = result.cve_producto,
+               descripcion = result.descripcion,
+               descripcion_corta = result.descripcion_corta,
+               fecha_registro = result.fecha_registro,
+               id_clasificacion = result.id_clasificacion,
+               id_proveedor = result.id_proveedor,
+               id_unidad = result.id_unidad,    
+               iva = result.iva,
+               kit = result.kit,
+               kit_fecha_fin= result.kit_fecha_fin.Value,
+               kit_fecha_ini= result.kit_fecha_ini.Value,
+               precio_compra=result.precio_compra,
+               precio_venta=result.precio_venta,
+               stock= result.stock,
+               stock_max= result.stock_max,
+               stock_min= result.stock_min, 
+               tipo_articulo= result.tipo_articulo,
+               utilidad= result.utilidad,
+               
+            };
+        }
 
     }
 }

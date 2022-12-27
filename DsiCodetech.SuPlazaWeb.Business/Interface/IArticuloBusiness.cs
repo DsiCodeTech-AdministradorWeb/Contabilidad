@@ -10,5 +10,12 @@ namespace DsiCodetech.SuPlazaWeb.Business.Interface
     {
         List<ArticuloDM> GetAllEntidades();
         PageResponse<ArticuloFilterDM> GetArticulosPaging(ArticuloQuery query);
+
+        /// <summary>
+        /// Este metodo se encarga de consultar  un articulo por codigo de barras
+        /// </summary>
+        /// <param name="codigo">codigo de barras</param>
+        /// <returns>la entidad del tipo ArticuloDM</returns>
+        ArticuloDM GetArticuloByCodigoBarras(string codigo);
     }
 }
