@@ -18,11 +18,12 @@
     $('#btnActualizar').prop('disabled', true);
     $('#txt-grp-sm').click(function () {
         var codigo_barras = $('#cod_barras').val();
+        alert(codigo_barras);
         $.ajax({
-            type: "Get",
-            url: "/api/articulos/getcodigobarras",
+            type: "Get",  
+            url: "/api/articulos/getcodigobarras?codigo=" + codigo_barras,
             dataType: "Json",
-            data: { codigo: codigo_barras },
+            //data: { codigo: codigo_barras },
             success: function (data) {
                 toastr.success('La información se proceso de forma correcta');
                 console.log(data);

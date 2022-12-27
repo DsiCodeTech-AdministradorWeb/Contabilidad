@@ -26,7 +26,7 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
         [ResponseType(typeof(ArticuloDto))]
         [Route(template: "getcodigobarras")]
         [HttpGet]
-        public IHttpActionResult GetArticulosByCodigoBarras([FromBody]string codigo)
+        public IHttpActionResult GetArticulosByCodigoBarras(string codigo)
         {
             try 
             {
