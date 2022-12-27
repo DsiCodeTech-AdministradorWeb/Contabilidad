@@ -1,8 +1,11 @@
 ﻿using DsiCodetech.SuPlazaWeb.Business.Interface;
+using DsiCodeTech.SuPlazaWeb.Contabilidad.Dto;
 using DsiCodeTech.SuPlazaWeb.Contabilidad.Handler.ExceptionHandler;
 using NLog;
+using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.Description;
 
 namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
 {
@@ -18,5 +21,13 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
             _articuloBusiness = articuloBusiness;
         }
 
+
+        [ResponseType(typeof(ArticuloDto))]
+        [Route(template: "getcodigobarras")]
+        [HttpGet]
+        public IHttpActionResult GetArticulosByCodigoBarras([FromBody]ArticuloDto articulo)
+        {
+            return Ok();
+        }
     }
 }
