@@ -17,13 +17,15 @@
     $('#fecha_registro').prop('disabled', true);
     $('#btnActualizar').prop('disabled', true);
     $('#txt-grp-sm').click(function () {
-
+        var codigo_barras = $('#cod_barras').val();
         $.ajax({
             type: "Get",
-            url: "api/articulos",
+            url: "api/articulos/getcodigobarras",
+            dataType: "Json",
+            data: { codigo: codigo_barras },
             success: function (data) {
                 toastr.success('La información se proceso de forma correcta');
-                
+                console.log(data);
             },
             error: function (xhr, textStatus, errorThrown) {
                 toastr.error('La información no se pudo procesar');
