@@ -22,11 +22,11 @@
             type: "Get",
             url: "api/articulos",
             success: function (data) {
-                /*toastr.success('La información se proceso de forma correcta');*/
+                toastr.success('La información se proceso de forma correcta');
                 
             },
             error: function (xhr, textStatus, errorThrown) {
-                /*toastr.error('La información no se pudo procesar');*/
+                toastr.error('La información no se pudo procesar');
                 
             }
         })
