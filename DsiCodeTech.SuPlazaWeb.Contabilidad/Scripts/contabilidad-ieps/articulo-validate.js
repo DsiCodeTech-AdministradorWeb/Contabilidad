@@ -20,7 +20,7 @@
         var codigo_barras = $('#cod_barras').val();
         $.ajax({
             type: "Get",
-            url: "api/articulos/getcodigobarras",
+            url: "/api/articulos/getcodigobarras",
             dataType: "Json",
             data: { codigo: codigo_barras },
             success: function (data) {

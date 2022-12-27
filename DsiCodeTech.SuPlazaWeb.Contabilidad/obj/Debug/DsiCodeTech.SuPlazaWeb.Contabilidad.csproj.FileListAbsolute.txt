@@ -148,3 +148,12 @@ C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\System.Numerics.Vectors.xml
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\System.Text.Encodings.Web.xml
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\System.Web.Http.Cors.xml
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\DsiCodetech.SuPlazaWeb.Business.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\DsiCodeTech.SuPlazaWeb.Domain.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\DsiCodeTech.SuPlazaWeb.Repository.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\LinqKit.Core.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\DsiCodetech.SuPlazaWeb.Business.pdb
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\DsiCodeTech.SuPlazaWeb.Domain.pdb
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\DsiCodeTech.SuPlazaWeb.Repository.pdb
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\DsiCodeTech.SuPlazaWeb.Repository.dll.config
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\LinqKit.Core.xml
