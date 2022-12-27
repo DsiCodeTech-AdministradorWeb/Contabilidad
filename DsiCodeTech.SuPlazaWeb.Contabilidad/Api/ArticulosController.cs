@@ -9,5 +9,6 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
     [RoutePrefix(prefix: "api/articulos")]
     public class ArticulosController : ApiController
     {
+
     }
 }

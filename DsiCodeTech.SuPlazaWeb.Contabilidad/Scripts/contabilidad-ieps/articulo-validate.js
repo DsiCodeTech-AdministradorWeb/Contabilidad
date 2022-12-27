@@ -17,6 +17,20 @@
     $('#fecha_registro').prop('disabled', true);
     $('#btnActualizar').prop('disabled', true);
     $('#txt-grp-sm').click(function () {
+
+        $.ajax({
+            type: "Get",
+            url: "api/articulos",
+            success: function (data) {
+                /*toastr.success('La información se proceso de forma correcta');*/
+                
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                /*toastr.error('La información no se pudo procesar');*/
+                
+            }
+        })
+
         $('#btnActualizar').prop('disabled', false);
     });
 
