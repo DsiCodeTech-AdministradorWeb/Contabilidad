@@ -2,6 +2,7 @@
 using DsiCodeTech.SuPlazaWeb.Contabilidad.Dto;
 using DsiCodeTech.SuPlazaWeb.Contabilidad.Handler.ExceptionHandler;
 using NLog;
+using System;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -25,9 +26,18 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
         [ResponseType(typeof(ArticuloDto))]
         [Route(template: "getcodigobarras")]
         [HttpGet]
-        public IHttpActionResult GetArticulosByCodigoBarras([FromBody]ArticuloDto articulo)
+        public IHttpActionResult GetArticulosByCodigoBarras([FromBody]string codigo)
         {
-            return Ok();
+            try 
+            {
+                return Ok( AutoMapper.Mapper.Map<ArticuloDto>(_articuloBusiness.GetArticuloByCodigoBarras(codigo)));
+            }
+            catch (Exception ex)
+            {
+                loggerdb.Error(ex);
+                throw;
+            }
+            
         }
     }
 }

@@ -336,6 +336,10 @@
       <Project>{F7D2A71D-5282-44F4-8903-6B68D9D31A9D}</Project>
       <Name>DsiCodeTech.SuPlazaWeb.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DsiCodeTech.SuPlazaWeb.Domain\DsiCodeTech.SuPlazaWeb.Domain.csproj">
+      <Project>{530A6D1E-46C9-47DB-95D3-3B5A2B1F4F3E}</Project>
+      <Name>DsiCodeTech.SuPlazaWeb.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
