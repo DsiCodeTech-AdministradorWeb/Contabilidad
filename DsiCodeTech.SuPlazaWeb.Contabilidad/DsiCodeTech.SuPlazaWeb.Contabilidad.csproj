@@ -331,6 +331,12 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DsiCodetech.SuPlazaWeb.Business\DsiCodeTech.SuPlazaWeb.Business.csproj">
+      <Project>{F7D2A71D-5282-44F4-8903-6B68D9D31A9D}</Project>
+      <Name>DsiCodeTech.SuPlazaWeb.Business</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
