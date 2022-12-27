@@ -13,5 +13,7 @@
     $('#stock').prop('disabled', true);
     $('#stock_min').prop('disabled', true);
     $('#stock_max').prop('disabled', true);
-
+    $('#iva').prop('disabled', true);
+    $('#fecha_registro').prop('disabled', true);
+    $('#btnActualizar').prop('disabled', true);
 })
