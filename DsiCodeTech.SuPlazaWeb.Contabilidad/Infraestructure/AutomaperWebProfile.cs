@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using DsiCodeTech.SuPlazaWeb.Contabilidad.Dto;
+using DsiCodeTech.SuPlazaWeb.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Infraestructure
     {
         public AutomaperWebProfile()
         {
-
+            CreateMap<ArticuloDto, ArticuloDM>().ReverseMap();
         }
         public static void Run()
         {

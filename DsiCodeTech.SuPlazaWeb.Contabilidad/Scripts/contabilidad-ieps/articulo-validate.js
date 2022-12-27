@@ -17,7 +17,7 @@
     $('#fecha_registro').prop('disabled', true);
     $('#btnActualizar').prop('disabled', true);
     $('#txt-grp-sm').click(function () {
-        var codigo_barras = $('#cod_barras').val();
+        var codigo_barras = $('#txt_codigo_barras').val();
         alert(codigo_barras);
         $.ajax({
             type: "Get",  
