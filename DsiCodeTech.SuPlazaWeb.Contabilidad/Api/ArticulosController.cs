@@ -19,9 +19,9 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
         private readonly IArticuloBusiness _articuloBusiness;
         public ArticulosController(IArticuloBusiness articuloBusiness)
         {
-            _articuloBusiness = articuloBusiness;
+            this._articuloBusiness = articuloBusiness;
         }
-
+        
 
         [ResponseType(typeof(ArticuloDto))]
         [Route("getcodigobarras")]
@@ -34,6 +34,7 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
             }
             catch (Exception ex)
             {
+                ///se guarda en el log de errores encaso de caer a una excepcion
                 loggerdb.Error(ex);
                 throw;
             }

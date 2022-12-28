@@ -1,9 +1,0 @@
-C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Domain\bin\Debug\DsiCodeTech.SuPlazaWeb.Domain.dll
-C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Domain\bin\Debug\DsiCodeTech.SuPlazaWeb.Domain.pdb
-C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Domain\bin\Debug\Newtonsoft.Json.dll
-C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Domain\bin\Debug\Newtonsoft.Json.xml
-C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Domain\obj\Debug\DsiCodeTech.SuPlazaWeb.Domain.csproj.AssemblyReference.cache
-C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Domain\obj\Debug\DsiCodeTech.SuPlazaWeb.Domain.csproj.CoreCompileInputs.cache
-C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Domain\obj\Debug\DsiCodeTech.SuPlazaWeb.Domain.csproj.CopyComplete
-C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Domain\obj\Debug\DsiCodeTech.SuPlazaWeb.Domain.dll
-C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Domain\obj\Debug\DsiCodeTech.SuPlazaWeb.Domain.pdb
