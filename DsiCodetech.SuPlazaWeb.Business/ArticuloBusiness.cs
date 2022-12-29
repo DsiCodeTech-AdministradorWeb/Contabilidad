@@ -171,6 +171,7 @@ namespace DsiCodetech.SuPlazaWeb.Business
         /// <returns>la entidad del tipo ArticuloDM</returns>
         public ArticuloDM GetArticuloByCodigoBarras(string codigo)
         {
+
             var result = repository.SingleOrDefault(p => p.cod_barras.Equals(codigo));
 
             return new ArticuloDM{

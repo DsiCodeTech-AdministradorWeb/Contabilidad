@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -45,5 +46,6 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.Infraestructure.Contract
         IEnumerable<T> GetIncludeForAll(Expression<Func<T, bool>> where, string entity, string entity2, string entity3);
 
         IEnumerable<T> GetIncludeForTwo(Expression<Func<T, bool>> where, string entity, string entity2);
+        
     }
 }

@@ -24,8 +24,8 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.Infraestructure
 
         public T SingleOrDefault(Expression<Func<T, bool>> where)
         {
-            
-            var dbResult = dbSet.Where(where.Compile()).FirstOrDefault();
+
+            var dbResult = dbSet.FirstOrDefault(where.Compile()); 
             return dbResult;
         }
         public IEnumerable<T> GetAll()
@@ -175,5 +175,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.Infraestructure
         {
             return dbSet.Include(entity).Include(entity2).Where(where.Compile()).AsEnumerable();
         }
+
+        
     }
 }
