@@ -19,27 +19,25 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         {
             this.factura_articulo = new HashSet<factura_articulo>();
             this.factura_venta = new HashSet<factura_venta>();
-            this.metodo_pago = new HashSet<metodo_pago>();
         }
     
         public long id_factura { get; set; }
-        public System.DateTime fecha_remision { get; set; }
         public System.Guid id_cliente { get; set; }
-        public string cfdi_relacionado { get; set; }
-        public string uuid_relacionado { get; set; }
-        public string id_comprobante { get; set; }
-        public string id_condicion { get; set; }
-        public string id_uso { get; set; }
+        public System.DateTime fecha_remision { get; set; }
+        public string uso_cfdi { get; set; }
+        public string forma_pago { get; set; }
+        public string metodo_pago { get; set; }
+        public string tipo_comprobante { get; set; }
+        public string exportaciones { get; set; }
+        public Nullable<short> id_estatus { get; set; }
+        public string factura_xml { get; set; }
+        public Nullable<System.Guid> uuid_sat { get; set; }
     
         public virtual cliente cliente { get; set; }
-        public virtual comprobante comprobante { get; set; }
-        public virtual condicion_pago condicion_pago { get; set; }
+        public virtual estatus estatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<factura_articulo> factura_articulo { get; set; }
-        public virtual uso_cfdi uso_cfdi { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<factura_venta> factura_venta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<metodo_pago> metodo_pago { get; set; }
     }
 }

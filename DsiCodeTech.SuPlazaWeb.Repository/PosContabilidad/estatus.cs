@@ -12,15 +12,15 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
     using System;
     using System.Collections.Generic;
     
-    public partial class condicion_pago
+    public partial class estatus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public condicion_pago()
+        public estatus()
         {
             this.factura = new HashSet<factura>();
         }
     
-        public string id_condicion { get; set; }
+        public short id_estatus { get; set; }
         public string descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

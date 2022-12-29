@@ -12,9 +12,13 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
     using System;
     using System.Collections.Generic;
     
-    public partial class factura_metodo_pago
+    public partial class moneda
     {
-        public long id_factura { get; set; }
-        public string id_metodo { get; set; }
+        public string id { get; set; }
+        public string descripcion { get; set; }
+        public string decimales { get; set; }
+        public string porcentaje { get; set; }
+        public Nullable<System.DateTime> fecha_inicio { get; set; }
+        public Nullable<System.DateTime> fecha_fin { get; set; }
     }
 }

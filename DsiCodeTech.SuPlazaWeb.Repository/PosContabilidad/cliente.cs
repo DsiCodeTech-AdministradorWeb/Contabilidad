@@ -18,19 +18,20 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         public cliente()
         {
             this.factura = new HashSet<factura>();
+            this.direccion = new HashSet<direccion>();
         }
     
         public System.Guid id_cliente { get; set; }
         public string rfc { get; set; }
         public string razon_social { get; set; }
+        public string regimen_fiscal { get; set; }
         public string contacto { get; set; }
         public string e_mail { get; set; }
         public string e_mail2 { get; set; }
-        public Nullable<short> id_municipio { get; set; }
-        public Nullable<short> id_entidad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<factura> factura { get; set; }
-        public virtual municipio municipio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<direccion> direccion { get; set; }
     }
 }

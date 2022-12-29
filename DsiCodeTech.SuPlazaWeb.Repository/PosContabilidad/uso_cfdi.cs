@@ -14,16 +14,12 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
     
     public partial class uso_cfdi
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public uso_cfdi()
-        {
-            this.factura = new HashSet<factura>();
-        }
-    
-        public string id_uso { get; set; }
+        public string id { get; set; }
         public string descripcion { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<factura> factura { get; set; }
+        public string persona_fisica { get; set; }
+        public string persona_moral { get; set; }
+        public string regimen_fiscal_receptor { get; set; }
+        public Nullable<System.DateTime> fecha_inicio { get; set; }
+        public Nullable<System.DateTime> fecha_fin { get; set; }
     }
 }
