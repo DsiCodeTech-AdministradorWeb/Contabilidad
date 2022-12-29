@@ -8,6 +8,9 @@ namespace DsiCodeTech.SuPlazaWeb.Domain
 {
     public class ImpuestoDM
     {
-
+        public int id { get; set; }
+        public string  cod_barras { get; set; }
+        public double ieps { get; set; }
+        public DateTime fecha_registro { get; set; }
     }
 }
