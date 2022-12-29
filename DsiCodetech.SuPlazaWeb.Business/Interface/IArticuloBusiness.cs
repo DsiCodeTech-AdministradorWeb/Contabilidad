@@ -17,5 +17,7 @@ namespace DsiCodetech.SuPlazaWeb.Business.Interface
         /// <param name="codigo">codigo de barras</param>
         /// <returns>la entidad del tipo ArticuloDM</returns>
         ArticuloDM GetArticuloByCodigoBarras(string codigo);
+
+        bool AddUpdateArticulos(ArticuloDM articuloDM);
     }
 }

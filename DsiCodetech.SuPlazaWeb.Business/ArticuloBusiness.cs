@@ -202,6 +202,11 @@ namespace DsiCodetech.SuPlazaWeb.Business
             };
         }
 
+        /// <summary>
+        /// Este metodo se encarga de insertar o actualizar  la entidad  articulo
+        /// </summary>
+        /// <param name="articuloDM">la entidad articulo del dominio del proyecto.</param>
+        /// <returns>regresa una entidad del tipo boolean</returns>
         public bool AddUpdateArticulos(ArticuloDM articuloDM)
         {
             bool resultado = false;
