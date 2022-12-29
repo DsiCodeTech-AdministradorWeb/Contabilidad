@@ -34,7 +34,7 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
             }
             catch (Exception ex)
             {
-                ///se guarda en el log de errores encaso de caer a una excepcion
+                
                 loggerdb.Error(ex);
                 throw;
             }

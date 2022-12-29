@@ -1,6 +1,2047 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="pos_adminModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="articulo">
+    <Key>
+      <PropertyRef Name="cod_barras" />
+    </Key>
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cod_asociado" Type="varchar" MaxLength="15" />
+    <Property Name="id_clasificacion" Type="bigint" Nullable="false" />
+    <Property Name="cod_interno" Type="varchar" MaxLength="15" />
+    <Property Name="descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="descripcion_corta" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="cantidad_um" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="id_unidad" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="id_proveedor" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="precio_compra" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="utilidad" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="precio_venta" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="tipo_articulo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="stock" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="stock_min" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="stock_max" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="iva" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="kit_fecha_ini" Type="datetime" />
+    <Property Name="kit_fecha_fin" Type="datetime" />
+    <Property Name="articulo_disponible" Type="bit" Nullable="false" />
+    <Property Name="kit" Type="bit" Nullable="false" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+    <Property Name="visible" Type="bit" Nullable="false" />
+    <Property Name="puntos" Type="smallint" Nullable="false" />
+    <Property Name="last_update_inventory" Type="datetime" Nullable="false" />
+    <Property Name="cve_producto" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="articulos">
+    <Key>
+      <PropertyRef Name="cod_barras" />
+    </Key>
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cod_asociado" Type="varchar" MaxLength="15" />
+    <Property Name="cod_interno" Type="varchar" MaxLength="15" />
+    <Property Name="descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="descripcion_corta" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="cantidad_um" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="id_unidad" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="id_proveedor" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="precio_compra" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="utilidad" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="precio_venta" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="tipo_articulo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="iva" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="articulo_disponible" Type="bit" Nullable="false" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="clasificacion">
+    <Key>
+      <PropertyRef Name="id_clasificacion" />
+    </Key>
+    <Property Name="id_clasificacion" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_clasificacion_dep" Type="bigint" />
+    <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="nivel_clasificacion" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="id_cliente" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="rfc" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="razon_social" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="contacto" Type="varchar" MaxLength="100" />
+    <Property Name="e_mail" Type="varchar" MaxLength="80" />
+    <Property Name="e_mail2" Type="varchar" MaxLength="80" />
+    <Property Name="id_municipio" Type="smallint" />
+    <Property Name="id_entidad" Type="smallint" />
+  </EntityType>
+  <EntityType Name="compra">
+    <Key>
+      <PropertyRef Name="id_compra" />
+    </Key>
+    <Property Name="id_compra" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="id_proveedor" Type="uniqueidentifier" />
+    <Property Name="no_factura" Type="varchar" MaxLength="20" />
+    <Property Name="fecha_compra" Type="datetime" Nullable="false" />
+    <Property Name="id_pedido" Type="uniqueidentifier" />
+    <Property Name="cancelada" Type="bit" Nullable="false" />
+    <Property Name="fecha_cancelacion" Type="datetime" />
+    <Property Name="no_entrada" Type="smallint" Nullable="false" />
+    <Property Name="observaciones" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="compra_articulo">
+    <Key>
+      <PropertyRef Name="id_compra" />
+      <PropertyRef Name="cod_barras" />
+      <PropertyRef Name="num_articulo" />
+    </Key>
+    <Property Name="id_compra" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="num_articulo" Type="smallint" Nullable="false" />
+    <Property Name="cant_cja" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="cant_pza" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="precio_compra" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="no_captura" Type="smallint" Nullable="false" />
+    <Property Name="no_entrega" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="comprobante">
+    <Key>
+      <PropertyRef Name="id_comprobante" />
+    </Key>
+    <Property Name="id_comprobante" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="documento" Type="varchar" MaxLength="90" Nullable="false" />
+    <Property Name="sat" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="condicion_pago">
+    <Key>
+      <PropertyRef Name="id_condicion" />
+    </Key>
+    <Property Name="id_condicion" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+  </EntityType>
+  <EntityType Name="control_errores">
+    <Key>
+      <PropertyRef Name="id_error" />
+    </Key>
+    <Property Name="id_error" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="aplicacion" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="host" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tipo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="origen" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="mensage" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cod_status" Type="int" Nullable="false" />
+    <Property Name="time_utc" Type="datetime" Nullable="false" />
+    <Property Name="secuencia" Type="int" Nullable="false" />
+    <Property Name="all_xml" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ctrl_errores">
+    <Key>
+      <PropertyRef Name="id_error" />
+    </Key>
+    <Property Name="id_error" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="fecha_log" Type="datetime" Nullable="false" />
+    <Property Name="descripcion" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="direccion_proveedor">
+    <Key>
+      <PropertyRef Name="id_proveedor" />
+    </Key>
+    <Property Name="id_proveedor" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="calle" Type="varchar" MaxLength="100" />
+    <Property Name="no_int" Type="varchar" MaxLength="10" />
+    <Property Name="no_ext" Type="varchar" MaxLength="10" />
+    <Property Name="colonia" Type="varchar" MaxLength="100" />
+    <Property Name="localidad" Type="varchar" MaxLength="100" />
+    <Property Name="id_entidad" Type="smallint" />
+    <Property Name="id_municipio" Type="smallint" />
+    <Property Name="pais" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="cod_postal" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="empleado">
+    <Key>
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="id_empleado" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="a_paterno" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="a_materno" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="user_name" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="empresa">
+    <Key>
+      <PropertyRef Name="rfc" />
+    </Key>
+    <Property Name="rfc" Type="varchar" MaxLength="18" Nullable="false" />
+    <Property Name="razon_social" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="representante" Type="varchar" MaxLength="100" />
+    <Property Name="calle" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="no_ext" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="no_int" Type="varchar" MaxLength="20" />
+    <Property Name="colonia" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="municipio" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="pais" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="codigo_postal" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tel_principal" Type="varchar" MaxLength="30" />
+    <Property Name="e_mail" Type="varchar" MaxLength="100" />
+    <Property Name="logo" Type="image" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="entidad">
+    <Key>
+      <PropertyRef Name="id_entidad" />
+    </Key>
+    <Property Name="id_entidad" Type="smallint" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="entrada">
+    <Key>
+      <PropertyRef Name="id_entrada" />
+    </Key>
+    <Property Name="id_entrada" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="num_entrada" Type="bigint" Nullable="false" />
+    <Property Name="fecha_entrada" Type="datetime" Nullable="false" />
+    <Property Name="observacion" Type="text" />
+    <Property Name="id_movto" Type="bigint" />
+    <Property Name="user_name" Type="varchar" MaxLength="15" />
+    <Property Name="cancelada" Type="bit" Nullable="false" />
+    <Property Name="fecha_cancelacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="entrada_articulo">
+    <Key>
+      <PropertyRef Name="id_entrada" />
+      <PropertyRef Name="cod_barras" />
+    </Key>
+    <Property Name="id_entrada" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cant_ent" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="cant_pza" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="cant_reg" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="costo" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="estadistica">
+    <Key>
+      <PropertyRef Name="anio" />
+      <PropertyRef Name="cod_barras" />
+    </Key>
+    <Property Name="anio" Type="smallint" Nullable="false" />
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="ene" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="feb" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="mar" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="abr" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="may" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="jun" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="jul" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="ago" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="sep" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="oct" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="nov" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="dic" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="factura">
+    <Key>
+      <PropertyRef Name="id_factura" />
+    </Key>
+    <Property Name="id_factura" Type="bigint" Nullable="false" />
+    <Property Name="fecha_remision" Type="datetime" Nullable="false" />
+    <Property Name="id_cliente" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="cfdi_relacionado" Type="varchar" MaxLength="50" />
+    <Property Name="uuid_relacionado" Type="varchar" MaxLength="100" />
+    <Property Name="id_comprobante" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="id_condicion" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="id_uso" Type="char" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="factura_articulo">
+    <Key>
+      <PropertyRef Name="id_factura_articulo" />
+    </Key>
+    <Property Name="id_factura_articulo" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="id_factura" Type="bigint" Nullable="false" />
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="id_unidad" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="cantidad" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="iva" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+    <Property Name="precio_vta" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="factura_metodo_pago">
+    <Key>
+      <PropertyRef Name="id_factura" />
+      <PropertyRef Name="id_metodo" />
+    </Key>
+    <Property Name="id_factura" Type="bigint" Nullable="false" />
+    <Property Name="id_metodo" Type="char" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="factura_venta">
+    <Key>
+      <PropertyRef Name="id_pos" />
+      <PropertyRef Name="id_venta" />
+    </Key>
+    <Property Name="id_pos" Type="int" Nullable="false" />
+    <Property Name="id_venta" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="id_factura" Type="bigint" Nullable="false" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="generacion_codigos">
+    <Key>
+      <PropertyRef Name="id_gencode" />
+    </Key>
+    <Property Name="id_gencode" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cod_barras" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="cod_pesable" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="cod_inpesable" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="inventario_articulo">
+    <Key>
+      <PropertyRef Name="cod_barras" />
+    </Key>
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="fecha_inicial_inv" Type="datetime" Nullable="false" />
+    <Property Name="fecha_ultima_act" Type="datetime" Nullable="false" />
+    <Property Name="inventario_ini" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="entradas" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="compras" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="salidas" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="ventas" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="stock_actual" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="inventario_captura">
+    <Key>
+      <PropertyRef Name="id_captura" />
+      <PropertyRef Name="id_inventario_fisico" />
+      <PropertyRef Name="num_captura" />
+    </Key>
+    <Property Name="id_captura" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="id_inventario_fisico" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="num_captura" Type="bigint" Nullable="false" />
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="fecha_captura" Type="datetime" Nullable="false" />
+    <Property Name="cant_cja" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="cant_pza" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="upload" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="inventario_fisico">
+    <Key>
+      <PropertyRef Name="id_inventario_fisico" />
+    </Key>
+    <Property Name="id_inventario_fisico" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="id_proveedor" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="user_name" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="fecha_ini" Type="datetime" Nullable="false" />
+    <Property Name="fecha_fin" Type="datetime" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="inventario_fisico_articulo">
+    <Key>
+      <PropertyRef Name="cod_barras" />
+    </Key>
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="id_inventario_fisico" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="stock_estimado" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="stock_fisico" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kit_articulos">
+    <Key>
+      <PropertyRef Name="cod_barras_kit" />
+      <PropertyRef Name="cod_barras_pro" />
+    </Key>
+    <Property Name="cod_barras_kit" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cod_barras_pro" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cantidad" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="metodo_pago">
+    <Key>
+      <PropertyRef Name="id_metodo" />
+    </Key>
+    <Property Name="id_metodo" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+  </EntityType>
+  <EntityType Name="movimiento_almacen">
+    <Key>
+      <PropertyRef Name="id_movto" />
+    </Key>
+    <Property Name="id_movto" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tipo_movto" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="municipio">
+    <Key>
+      <PropertyRef Name="id_entidad" />
+      <PropertyRef Name="id_municipio" />
+    </Key>
+    <Property Name="id_entidad" Type="smallint" Nullable="false" />
+    <Property Name="id_municipio" Type="smallint" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="oferta">
+    <Key>
+      <PropertyRef Name="id_oferta" />
+    </Key>
+    <Property Name="id_oferta" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="num_oferta" Type="bigint" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="fecha_oferta" Type="datetime" Nullable="false" />
+    <Property Name="fecha_ini" Type="datetime" Nullable="false" />
+    <Property Name="fecha_fin" Type="datetime" Nullable="false" />
+    <Property Name="status_oferta" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="fecha_cancelacion" Type="datetime" />
+    <Property Name="user_name" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="oferta_articulo">
+    <Key>
+      <PropertyRef Name="id_oferta" />
+      <PropertyRef Name="cod_barras" />
+    </Key>
+    <Property Name="id_oferta" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="precio_oferta" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="status_oferta" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="fecha_cancelacion" Type="datetime" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orden">
+    <Key>
+      <PropertyRef Name="id_pedido" />
+    </Key>
+    <Property Name="id_pedido" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="num_pedido" Type="bigint" Nullable="false" />
+    <Property Name="fecha_pedido" Type="datetime" Nullable="false" />
+    <Property Name="id_proveedor" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="status_pedido" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="no_dias" Type="smallint" Nullable="false" />
+    <Property Name="fecha_autorizado" Type="datetime" />
+    <Property Name="plan" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="anio" Type="smallint" Nullable="false" />
+    <Property Name="mes" Type="smallint" Nullable="false" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orden_articulo">
+    <Key>
+      <PropertyRef Name="id_pedido" />
+      <PropertyRef Name="no_articulo" />
+    </Key>
+    <Property Name="id_pedido" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="no_articulo" Type="smallint" Nullable="false" />
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cod_anexo" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cantidad" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="precio_articulo" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="por_surtir" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="por_surtir_pzas" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pedido">
+    <Key>
+      <PropertyRef Name="id_pedido" />
+    </Key>
+    <Property Name="id_pedido" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="num_pedido" Type="bigint" Nullable="false" />
+    <Property Name="fecha_pedido" Type="datetime" Nullable="false" />
+    <Property Name="id_proveedor" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="status_pedido" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="no_dias" Type="smallint" Nullable="false" />
+    <Property Name="fecha_autorizado" Type="datetime" />
+    <Property Name="plan" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="anio" Type="smallint" Nullable="false" />
+    <Property Name="mes" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pedido_articulo">
+    <Key>
+      <PropertyRef Name="id_pedido" />
+      <PropertyRef Name="no_articulo" />
+    </Key>
+    <Property Name="id_pedido" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="no_articulo" Type="smallint" Nullable="false" />
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cod_anexo" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cant_original" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="cantidad" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="precio_articulo" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="sugerido" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="permiso">
+    <Key>
+      <PropertyRef Name="id_permiso" />
+    </Key>
+    <Property Name="id_permiso" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tipo_sistema" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pos">
+    <Key>
+      <PropertyRef Name="id_pos" />
+    </Key>
+    <Property Name="id_pos" Type="smallint" Nullable="false" />
+    <Property Name="pos_address" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="user_sql" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="pwsd_sql" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pos_admin_settings">
+    <Key>
+      <PropertyRef Name="id_setting" />
+    </Key>
+    <Property Name="id_setting" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="path_ptr_label" Type="varchar" MaxLength="80" />
+    <Property Name="path_dir_bascula" Type="varchar" MaxLength="80" />
+    <Property Name="cod_normal" Type="bigint" Nullable="false" />
+    <Property Name="cod_pesable" Type="bigint" Nullable="false" />
+    <Property Name="cod_nopesable" Type="bigint" Nullable="false" />
+    <Property Name="iva" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="cfdi_user" Type="varchar" MaxLength="100" />
+    <Property Name="cfdi_pwsd" Type="varchar" MaxLength="100" />
+    <Property Name="cfdi_path_txt" Type="varchar" MaxLength="150" />
+    <Property Name="cfdi_path_pdf" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="pos_control">
+    <Key>
+      <PropertyRef Name="id_control_pos" />
+    </Key>
+    <Property Name="id_control_pos" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="id_pos" Type="int" Nullable="false" />
+    <Property Name="user_name" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="pos_open_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="precio_temporal">
+    <Key>
+      <PropertyRef Name="cod_barras" />
+    </Key>
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="precio_compra" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="utilidad" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="precio_venta" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="iva" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+  </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-  <EntityContainer Name="pos_adminModelStoreContainer" />
+  <EntityType Name="productos_sin_iva">
+    <Key>
+      <PropertyRef Name="cod_barras" />
+      <PropertyRef Name="descripcion" />
+    </Key>
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+  </EntityType>
+  <EntityType Name="promocion">
+    <Key>
+      <PropertyRef Name="id_promo" />
+    </Key>
+    <Property Name="id_promo" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="tipo_promo" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="fecha_ini" Type="datetime" Nullable="false" />
+    <Property Name="fecha_fin" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="promocion_articulo">
+    <Key>
+      <PropertyRef Name="id_promo" />
+      <PropertyRef Name="cod_barras" />
+    </Key>
+    <Property Name="id_promo" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cantidad_lleva" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="cantidad_paga" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="porcent_desc" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="proveedor">
+    <Key>
+      <PropertyRef Name="id_proveedor" />
+    </Key>
+    <Property Name="id_proveedor" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="rfc" Type="varchar" MaxLength="18" Nullable="false" />
+    <Property Name="razon_social" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="nombre_contacto" Type="varchar" MaxLength="100" />
+    <Property Name="tel_principal" Type="varchar" MaxLength="20" />
+    <Property Name="tel_movil" Type="varchar" MaxLength="30" />
+    <Property Name="e_mail" Type="varchar" MaxLength="80" />
+    <Property Name="estatus" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="salida">
+    <Key>
+      <PropertyRef Name="id_salida" />
+    </Key>
+    <Property Name="id_salida" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="num_salida" Type="bigint" Nullable="false" />
+    <Property Name="fecha_salida" Type="datetime" Nullable="false" />
+    <Property Name="observacion" Type="text" />
+    <Property Name="id_movto" Type="bigint" />
+    <Property Name="user_name" Type="varchar" MaxLength="15" />
+    <Property Name="cancelada" Type="bit" Nullable="false" />
+    <Property Name="fecha_cancelacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="salida_articulo">
+    <Key>
+      <PropertyRef Name="id_salida" />
+      <PropertyRef Name="cod_barras" />
+    </Key>
+    <Property Name="id_salida" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cant_sal" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="cant_pza" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="cant_reg" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="costo" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="unidad_medida">
+    <Key>
+      <PropertyRef Name="id_unidad" />
+    </Key>
+    <Property Name="id_unidad" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+    <Property Name="cve_sat" Type="varchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="uso_cfdi">
+    <Key>
+      <PropertyRef Name="id_uso" />
+    </Key>
+    <Property Name="id_uso" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="user_name" />
+    </Key>
+    <Property Name="user_name" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tipo_usuario" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="enable" Type="bit" Nullable="false" />
+    <Property Name="user_code_bascula" Type="smallint" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuario_permiso">
+    <Key>
+      <PropertyRef Name="user_name" />
+      <PropertyRef Name="id_permiso" />
+    </Key>
+    <Property Name="user_name" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="id_permiso" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="valor_num" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="venta">
+    <Key>
+      <PropertyRef Name="id_pos" />
+      <PropertyRef Name="id_venta" />
+    </Key>
+    <Property Name="id_pos" Type="int" Nullable="false" />
+    <Property Name="id_venta" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="vendedor" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="folio" Type="bigint" Nullable="false" />
+    <Property Name="fecha_venta" Type="datetime" Nullable="false" />
+    <Property Name="total_vendido" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="pago_efectivo" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+    <Property Name="pago_cheque" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="pago_vales" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+    <Property Name="pago_tc" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+    <Property Name="supervisor" Type="varchar" MaxLength="15" />
+    <Property Name="upload" Type="bit" Nullable="false" />
+    <Property Name="num_registros" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="venta_articulo">
+    <Key>
+      <PropertyRef Name="id_pos" />
+      <PropertyRef Name="id_venta" />
+      <PropertyRef Name="no_articulo" />
+    </Key>
+    <Property Name="id_pos" Type="int" Nullable="false" />
+    <Property Name="id_venta" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="no_articulo" Type="bigint" Nullable="false" />
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="user_code_bascula" Type="smallint" />
+    <Property Name="cantidad" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="articulo_ofertado" Type="bit" Nullable="false" />
+    <Property Name="precio_regular" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="cambio_precio" Type="bit" Nullable="false" />
+    <Property Name="iva" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+    <Property Name="precio_vta" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="porcent_desc" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="cant_devuelta" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="user_name" Type="varchar" MaxLength="15" />
+    <Property Name="id_promo" Type="uniqueidentifier" />
+    <Property Name="no_promo_aplicado" Type="smallint" />
+  </EntityType>
+  <EntityType Name="venta_cancelada">
+    <Key>
+      <PropertyRef Name="id_pos" />
+      <PropertyRef Name="id_venta_cancel" />
+    </Key>
+    <Property Name="id_pos" Type="int" Nullable="false" />
+    <Property Name="id_venta_cancel" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="vendedor" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="total_vendido" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="pago_efectivo" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+    <Property Name="pago_cheque" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+    <Property Name="pago_vales" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+    <Property Name="pago_tc" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="supervisor" Type="varchar" MaxLength="15" />
+    <Property Name="upload" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="venta_cancelada_articulo">
+    <Key>
+      <PropertyRef Name="id_pos" />
+      <PropertyRef Name="id_venta_cancel" />
+      <PropertyRef Name="no_articulo" />
+    </Key>
+    <Property Name="id_pos" Type="int" Nullable="false" />
+    <Property Name="id_venta_cancel" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="no_articulo" Type="bigint" Nullable="false" />
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cantidad" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="articulo_ofertado" Type="bit" Nullable="false" />
+    <Property Name="precio_regular" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="cambio_precio" Type="bit" Nullable="false" />
+    <Property Name="precio_vta" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="porcent_desc" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="user_name" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="venta_devolucion">
+    <Key>
+      <PropertyRef Name="id_devolucion" />
+    </Key>
+    <Property Name="id_devolucion" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="folio" Type="bigint" Nullable="false" />
+    <Property Name="id_pos" Type="int" Nullable="false" />
+    <Property Name="id_venta" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="fecha_dev" Type="datetime" Nullable="false" />
+    <Property Name="vendedor" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="supervisor" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cant_dev" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+    <Property Name="upload" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="venta_devolucion_articulo">
+    <Key>
+      <PropertyRef Name="id_devolucion" />
+      <PropertyRef Name="no_articulo" />
+      <PropertyRef Name="cod_barras" />
+    </Key>
+    <Property Name="id_devolucion" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="no_articulo" Type="bigint" Nullable="false" />
+    <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="cantidad" Type="decimal" Precision="19" Scale="3" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_articulo_articulo">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="0..1" />
+    <End Role="articulo1" Type="Self.articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="articulo1">
+        <PropertyRef Name="cod_asociado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_articulos">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="articulos" Type="Self.articulos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="articulos">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_captura">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="inventario_captura" Type="Self.inventario_captura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="inventario_captura">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_compra">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="compra_articulo" Type="Self.compra_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="compra_articulo">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_entrada">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="entrada_articulo" Type="Self.entrada_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="entrada_articulo">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_estadistica">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="estadistica" Type="Self.estadistica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="estadistica">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_inventario_fisico">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="inventario_fisico_articulo" Type="Self.inventario_fisico_articulo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="inventario_fisico_articulo">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_kit">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="kit_articulos" Type="Self.kit_articulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="kit_articulos">
+        <PropertyRef Name="cod_barras_kit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_oferta">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="oferta_articulo" Type="Self.oferta_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="oferta_articulo">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_pedido">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="pedido_articulo" Type="Self.pedido_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="pedido_articulo">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_pedido_anexo">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="pedido_articulo" Type="Self.pedido_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="pedido_articulo">
+        <PropertyRef Name="cod_anexo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_promocion">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="promocion_articulo" Type="Self.promocion_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="promocion_articulo">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_salida">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="salida_articulo" Type="Self.salida_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="salida_articulo">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_temporal">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="precio_temporal" Type="Self.precio_temporal" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="precio_temporal">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_venta">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="venta_articulo" Type="Self.venta_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="venta_articulo">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulo_venta_cancelada">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="venta_cancelada_articulo" Type="Self.venta_cancelada_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="venta_cancelada_articulo">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_articulos_kit">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="kit_articulos" Type="Self.kit_articulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="kit_articulos">
+        <PropertyRef Name="cod_barras_pro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_clasificacion_articulo">
+    <End Role="clasificacion" Type="Self.clasificacion" Multiplicity="1" />
+    <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clasificacion">
+        <PropertyRef Name="id_clasificacion" />
+      </Principal>
+      <Dependent Role="articulo">
+        <PropertyRef Name="id_clasificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_clasificacion_subclasificacion">
+    <End Role="clasificacion" Type="Self.clasificacion" Multiplicity="0..1" />
+    <End Role="clasificacion1" Type="Self.clasificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clasificacion">
+        <PropertyRef Name="id_clasificacion" />
+      </Principal>
+      <Dependent Role="clasificacion1">
+        <PropertyRef Name="id_clasificacion_dep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_factura">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_municipio">
+    <End Role="municipio" Type="Self.municipio" Multiplicity="0..1" />
+    <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="municipio">
+        <PropertyRef Name="id_municipio" />
+        <PropertyRef Name="id_entidad" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="id_municipio" />
+        <PropertyRef Name="id_entidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_compra_articulo">
+    <End Role="compra" Type="Self.compra" Multiplicity="1" />
+    <End Role="compra_articulo" Type="Self.compra_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="compra">
+        <PropertyRef Name="id_compra" />
+      </Principal>
+      <Dependent Role="compra_articulo">
+        <PropertyRef Name="id_compra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_entidad_municipio">
+    <End Role="entidad" Type="Self.entidad" Multiplicity="1" />
+    <End Role="municipio" Type="Self.municipio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entidad">
+        <PropertyRef Name="id_entidad" />
+      </Principal>
+      <Dependent Role="municipio">
+        <PropertyRef Name="id_entidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_entrada_articulo">
+    <End Role="entrada" Type="Self.entrada" Multiplicity="1" />
+    <End Role="entrada_articulo" Type="Self.entrada_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entrada">
+        <PropertyRef Name="id_entrada" />
+      </Principal>
+      <Dependent Role="entrada_articulo">
+        <PropertyRef Name="id_entrada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_factura_articulo">
+    <End Role="factura" Type="Self.factura" Multiplicity="1" />
+    <End Role="factura_articulo" Type="Self.factura_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="factura">
+        <PropertyRef Name="id_factura" />
+      </Principal>
+      <Dependent Role="factura_articulo">
+        <PropertyRef Name="id_factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_factura_comprobante">
+    <End Role="comprobante" Type="Self.comprobante" Multiplicity="1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comprobante">
+        <PropertyRef Name="id_comprobante" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="id_comprobante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_factura_condicion_pago">
+    <End Role="condicion_pago" Type="Self.condicion_pago" Multiplicity="1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="condicion_pago">
+        <PropertyRef Name="id_condicion" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="id_condicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_factura_metodo_pago">
+    <End Role="factura" Type="Self.factura" Multiplicity="1" />
+    <End Role="factura_metodo_pago" Type="Self.factura_metodo_pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="factura">
+        <PropertyRef Name="id_factura" />
+      </Principal>
+      <Dependent Role="factura_metodo_pago">
+        <PropertyRef Name="id_factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_factura_unidad">
+    <End Role="unidad_medida" Type="Self.unidad_medida" Multiplicity="1" />
+    <End Role="factura_articulo" Type="Self.factura_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unidad_medida">
+        <PropertyRef Name="id_unidad" />
+      </Principal>
+      <Dependent Role="factura_articulo">
+        <PropertyRef Name="id_unidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_factura_uso_cfdi">
+    <End Role="uso_cfdi" Type="Self.uso_cfdi" Multiplicity="1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uso_cfdi">
+        <PropertyRef Name="id_uso" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="id_uso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_factura_venta">
+    <End Role="factura" Type="Self.factura" Multiplicity="1" />
+    <End Role="factura_venta" Type="Self.factura_venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="factura">
+        <PropertyRef Name="id_factura" />
+      </Principal>
+      <Dependent Role="factura_venta">
+        <PropertyRef Name="id_factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_inventario_articulo">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="inventario_articulo" Type="Self.inventario_articulo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="inventario_articulo">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_inventario_captura">
+    <End Role="inventario_fisico" Type="Self.inventario_fisico" Multiplicity="1" />
+    <End Role="inventario_captura" Type="Self.inventario_captura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="inventario_fisico">
+        <PropertyRef Name="id_inventario_fisico" />
+      </Principal>
+      <Dependent Role="inventario_captura">
+        <PropertyRef Name="id_inventario_fisico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_inventario_fisico_articulo">
+    <End Role="inventario_fisico" Type="Self.inventario_fisico" Multiplicity="1" />
+    <End Role="inventario_fisico_articulo" Type="Self.inventario_fisico_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="inventario_fisico">
+        <PropertyRef Name="id_inventario_fisico" />
+      </Principal>
+      <Dependent Role="inventario_fisico_articulo">
+        <PropertyRef Name="id_inventario_fisico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_metodo_pago_factura">
+    <End Role="metodo_pago" Type="Self.metodo_pago" Multiplicity="1" />
+    <End Role="factura_metodo_pago" Type="Self.factura_metodo_pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="metodo_pago">
+        <PropertyRef Name="id_metodo" />
+      </Principal>
+      <Dependent Role="factura_metodo_pago">
+        <PropertyRef Name="id_metodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_movimiento_entrada">
+    <End Role="movimiento_almacen" Type="Self.movimiento_almacen" Multiplicity="0..1" />
+    <End Role="entrada" Type="Self.entrada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="movimiento_almacen">
+        <PropertyRef Name="id_movto" />
+      </Principal>
+      <Dependent Role="entrada">
+        <PropertyRef Name="id_movto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_movimiento_salida">
+    <End Role="movimiento_almacen" Type="Self.movimiento_almacen" Multiplicity="0..1" />
+    <End Role="salida" Type="Self.salida" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="movimiento_almacen">
+        <PropertyRef Name="id_movto" />
+      </Principal>
+      <Dependent Role="salida">
+        <PropertyRef Name="id_movto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_municipio_direccion">
+    <End Role="municipio" Type="Self.municipio" Multiplicity="0..1" />
+    <End Role="direccion_proveedor" Type="Self.direccion_proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="municipio">
+        <PropertyRef Name="id_municipio" />
+        <PropertyRef Name="id_entidad" />
+      </Principal>
+      <Dependent Role="direccion_proveedor">
+        <PropertyRef Name="id_municipio" />
+        <PropertyRef Name="id_entidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_oferta_articulo">
+    <End Role="oferta" Type="Self.oferta" Multiplicity="1" />
+    <End Role="oferta_articulo" Type="Self.oferta_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="oferta">
+        <PropertyRef Name="id_oferta" />
+      </Principal>
+      <Dependent Role="oferta_articulo">
+        <PropertyRef Name="id_oferta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_orden_articulo">
+    <End Role="orden" Type="Self.orden" Multiplicity="1" />
+    <End Role="orden_articulo" Type="Self.orden_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orden">
+        <PropertyRef Name="id_pedido" />
+      </Principal>
+      <Dependent Role="orden_articulo">
+        <PropertyRef Name="id_pedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_orden_articulo_anexo">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="orden_articulo" Type="Self.orden_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="orden_articulo">
+        <PropertyRef Name="cod_anexo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_orden_articulo_principal">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="orden_articulo" Type="Self.orden_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="cod_barras" />
+      </Principal>
+      <Dependent Role="orden_articulo">
+        <PropertyRef Name="cod_barras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_order_proveedor">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+    <End Role="orden" Type="Self.orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id_proveedor" />
+      </Principal>
+      <Dependent Role="orden">
+        <PropertyRef Name="id_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_pedido_articulo">
+    <End Role="pedido" Type="Self.pedido" Multiplicity="1" />
+    <End Role="pedido_articulo" Type="Self.pedido_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pedido">
+        <PropertyRef Name="id_pedido" />
+      </Principal>
+      <Dependent Role="pedido_articulo">
+        <PropertyRef Name="id_pedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_pedido_compra">
+    <End Role="pedido" Type="Self.pedido" Multiplicity="0..1" />
+    <End Role="compra" Type="Self.compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pedido">
+        <PropertyRef Name="id_pedido" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="id_pedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_permiso_usuario">
+    <End Role="permiso" Type="Self.permiso" Multiplicity="1" />
+    <End Role="usuario_permiso" Type="Self.usuario_permiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="permiso">
+        <PropertyRef Name="id_permiso" />
+      </Principal>
+      <Dependent Role="usuario_permiso">
+        <PropertyRef Name="id_permiso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_promocion_articulo">
+    <End Role="promocion" Type="Self.promocion" Multiplicity="1" />
+    <End Role="promocion_articulo" Type="Self.promocion_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promocion">
+        <PropertyRef Name="id_promo" />
+      </Principal>
+      <Dependent Role="promocion_articulo">
+        <PropertyRef Name="id_promo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_promocion_venta_articulo">
+    <End Role="promocion" Type="Self.promocion" Multiplicity="0..1" />
+    <End Role="venta_articulo" Type="Self.venta_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promocion">
+        <PropertyRef Name="id_promo" />
+      </Principal>
+      <Dependent Role="venta_articulo">
+        <PropertyRef Name="id_promo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_proveedor_articulo">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+    <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id_proveedor" />
+      </Principal>
+      <Dependent Role="articulo">
+        <PropertyRef Name="id_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_proveedor_articulos">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+    <End Role="articulos" Type="Self.articulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id_proveedor" />
+      </Principal>
+      <Dependent Role="articulos">
+        <PropertyRef Name="id_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_proveedor_compra">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="0..1" />
+    <End Role="compra" Type="Self.compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id_proveedor" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="id_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_proveedor_direccion">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+    <End Role="direccion_proveedor" Type="Self.direccion_proveedor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id_proveedor" />
+      </Principal>
+      <Dependent Role="direccion_proveedor">
+        <PropertyRef Name="id_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_proveedor_inventario_fisico">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+    <End Role="inventario_fisico" Type="Self.inventario_fisico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id_proveedor" />
+      </Principal>
+      <Dependent Role="inventario_fisico">
+        <PropertyRef Name="id_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_proveedor_pedido">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+    <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id_proveedor" />
+      </Principal>
+      <Dependent Role="pedido">
+        <PropertyRef Name="id_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_salida_articulo">
+    <End Role="salida" Type="Self.salida" Multiplicity="1" />
+    <End Role="salida_articulo" Type="Self.salida_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="salida">
+        <PropertyRef Name="id_salida" />
+      </Principal>
+      <Dependent Role="salida_articulo">
+        <PropertyRef Name="id_salida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_unidad_articulo">
+    <End Role="unidad_medida" Type="Self.unidad_medida" Multiplicity="1" />
+    <End Role="articulo" Type="Self.articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unidad_medida">
+        <PropertyRef Name="id_unidad" />
+      </Principal>
+      <Dependent Role="articulo">
+        <PropertyRef Name="id_unidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_unidad_articulos">
+    <End Role="unidad_medida" Type="Self.unidad_medida" Multiplicity="1" />
+    <End Role="articulos" Type="Self.articulos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unidad_medida">
+        <PropertyRef Name="id_unidad" />
+      </Principal>
+      <Dependent Role="articulos">
+        <PropertyRef Name="id_unidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_cambia_precio">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="venta_articulo" Type="Self.venta_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="venta_articulo">
+        <PropertyRef Name="user_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_cancelacion">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="venta" Type="Self.venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="venta">
+        <PropertyRef Name="supervisor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_devolucion_supervisor">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="venta_devolucion" Type="Self.venta_devolucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="venta_devolucion">
+        <PropertyRef Name="supervisor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_devolucion_vendedor">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="venta_devolucion" Type="Self.venta_devolucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="venta_devolucion">
+        <PropertyRef Name="vendedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_empleado">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="user_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_entrada">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="entrada" Type="Self.entrada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="entrada">
+        <PropertyRef Name="user_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_inventario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="inventario_fisico" Type="Self.inventario_fisico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="inventario_fisico">
+        <PropertyRef Name="user_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_oferta">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="oferta" Type="Self.oferta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="oferta">
+        <PropertyRef Name="user_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_permiso">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="usuario_permiso" Type="Self.usuario_permiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="usuario_permiso">
+        <PropertyRef Name="user_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_salida">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="salida" Type="Self.salida" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="salida">
+        <PropertyRef Name="user_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_venta">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="venta" Type="Self.venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="venta">
+        <PropertyRef Name="vendedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venta_articulo">
+    <End Role="venta" Type="Self.venta" Multiplicity="1" />
+    <End Role="venta_articulo" Type="Self.venta_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venta">
+        <PropertyRef Name="id_venta" />
+        <PropertyRef Name="id_pos" />
+      </Principal>
+      <Dependent Role="venta_articulo">
+        <PropertyRef Name="id_venta" />
+        <PropertyRef Name="id_pos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venta_cancelada_articulo">
+    <End Role="venta_cancelada" Type="Self.venta_cancelada" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="venta_cancelada_articulo" Type="Self.venta_cancelada_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venta_cancelada">
+        <PropertyRef Name="id_venta_cancel" />
+        <PropertyRef Name="id_pos" />
+      </Principal>
+      <Dependent Role="venta_cancelada_articulo">
+        <PropertyRef Name="id_venta_cancel" />
+        <PropertyRef Name="id_pos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venta_cancelada_articulo_usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="venta_cancelada_articulo" Type="Self.venta_cancelada_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="venta_cancelada_articulo">
+        <PropertyRef Name="user_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venta_cancelada_supervisor">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="venta_cancelada" Type="Self.venta_cancelada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="venta_cancelada">
+        <PropertyRef Name="supervisor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venta_cancelada_vendedor">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="venta_cancelada" Type="Self.venta_cancelada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="venta_cancelada">
+        <PropertyRef Name="vendedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venta_devolucion">
+    <End Role="venta" Type="Self.venta" Multiplicity="1" />
+    <End Role="venta_devolucion" Type="Self.venta_devolucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venta">
+        <PropertyRef Name="id_venta" />
+        <PropertyRef Name="id_pos" />
+      </Principal>
+      <Dependent Role="venta_devolucion">
+        <PropertyRef Name="id_venta" />
+        <PropertyRef Name="id_pos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venta_devolucion_articulo">
+    <End Role="venta_devolucion" Type="Self.venta_devolucion" Multiplicity="1" />
+    <End Role="venta_devolucion_articulo" Type="Self.venta_devolucion_articulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="venta_devolucion">
+        <PropertyRef Name="id_devolucion" />
+      </Principal>
+      <Dependent Role="venta_devolucion_articulo">
+        <PropertyRef Name="id_devolucion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_venta_factura">
+    <End Role="venta" Type="Self.venta" Multiplicity="1" />
+    <End Role="factura_venta" Type="Self.factura_venta" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="venta">
+        <PropertyRef Name="id_venta" />
+        <PropertyRef Name="id_pos" />
+      </Principal>
+      <Dependent Role="factura_venta">
+        <PropertyRef Name="id_venta" />
+        <PropertyRef Name="id_pos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuario_pos_control">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="pos_control" Type="Self.pos_control" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="user_name" />
+      </Principal>
+      <Dependent Role="pos_control">
+        <PropertyRef Name="user_name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pos_adminModelStoreContainer">
+    <EntitySet Name="articulo" EntityType="Self.articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="articulos" EntityType="Self.articulos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="clasificacion" EntityType="Self.clasificacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="compra" EntityType="Self.compra" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="compra_articulo" EntityType="Self.compra_articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="comprobante" EntityType="Self.comprobante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="condicion_pago" EntityType="Self.condicion_pago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="control_errores" EntityType="Self.control_errores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ctrl_errores" EntityType="Self.ctrl_errores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="direccion_proveedor" EntityType="Self.direccion_proveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empleado" EntityType="Self.empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empresa" EntityType="Self.empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="entidad" EntityType="Self.entidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="entrada" EntityType="Self.entrada" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="entrada_articulo" EntityType="Self.entrada_articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="estadistica" EntityType="Self.estadistica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="factura" EntityType="Self.factura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="factura_articulo" EntityType="Self.factura_articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="factura_metodo_pago" EntityType="Self.factura_metodo_pago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="factura_venta" EntityType="Self.factura_venta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="generacion_codigos" EntityType="Self.generacion_codigos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="inventario_articulo" EntityType="Self.inventario_articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="inventario_captura" EntityType="Self.inventario_captura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="inventario_fisico" EntityType="Self.inventario_fisico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="inventario_fisico_articulo" EntityType="Self.inventario_fisico_articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kit_articulos" EntityType="Self.kit_articulos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="metodo_pago" EntityType="Self.metodo_pago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="movimiento_almacen" EntityType="Self.movimiento_almacen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="municipio" EntityType="Self.municipio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="oferta" EntityType="Self.oferta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="oferta_articulo" EntityType="Self.oferta_articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orden" EntityType="Self.orden" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orden_articulo" EntityType="Self.orden_articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pedido" EntityType="Self.pedido" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pedido_articulo" EntityType="Self.pedido_articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="permiso" EntityType="Self.permiso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pos" EntityType="Self.pos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pos_admin_settings" EntityType="Self.pos_admin_settings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pos_control" EntityType="Self.pos_control" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="precio_temporal" EntityType="Self.precio_temporal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="promocion" EntityType="Self.promocion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="promocion_articulo" EntityType="Self.promocion_articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="salida" EntityType="Self.salida" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="salida_articulo" EntityType="Self.salida_articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="unidad_medida" EntityType="Self.unidad_medida" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="uso_cfdi" EntityType="Self.uso_cfdi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuario_permiso" EntityType="Self.usuario_permiso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venta" EntityType="Self.venta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venta_articulo" EntityType="Self.venta_articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venta_cancelada" EntityType="Self.venta_cancelada" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venta_cancelada_articulo" EntityType="Self.venta_cancelada_articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venta_devolucion" EntityType="Self.venta_devolucion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="venta_devolucion_articulo" EntityType="Self.venta_devolucion_articulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="productos_sin_iva" EntityType="Self.productos_sin_iva" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [productos_sin_iva].[cod_barras] AS [cod_barras], 
+    [productos_sin_iva].[descripcion] AS [descripcion]
+    FROM [dbo].[productos_sin_iva] AS [productos_sin_iva]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="fk_articulo_articulo" Association="Self.fk_articulo_articulo">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="articulo1" EntitySet="articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_articulos" Association="Self.fk_articulo_articulos">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="articulos" EntitySet="articulos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_captura" Association="Self.fk_articulo_captura">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="inventario_captura" EntitySet="inventario_captura" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_compra" Association="Self.fk_articulo_compra">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="compra_articulo" EntitySet="compra_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_entrada" Association="Self.fk_articulo_entrada">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="entrada_articulo" EntitySet="entrada_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_estadistica" Association="Self.fk_articulo_estadistica">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="estadistica" EntitySet="estadistica" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_inventario_fisico" Association="Self.fk_articulo_inventario_fisico">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="inventario_fisico_articulo" EntitySet="inventario_fisico_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_kit" Association="Self.fk_articulo_kit">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="kit_articulos" EntitySet="kit_articulos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_oferta" Association="Self.fk_articulo_oferta">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="oferta_articulo" EntitySet="oferta_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_pedido" Association="Self.fk_articulo_pedido">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="pedido_articulo" EntitySet="pedido_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_pedido_anexo" Association="Self.fk_articulo_pedido_anexo">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="pedido_articulo" EntitySet="pedido_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_promocion" Association="Self.fk_articulo_promocion">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="promocion_articulo" EntitySet="promocion_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_salida" Association="Self.fk_articulo_salida">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="salida_articulo" EntitySet="salida_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_temporal" Association="Self.fk_articulo_temporal">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="precio_temporal" EntitySet="precio_temporal" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_venta" Association="Self.fk_articulo_venta">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="venta_articulo" EntitySet="venta_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulo_venta_cancelada" Association="Self.fk_articulo_venta_cancelada">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="venta_cancelada_articulo" EntitySet="venta_cancelada_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_articulos_kit" Association="Self.fk_articulos_kit">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="kit_articulos" EntitySet="kit_articulos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_clasificacion_articulo" Association="Self.fk_clasificacion_articulo">
+      <End Role="clasificacion" EntitySet="clasificacion" />
+      <End Role="articulo" EntitySet="articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_clasificacion_subclasificacion" Association="Self.fk_clasificacion_subclasificacion">
+      <End Role="clasificacion" EntitySet="clasificacion" />
+      <End Role="clasificacion1" EntitySet="clasificacion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_factura" Association="Self.fk_cliente_factura">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_municipio" Association="Self.fk_cliente_municipio">
+      <End Role="municipio" EntitySet="municipio" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="fk_compra_articulo" Association="Self.fk_compra_articulo">
+      <End Role="compra" EntitySet="compra" />
+      <End Role="compra_articulo" EntitySet="compra_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_entidad_municipio" Association="Self.fk_entidad_municipio">
+      <End Role="entidad" EntitySet="entidad" />
+      <End Role="municipio" EntitySet="municipio" />
+    </AssociationSet>
+    <AssociationSet Name="fk_entrada_articulo" Association="Self.fk_entrada_articulo">
+      <End Role="entrada" EntitySet="entrada" />
+      <End Role="entrada_articulo" EntitySet="entrada_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_factura_articulo" Association="Self.fk_factura_articulo">
+      <End Role="factura" EntitySet="factura" />
+      <End Role="factura_articulo" EntitySet="factura_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_factura_comprobante" Association="Self.fk_factura_comprobante">
+      <End Role="comprobante" EntitySet="comprobante" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="fk_factura_condicion_pago" Association="Self.fk_factura_condicion_pago">
+      <End Role="condicion_pago" EntitySet="condicion_pago" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="fk_factura_metodo_pago" Association="Self.fk_factura_metodo_pago">
+      <End Role="factura" EntitySet="factura" />
+      <End Role="factura_metodo_pago" EntitySet="factura_metodo_pago" />
+    </AssociationSet>
+    <AssociationSet Name="fk_factura_unidad" Association="Self.fk_factura_unidad">
+      <End Role="unidad_medida" EntitySet="unidad_medida" />
+      <End Role="factura_articulo" EntitySet="factura_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_factura_uso_cfdi" Association="Self.fk_factura_uso_cfdi">
+      <End Role="uso_cfdi" EntitySet="uso_cfdi" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="fk_factura_venta" Association="Self.fk_factura_venta">
+      <End Role="factura" EntitySet="factura" />
+      <End Role="factura_venta" EntitySet="factura_venta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_inventario_articulo" Association="Self.fk_inventario_articulo">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="inventario_articulo" EntitySet="inventario_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_inventario_captura" Association="Self.fk_inventario_captura">
+      <End Role="inventario_fisico" EntitySet="inventario_fisico" />
+      <End Role="inventario_captura" EntitySet="inventario_captura" />
+    </AssociationSet>
+    <AssociationSet Name="fk_inventario_fisico_articulo" Association="Self.fk_inventario_fisico_articulo">
+      <End Role="inventario_fisico" EntitySet="inventario_fisico" />
+      <End Role="inventario_fisico_articulo" EntitySet="inventario_fisico_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_metodo_pago_factura" Association="Self.fk_metodo_pago_factura">
+      <End Role="metodo_pago" EntitySet="metodo_pago" />
+      <End Role="factura_metodo_pago" EntitySet="factura_metodo_pago" />
+    </AssociationSet>
+    <AssociationSet Name="fk_movimiento_entrada" Association="Self.fk_movimiento_entrada">
+      <End Role="movimiento_almacen" EntitySet="movimiento_almacen" />
+      <End Role="entrada" EntitySet="entrada" />
+    </AssociationSet>
+    <AssociationSet Name="fk_movimiento_salida" Association="Self.fk_movimiento_salida">
+      <End Role="movimiento_almacen" EntitySet="movimiento_almacen" />
+      <End Role="salida" EntitySet="salida" />
+    </AssociationSet>
+    <AssociationSet Name="fk_municipio_direccion" Association="Self.fk_municipio_direccion">
+      <End Role="municipio" EntitySet="municipio" />
+      <End Role="direccion_proveedor" EntitySet="direccion_proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="fk_oferta_articulo" Association="Self.fk_oferta_articulo">
+      <End Role="oferta" EntitySet="oferta" />
+      <End Role="oferta_articulo" EntitySet="oferta_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_orden_articulo" Association="Self.fk_orden_articulo">
+      <End Role="orden" EntitySet="orden" />
+      <End Role="orden_articulo" EntitySet="orden_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_orden_articulo_anexo" Association="Self.fk_orden_articulo_anexo">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="orden_articulo" EntitySet="orden_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_orden_articulo_principal" Association="Self.fk_orden_articulo_principal">
+      <End Role="articulo" EntitySet="articulo" />
+      <End Role="orden_articulo" EntitySet="orden_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_order_proveedor" Association="Self.fk_order_proveedor">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="orden" EntitySet="orden" />
+    </AssociationSet>
+    <AssociationSet Name="fk_pedido_articulo" Association="Self.fk_pedido_articulo">
+      <End Role="pedido" EntitySet="pedido" />
+      <End Role="pedido_articulo" EntitySet="pedido_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_pedido_compra" Association="Self.fk_pedido_compra">
+      <End Role="pedido" EntitySet="pedido" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="fk_permiso_usuario" Association="Self.fk_permiso_usuario">
+      <End Role="permiso" EntitySet="permiso" />
+      <End Role="usuario_permiso" EntitySet="usuario_permiso" />
+    </AssociationSet>
+    <AssociationSet Name="fk_promocion_articulo" Association="Self.fk_promocion_articulo">
+      <End Role="promocion" EntitySet="promocion" />
+      <End Role="promocion_articulo" EntitySet="promocion_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_promocion_venta_articulo" Association="Self.fk_promocion_venta_articulo">
+      <End Role="promocion" EntitySet="promocion" />
+      <End Role="venta_articulo" EntitySet="venta_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_proveedor_articulo" Association="Self.fk_proveedor_articulo">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="articulo" EntitySet="articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_proveedor_articulos" Association="Self.fk_proveedor_articulos">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="articulos" EntitySet="articulos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_proveedor_compra" Association="Self.fk_proveedor_compra">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="fk_proveedor_direccion" Association="Self.fk_proveedor_direccion">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="direccion_proveedor" EntitySet="direccion_proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="fk_proveedor_inventario_fisico" Association="Self.fk_proveedor_inventario_fisico">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="inventario_fisico" EntitySet="inventario_fisico" />
+    </AssociationSet>
+    <AssociationSet Name="fk_proveedor_pedido" Association="Self.fk_proveedor_pedido">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="pedido" EntitySet="pedido" />
+    </AssociationSet>
+    <AssociationSet Name="fk_salida_articulo" Association="Self.fk_salida_articulo">
+      <End Role="salida" EntitySet="salida" />
+      <End Role="salida_articulo" EntitySet="salida_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_unidad_articulo" Association="Self.fk_unidad_articulo">
+      <End Role="unidad_medida" EntitySet="unidad_medida" />
+      <End Role="articulo" EntitySet="articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_unidad_articulos" Association="Self.fk_unidad_articulos">
+      <End Role="unidad_medida" EntitySet="unidad_medida" />
+      <End Role="articulos" EntitySet="articulos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_cambia_precio" Association="Self.fk_usuario_cambia_precio">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="venta_articulo" EntitySet="venta_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_cancelacion" Association="Self.fk_usuario_cancelacion">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="venta" EntitySet="venta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_devolucion_supervisor" Association="Self.fk_usuario_devolucion_supervisor">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="venta_devolucion" EntitySet="venta_devolucion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_devolucion_vendedor" Association="Self.fk_usuario_devolucion_vendedor">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="venta_devolucion" EntitySet="venta_devolucion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_empleado" Association="Self.fk_usuario_empleado">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_entrada" Association="Self.fk_usuario_entrada">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="entrada" EntitySet="entrada" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_inventario" Association="Self.fk_usuario_inventario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="inventario_fisico" EntitySet="inventario_fisico" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_oferta" Association="Self.fk_usuario_oferta">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="oferta" EntitySet="oferta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_permiso" Association="Self.fk_usuario_permiso">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="usuario_permiso" EntitySet="usuario_permiso" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_salida" Association="Self.fk_usuario_salida">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="salida" EntitySet="salida" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_venta" Association="Self.fk_usuario_venta">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="venta" EntitySet="venta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venta_articulo" Association="Self.fk_venta_articulo">
+      <End Role="venta" EntitySet="venta" />
+      <End Role="venta_articulo" EntitySet="venta_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venta_cancelada_articulo" Association="Self.fk_venta_cancelada_articulo">
+      <End Role="venta_cancelada" EntitySet="venta_cancelada" />
+      <End Role="venta_cancelada_articulo" EntitySet="venta_cancelada_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venta_cancelada_articulo_usuario" Association="Self.fk_venta_cancelada_articulo_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="venta_cancelada_articulo" EntitySet="venta_cancelada_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venta_cancelada_supervisor" Association="Self.fk_venta_cancelada_supervisor">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="venta_cancelada" EntitySet="venta_cancelada" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venta_cancelada_vendedor" Association="Self.fk_venta_cancelada_vendedor">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="venta_cancelada" EntitySet="venta_cancelada" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venta_devolucion" Association="Self.fk_venta_devolucion">
+      <End Role="venta" EntitySet="venta" />
+      <End Role="venta_devolucion" EntitySet="venta_devolucion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venta_devolucion_articulo" Association="Self.fk_venta_devolucion_articulo">
+      <End Role="venta_devolucion" EntitySet="venta_devolucion" />
+      <End Role="venta_devolucion_articulo" EntitySet="venta_devolucion_articulo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_venta_factura" Association="Self.fk_venta_factura">
+      <End Role="venta" EntitySet="venta" />
+      <End Role="factura_venta" EntitySet="factura_venta" />
+    </AssociationSet>
+    <AssociationSet Name="usuario_pos_control" Association="Self.usuario_pos_control">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="pos_control" EntitySet="pos_control" />
+    </AssociationSet>
+  </EntityContainer>
 </Schema>

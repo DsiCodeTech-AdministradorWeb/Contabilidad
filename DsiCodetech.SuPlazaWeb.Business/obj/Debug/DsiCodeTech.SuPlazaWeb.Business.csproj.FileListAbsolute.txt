@@ -16,3 +16,6 @@ C:\Users\erikg\source\repos\Contabilidad\DsiCodetech.SuPlazaWeb.Business\obj\Deb
 C:\Users\erikg\source\repos\Contabilidad\DsiCodetech.SuPlazaWeb.Business\obj\Debug\DsiCodeTech.SuPlazaWeb.Business.csproj.CopyComplete
 C:\Users\erikg\source\repos\Contabilidad\DsiCodetech.SuPlazaWeb.Business\obj\Debug\DsiCodetech.SuPlazaWeb.Business.dll
 C:\Users\erikg\source\repos\Contabilidad\DsiCodetech.SuPlazaWeb.Business\obj\Debug\DsiCodetech.SuPlazaWeb.Business.pdb
+C:\Users\erikg\source\repos\Contabilidad\DsiCodetech.SuPlazaWeb.Business\bin\Debug\DsiCodetech.SuPlazaWeb.Business.dll.config
+C:\Users\erikg\source\repos\Contabilidad\DsiCodetech.SuPlazaWeb.Business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodetech.SuPlazaWeb.Business\bin\Debug\EntityFramework.SqlServer.xml

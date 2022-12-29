@@ -202,5 +202,60 @@ namespace DsiCodetech.SuPlazaWeb.Business
             };
         }
 
+        public bool AddUpdateArticulos(ArticuloDM articuloDM)
+        {
+            bool resultado = false;
+            if (articuloDM != null)
+            {
+                articulo articulo = repository.SingleOrDefault(p => p.cod_barras.Equals(articuloDM.cod_barras));
+                if (articuloDM.cod_barras.Equals(string.IsNullOrEmpty(articuloDM.cod_barras)))
+                {
+                    articulo.cantidad_um = articuloDM.cantidad_um;
+                    articulo.articulo_disponible = articuloDM.articulo_disponible;
+                    articulo.cod_asociado = articuloDM.cod_asociado;
+                    articulo.cod_barras = articuloDM.cod_barras;
+                    articulo.cod_interno = articuloDM.cod_interno;
+                    articulo.cve_producto = articuloDM.cve_producto;
+                    articulo.descripcion = articuloDM.descripcion;
+                    articulo.descripcion_corta = articuloDM.descripcion_corta;
+                    articulo.fecha_registro = articuloDM.fecha_registro;
+                    articulo.id_clasificacion = articuloDM.id_clasificacion;
+                    articulo.id_proveedor = articuloDM.id_proveedor;
+                    articulo.id_unidad = articuloDM.id_unidad;
+                    articulo.iva = articuloDM.iva;
+                    articulo.kit = articuloDM.kit;
+                    articulo.precio_venta = articuloDM.precio_venta;
+                    articulo.precio_compra = articuloDM.precio_compra;
+                    articulo.utilidad = articuloDM.utilidad;
+                    repository.Update(articulo);
+                    resultado = true;
+                }
+                else 
+                {
+                    articulo.cantidad_um = articuloDM.cantidad_um;
+                    articulo.articulo_disponible = articuloDM.articulo_disponible;
+                    articulo.cod_asociado = articuloDM.cod_asociado;
+                    articulo.cod_barras = articuloDM.cod_barras;
+                    articulo.cod_interno = articuloDM.cod_interno;
+                    articulo.cve_producto = articuloDM.cve_producto;
+                    articulo.descripcion = articuloDM.descripcion;
+                    articulo.descripcion_corta = articuloDM.descripcion_corta;
+                    articulo.fecha_registro = articuloDM.fecha_registro;
+                    articulo.id_clasificacion = articuloDM.id_clasificacion;
+                    articulo.id_proveedor = articuloDM.id_proveedor;
+                    articulo.id_unidad = articuloDM.id_unidad;
+                    articulo.iva = articuloDM.iva;
+                    articulo.kit = articuloDM.kit;
+                    articulo.precio_venta = articuloDM.precio_venta;
+                    articulo.precio_compra = articuloDM.precio_compra;
+                    articulo.utilidad = articuloDM.utilidad;
+                    repository.Insert(articulo);
+                    resultado = true;
+
+                }
+            }
+            return resultado;
+        }
+
     }
 }

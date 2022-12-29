@@ -157,3 +157,4 @@ C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\obj
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\obj\Debug\DsiCodeTech.SuPlazaWeb.Contabilidad.csproj.CopyComplete
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\obj\Debug\DsiCodeTech.SuPlazaWeb.Contabilidad.dll
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\obj\Debug\DsiCodeTech.SuPlazaWeb.Contabilidad.pdb
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\DsiCodetech.SuPlazaWeb.Business.dll.config
