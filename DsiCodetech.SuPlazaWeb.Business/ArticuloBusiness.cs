@@ -265,7 +265,15 @@ namespace DsiCodetech.SuPlazaWeb.Business
         public bool DeleteArticulo(ArticuloDM articuloDM)
         {
             bool resultado = false;
-
+            if (articuloDM != null)
+            {
+                articulo articulo = repository.SingleOrDefault(p => p.cod_barras.Equals(articuloDM.cod_barras));
+                if (articulo != null || string.IsNullOrEmpty(articulo.cod_barras))
+                {
+                    repository.Delete(p=>p.cod_barras.Equals(  articulo));
+                    resultado = true;
+                }
+            }
             return resultado;
         }
 
