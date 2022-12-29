@@ -44,7 +44,6 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         public virtual DbSet<estadistica> estadistica { get; set; }
         public virtual DbSet<factura> factura { get; set; }
         public virtual DbSet<factura_articulo> factura_articulo { get; set; }
-        public virtual DbSet<factura_metodo_pago> factura_metodo_pago { get; set; }
         public virtual DbSet<factura_venta> factura_venta { get; set; }
         public virtual DbSet<generacion_codigos> generacion_codigos { get; set; }
         public virtual DbSet<inventario_articulo> inventario_articulo { get; set; }
@@ -71,6 +70,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         public virtual DbSet<proveedor> proveedor { get; set; }
         public virtual DbSet<salida> salida { get; set; }
         public virtual DbSet<salida_articulo> salida_articulo { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<unidad_medida> unidad_medida { get; set; }
         public virtual DbSet<uso_cfdi> uso_cfdi { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
