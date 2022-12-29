@@ -37,7 +37,9 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
         {
             try
             {
-               return Json( AutoMapper.Mapper.Map<ArticuloDto>(_articuloBusiness.GetArticuloByCodigoBarras(codigo)),JsonRequestBehavior.AllowGet);
+                var articulo = _articuloBusiness.GetArticuloByCodigoBarras(codigo);
+                var articuloDto = AutoMapper.Mapper.Map<ArticuloDto>(articulo);
+                return Json( articuloDto,JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {

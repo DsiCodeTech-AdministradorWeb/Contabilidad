@@ -24,6 +24,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.Infraestructure
 
         public T SingleOrDefault(Expression<Func<T, bool>> where)
         {
+            
             var dbResult = dbSet.Where(where.Compile()).FirstOrDefault();
             return dbResult;
         }
