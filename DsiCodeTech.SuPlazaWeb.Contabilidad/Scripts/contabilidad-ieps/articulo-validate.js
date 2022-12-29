@@ -18,10 +18,10 @@
     $('#btnActualizar').prop('disabled', true);
     $('#txt-grp-sm').click(function () {
         var codigo_barras = $('#txt_codigo_barras').val();
-        alert(codigo_barras);
+        
         $.ajax({
             type: "Get",  
-            url: "/api/articulos/getcodigobarras?codigo=" + codigo_barras,
+            url: "/Contabilidad/GetArticulos?codigo=" + codigo_barras,
             dataType: "Json",
             success: function (data) {
                 toastr.success('La información se proceso de forma correcta');
