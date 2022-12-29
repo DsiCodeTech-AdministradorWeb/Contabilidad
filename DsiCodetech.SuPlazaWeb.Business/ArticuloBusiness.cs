@@ -262,5 +262,14 @@ namespace DsiCodetech.SuPlazaWeb.Business
             return resultado;
         }
 
+        public bool DeleteArticulo(ArticuloDM articuloDM)
+        {
+            bool resultado = false;
+
+            return resultado;
+        }
+
+
+
     }
 }
