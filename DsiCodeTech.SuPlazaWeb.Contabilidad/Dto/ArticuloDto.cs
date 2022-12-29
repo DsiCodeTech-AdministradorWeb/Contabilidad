@@ -33,5 +33,8 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Dto
         public short puntos { get; set; }
         public DateTime last_update_inventory { get; set; }
         public string cve_producto { get; set; }
+
+        public ImpuestoDto ImpuestoDto { get; set; }
+
     }
 }
