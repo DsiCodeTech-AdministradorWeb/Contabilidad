@@ -30,6 +30,7 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
         {
             try 
             {
+                
                 return Ok( AutoMapper.Mapper.Map<ArticuloDto>(_articuloBusiness.GetArticuloByCodigoBarras(codigo)));
             }
             catch (Exception ex)

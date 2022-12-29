@@ -21,7 +21,7 @@
         
         $.ajax({
             type: "Get",  
-            url: "/Contabilidad/GetArticulos?codigo=" + codigo_barras,
+            url: "/api/articulos/getcodigobarras?codigo=" + codigo_barras,
             dataType: "Json",
             success: function (data) {
                 toastr.success('La información se proceso de forma correcta');
