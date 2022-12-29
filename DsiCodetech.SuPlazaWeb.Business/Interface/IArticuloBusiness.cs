@@ -18,6 +18,11 @@ namespace DsiCodetech.SuPlazaWeb.Business.Interface
         /// <returns>la entidad del tipo ArticuloDM</returns>
         ArticuloDM GetArticuloByCodigoBarras(string codigo);
 
+        /// <summary>
+        /// Este metodo se encarga de insertar o actualizar  la entidad  articulo
+        /// </summary>
+        /// <param name="articuloDM">la entidad articulo del dominio del proyecto.</param>
+        /// <returns>regresa una entidad del tipo boolean</returns>
         bool AddUpdateArticulos(ArticuloDM articuloDM);
     }
 }
