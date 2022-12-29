@@ -53,6 +53,7 @@
     <Compile Include="Filter\Query\ArticuloQuery.cs" />
     <Compile Include="Filter\Sort\Direction.cs" />
     <Compile Include="Filter\Sort\Sorting.cs" />
+    <Compile Include="ImpuestoDM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
