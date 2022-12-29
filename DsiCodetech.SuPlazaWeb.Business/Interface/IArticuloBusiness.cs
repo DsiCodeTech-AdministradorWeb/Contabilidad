@@ -24,5 +24,7 @@ namespace DsiCodetech.SuPlazaWeb.Business.Interface
         /// <param name="articuloDM">la entidad articulo del dominio del proyecto.</param>
         /// <returns>regresa una entidad del tipo boolean</returns>
         bool AddUpdateArticulos(ArticuloDM articuloDM);
+
+        bool DeleteArticulo(ArticuloDM articuloDM);
     }
 }
