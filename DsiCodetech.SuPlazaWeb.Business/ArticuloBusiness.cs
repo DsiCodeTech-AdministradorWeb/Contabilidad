@@ -262,6 +262,11 @@ namespace DsiCodetech.SuPlazaWeb.Business
             return resultado;
         }
 
+        /// <summary>
+        /// este metodo se encarga de eliminar un articulo de forma persistente
+        /// </summary>
+        /// <param name="articuloDM">la entidad del tipo articuloDM que se va a eliminar</param>
+        /// <returns>regresa un valor del tipo boolean</returns>
         public bool DeleteArticulo(ArticuloDM articuloDM)
         {
             bool resultado = false;
