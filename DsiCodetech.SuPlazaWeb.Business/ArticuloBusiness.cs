@@ -173,7 +173,7 @@ namespace DsiCodetech.SuPlazaWeb.Business
         {
             var result = repository.SingleOrDefault(p => p.cod_barras == codigo);
             return new ArticuloDM{
-                cod_barras = result.cod_barras,
+               cod_barras = result.cod_barras,
                articulo_disponible = result.articulo_disponible,
                cantidad_um = result.cantidad_um,
                cod_asociado = result.cod_asociado,
