@@ -30,8 +30,9 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
         {
             try 
             {
-                
-                return Ok( AutoMapper.Mapper.Map<ArticuloDto>(_articuloBusiness.GetArticuloByCodigoBarras(codigo)));
+                var articulo = _articuloBusiness.GetArticuloByCodigoBarras(codigo);
+                var articuloDto = AutoMapper.Mapper.Map<ArticuloDto>(articulo);
+                return Ok( articuloDto);
             }
             catch (Exception ex)
             {
