@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿
+$(document).ready(function () {
 
     $('#cod_barras').prop('disabled', true);
     $('#cod_asociado').prop('disabled', true);
@@ -16,15 +17,16 @@
     $('#iva').prop('disabled', true);
     $('#fecha_registro').prop('disabled', true);
     $('#btnActualizar').prop('disabled', true);
+
     $('#txt-grp-sm').click(function () {
+
         var codigo_barras = $('#txt_codigo_barras').val();
-        
         $.ajax({
             type: "Get",  
             url: "/api/articulos/getcodigobarras?codigo=" + codigo_barras,
             dataType: "Json",
             success: function (data) {
-                toastr.success('La información se proceso de forma correcta');
+                                
                 $('#cod_barras').val(data.cod_barras);
                 $('#cod_asociado').val(data.cod_asociado);
                 $('#cod_interno').val(data.cod_interno);
@@ -40,7 +42,7 @@
                 $('#stock_max').val(data.stock_max);
                 $('#iva').val(data.iva);
                 $('#fecha_registro').val(data.fecha_registro);
-                
+                toastr.success('La información se proceso de forma correcta');
             },
             error: function (xhr, textStatus, errorThrown) {
                 toastr.error('La información no se pudo procesar');

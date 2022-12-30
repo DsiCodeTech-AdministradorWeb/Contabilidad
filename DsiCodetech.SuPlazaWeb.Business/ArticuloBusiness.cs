@@ -55,13 +55,8 @@ namespace DsiCodetech.SuPlazaWeb.Business
                 descripcion = e.descripcion,
                 descripcion_corta = e.descripcion_corta,
                 fecha_registro = e.fecha_registro,
-                //id_clasificacion = e.id_clasificacion,
-                //id_proveedor = e.id_proveedor,
-                //id_unidad = e.id_unidad,
                 iva=e.iva,
                 kit=e.kit,
-                //kit_fecha_fin=e.kit_fecha_fin.Value,
-                //kit_fecha_ini=e.kit_fecha_ini.Value,
                 last_update_inventory = e.last_update_inventory,
                 precio_compra=e.precio_compra,
                 precio_venta=e.precio_venta,
@@ -187,9 +182,6 @@ namespace DsiCodetech.SuPlazaWeb.Business
                     descripcion = result.descripcion,
                     descripcion_corta = result.descripcion_corta,
                     fecha_registro = result.fecha_registro,
-                    //id_clasificacion = result.id_clasificacion,
-                    //id_proveedor = result.id_proveedor,
-                    //id_unidad = result.id_unidad,
                     iva = result.iva,
                     kit = result.kit,
                     precio_compra = result.precio_compra,
@@ -227,9 +219,6 @@ namespace DsiCodetech.SuPlazaWeb.Business
                     articulo.descripcion = articuloDM.descripcion;
                     articulo.descripcion_corta = articuloDM.descripcion_corta;
                     articulo.fecha_registro = articuloDM.fecha_registro;
-                    //articulo.id_clasificacion = articuloDM.id_clasificacion;
-                    //articulo.id_proveedor = articuloDM.id_proveedor;
-                    //articulo.id_unidad = articuloDM.id_unidad;
                     articulo.iva = articuloDM.iva;
                     articulo.kit = articuloDM.kit;
                     articulo.precio_venta = articuloDM.precio_venta;
@@ -249,9 +238,6 @@ namespace DsiCodetech.SuPlazaWeb.Business
                     articulo.descripcion = articuloDM.descripcion;
                     articulo.descripcion_corta = articuloDM.descripcion_corta;
                     articulo.fecha_registro = articuloDM.fecha_registro;
-                    //articulo.id_clasificacion = articuloDM.id_clasificacion;
-                    //articulo.id_proveedor = articuloDM.id_proveedor;
-                    //articulo.id_unidad = articuloDM.id_unidad;
                     articulo.iva = articuloDM.iva;
                     articulo.kit = articuloDM.kit;
                     articulo.precio_venta = articuloDM.precio_venta;
