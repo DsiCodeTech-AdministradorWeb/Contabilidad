@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "530a6d1e-46c9-47db-95d3-3b5a2b1f4f3e": {
+      "ProjectGuid": "530a6d1e-46c9-47db-95d3-3b5a2b1f4f3e",
+      "DisplayName": "DsiCodeTech.SuPlazaWeb.Domain",
+      "ColorIndex": 0
+    },
+    "2c76a505-c109-43c6-bd49-fa2d09fe364a": {
+      "ProjectGuid": "2c76a505-c109-43c6-bd49-fa2d09fe364a",
+      "DisplayName": "DsiCodeTech.SuPlazaWeb.Contabilidad",
+      "ColorIndex": 1
+    },
+    "f7d2a71d-5282-44f4-8903-6b68d9d31a9d": {
+      "ProjectGuid": "f7d2a71d-5282-44f4-8903-6b68d9d31a9d",
+      "DisplayName": "DsiCodeTech.SuPlazaWeb.Business",
+      "ColorIndex": 2
+    },
+    "bb94f8be-2bfb-49ac-8dbf-17e6a48bc90a": {
+      "ProjectGuid": "bb94f8be-2bfb-49ac-8dbf-17e6a48bc90a",
+      "DisplayName": "DsiCodeTech.SuPlazaWeb.Repository",
+      "ColorIndex": 3
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 4
+}
