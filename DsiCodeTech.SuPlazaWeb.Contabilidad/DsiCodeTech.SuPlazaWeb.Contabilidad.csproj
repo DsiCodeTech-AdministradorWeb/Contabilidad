@@ -15,6 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DsiCodeTech.SuPlazaWeb.Contabilidad</RootNamespace>
     <AssemblyName>DsiCodeTech.SuPlazaWeb.Contabilidad</AssemblyName>
+    <LangVersion>10</LangVersion>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>

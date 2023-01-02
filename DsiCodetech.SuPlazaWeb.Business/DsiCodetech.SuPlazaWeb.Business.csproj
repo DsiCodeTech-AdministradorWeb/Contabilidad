@@ -9,6 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DsiCodetech.SuPlazaWeb.Business</RootNamespace>
     <AssemblyName>DsiCodetech.SuPlazaWeb.Business</AssemblyName>
+    <LangVersion>10</LangVersion>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

@@ -25,8 +25,8 @@ namespace DsiCodeTech.SuPlazaWeb.Domain
         public decimal stock_min { get; set; }
         public decimal stock_max { get; set; }
         public decimal iva { get; set; }
-        public DateTime kit_fecha_ini { get; set; }
-        public DateTime kit_fecha_fin { get; set; }
+        public DateTime ? kit_fecha_ini { get; set; }
+        public DateTime ? kit_fecha_fin { get; set; }
         public bool articulo_disponible { get; set; }
         public bool kit { get; set; }
         public DateTime fecha_registro { get; set; }

@@ -10,6 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DsiCodeTech.SuPlazaWeb.Repository</RootNamespace>
     <AssemblyName>DsiCodeTech.SuPlazaWeb.Repository</AssemblyName>
+    <LangVersion>10</LangVersion>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

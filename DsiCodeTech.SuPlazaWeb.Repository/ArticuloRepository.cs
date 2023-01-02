@@ -21,7 +21,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository
 
         public int Count(Expression<Func<articulo, bool>> whereCondition)
         {
-            return dbSet.AsExpandable().Where(whereCondition).Count();
+            return dbSet.AsExpandable().Count(whereCondition);
         }
         public IEnumerable<articulo> GetPaging(Expression<Func<articulo, string>> orderBy, int page_number, int page_size)
         {
