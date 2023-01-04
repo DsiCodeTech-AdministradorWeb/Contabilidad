@@ -72,9 +72,6 @@
     <Compile Include="PosContabilidad\clasificacion.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
-    <Compile Include="PosContabilidad\clave_producto_serv.cs">
-      <DependentUpon>PosAdmin.tt</DependentUpon>
-    </Compile>
     <Compile Include="PosContabilidad\cliente.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
@@ -84,13 +81,16 @@
     <Compile Include="PosContabilidad\compra_articulo.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="PosContabilidad\comprobante.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PosContabilidad\condicion_pago.cs">
+      <DependentUpon>PosAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="PosContabilidad\control_errores.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="PosContabilidad\ctrl_errores.cs">
-      <DependentUpon>PosAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PosContabilidad\direccion.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="PosContabilidad\direccion_proveedor.cs">
@@ -114,12 +114,6 @@
     <Compile Include="PosContabilidad\estadistica.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
-    <Compile Include="PosContabilidad\estatus.cs">
-      <DependentUpon>PosAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PosContabilidad\exportacion.cs">
-      <DependentUpon>PosAdmin.tt</DependentUpon>
-    </Compile>
     <Compile Include="PosContabilidad\factura.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
@@ -127,9 +121,6 @@
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="PosContabilidad\factura_venta.cs">
-      <DependentUpon>PosAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PosContabilidad\forma_pago.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="PosContabilidad\generacion_codigos.cs">
@@ -150,16 +141,7 @@
     <Compile Include="PosContabilidad\kit_articulos.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
-    <Compile Include="PosContabilidad\Logs.cs">
-      <DependentUpon>PosAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PosContabilidad\mes.cs">
-      <DependentUpon>PosAdmin.tt</DependentUpon>
-    </Compile>
     <Compile Include="PosContabilidad\metodo_pago.cs">
-      <DependentUpon>PosAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PosContabilidad\moneda.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="PosContabilidad\movimiento_almacen.cs">
@@ -180,16 +162,10 @@
     <Compile Include="PosContabilidad\orden_articulo.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
-    <Compile Include="PosContabilidad\pais.cs">
-      <DependentUpon>PosAdmin.tt</DependentUpon>
-    </Compile>
     <Compile Include="PosContabilidad\pedido.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="PosContabilidad\pedido_articulo.cs">
-      <DependentUpon>PosAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PosContabilidad\periodicidad.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="PosContabilidad\permiso.cs">
@@ -243,15 +219,6 @@
     <Compile Include="PosContabilidad\salida_articulo.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
-    <Compile Include="PosContabilidad\sysdiagrams.cs">
-      <DependentUpon>PosAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PosContabilidad\tipo_comprobante.cs">
-      <DependentUpon>PosAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PosContabilidad\tipo_relacion.cs">
-      <DependentUpon>PosAdmin.tt</DependentUpon>
-    </Compile>
     <Compile Include="PosContabilidad\unidad_medida.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>
@@ -298,6 +265,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="PosContabilidad\PosAdmin.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

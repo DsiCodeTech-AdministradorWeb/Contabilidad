@@ -28,13 +28,13 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         public virtual DbSet<articulo> articulo { get; set; }
         public virtual DbSet<articulos> articulos { get; set; }
         public virtual DbSet<clasificacion> clasificacion { get; set; }
-        public virtual DbSet<clave_producto_serv> clave_producto_serv { get; set; }
         public virtual DbSet<cliente> cliente { get; set; }
         public virtual DbSet<compra> compra { get; set; }
         public virtual DbSet<compra_articulo> compra_articulo { get; set; }
+        public virtual DbSet<comprobante> comprobante { get; set; }
+        public virtual DbSet<condicion_pago> condicion_pago { get; set; }
         public virtual DbSet<control_errores> control_errores { get; set; }
         public virtual DbSet<ctrl_errores> ctrl_errores { get; set; }
-        public virtual DbSet<direccion> direccion { get; set; }
         public virtual DbSet<direccion_proveedor> direccion_proveedor { get; set; }
         public virtual DbSet<empleado> empleado { get; set; }
         public virtual DbSet<empresa> empresa { get; set; }
@@ -42,32 +42,24 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         public virtual DbSet<entrada> entrada { get; set; }
         public virtual DbSet<entrada_articulo> entrada_articulo { get; set; }
         public virtual DbSet<estadistica> estadistica { get; set; }
-        public virtual DbSet<estatus> estatus { get; set; }
-        public virtual DbSet<exportacion> exportacion { get; set; }
         public virtual DbSet<factura> factura { get; set; }
         public virtual DbSet<factura_articulo> factura_articulo { get; set; }
         public virtual DbSet<factura_venta> factura_venta { get; set; }
-        public virtual DbSet<forma_pago> forma_pago { get; set; }
         public virtual DbSet<generacion_codigos> generacion_codigos { get; set; }
         public virtual DbSet<inventario_articulo> inventario_articulo { get; set; }
         public virtual DbSet<inventario_captura> inventario_captura { get; set; }
         public virtual DbSet<inventario_fisico> inventario_fisico { get; set; }
         public virtual DbSet<inventario_fisico_articulo> inventario_fisico_articulo { get; set; }
         public virtual DbSet<kit_articulos> kit_articulos { get; set; }
-        public virtual DbSet<Logs> Logs { get; set; }
-        public virtual DbSet<mes> mes { get; set; }
         public virtual DbSet<metodo_pago> metodo_pago { get; set; }
-        public virtual DbSet<moneda> moneda { get; set; }
         public virtual DbSet<movimiento_almacen> movimiento_almacen { get; set; }
         public virtual DbSet<municipio> municipio { get; set; }
         public virtual DbSet<oferta> oferta { get; set; }
         public virtual DbSet<oferta_articulo> oferta_articulo { get; set; }
         public virtual DbSet<orden> orden { get; set; }
         public virtual DbSet<orden_articulo> orden_articulo { get; set; }
-        public virtual DbSet<pais> pais { get; set; }
         public virtual DbSet<pedido> pedido { get; set; }
         public virtual DbSet<pedido_articulo> pedido_articulo { get; set; }
-        public virtual DbSet<periodicidad> periodicidad { get; set; }
         public virtual DbSet<permiso> permiso { get; set; }
         public virtual DbSet<pos> pos { get; set; }
         public virtual DbSet<pos_admin_settings> pos_admin_settings { get; set; }
@@ -76,12 +68,8 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         public virtual DbSet<promocion> promocion { get; set; }
         public virtual DbSet<promocion_articulo> promocion_articulo { get; set; }
         public virtual DbSet<proveedor> proveedor { get; set; }
-        public virtual DbSet<regimen_fiscal> regimen_fiscal { get; set; }
         public virtual DbSet<salida> salida { get; set; }
         public virtual DbSet<salida_articulo> salida_articulo { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<tipo_comprobante> tipo_comprobante { get; set; }
-        public virtual DbSet<tipo_relacion> tipo_relacion { get; set; }
         public virtual DbSet<unidad_medida> unidad_medida { get; set; }
         public virtual DbSet<uso_cfdi> uso_cfdi { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
@@ -93,5 +81,6 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         public virtual DbSet<venta_devolucion> venta_devolucion { get; set; }
         public virtual DbSet<venta_devolucion_articulo> venta_devolucion_articulo { get; set; }
         public virtual DbSet<productos_sin_iva> productos_sin_iva { get; set; }
+        public virtual DbSet<regimen_fiscal> regimen_fiscal { get; set; }
     }
 }

@@ -4,77 +4,64 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="be7bfdd8633d4273a7e88c8942297a5f" Name="Diagram1">
-        <EntityTypeShape EntityType="pos_adminModel.articulo" Width="1.5" PointX="3" PointY="39.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.articulos" Width="1.5" PointX="8.25" PointY="42.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.clasificacion" Width="1.5" PointX="0.75" PointY="39.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.clave_producto_serv" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.cliente" Width="1.5" PointX="8.75" PointY="66.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.compra" Width="1.5" PointX="5.25" PointY="57.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.compra_articulo" Width="1.5" PointX="7.5" PointY="48.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.control_errores" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.ctrl_errores" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.direccion" Width="1.5" PointX="16" PointY="46.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.direccion_proveedor" Width="1.5" PointX="6" PointY="43.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.empleado" Width="1.5" PointX="6" PointY="22.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.empresa" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.entidad" Width="1.5" PointX="1.5" PointY="22.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.entrada" Width="1.5" PointX="6" PointY="26.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.entrada_articulo" Width="1.5" PointX="8.25" PointY="38.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.estadistica" Width="1.5" PointX="5.25" PointY="50.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.estatus" Width="1.5" PointX="8.75" PointY="69.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.exportacion" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.factura" Width="1.5" PointX="11" PointY="67" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.factura_articulo" Width="1.5" PointX="13.25" PointY="60.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.factura_venta" Width="1.5" PointX="13.25" PointY="56.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.forma_pago" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.generacion_codigos" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.inventario_articulo" Width="1.5" PointX="5.25" PointY="61.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.inventario_captura" Width="1.5" PointX="11.25" PointY="42.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.inventario_fisico" Width="1.5" PointX="6" PointY="39.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.inventario_fisico_articulo" Width="1.5" PointX="11.25" PointY="46.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.kit_articulos" Width="1.5" PointX="5.25" PointY="65.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.Logs" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.mes" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.metodo_pago" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.moneda" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.movimiento_almacen" Width="1.5" PointX="0.75" PointY="26" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.municipio" Width="1.5" PointX="3.75" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.oferta" Width="1.5" PointX="9" PointY="29.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.oferta_articulo" Width="1.5" PointX="11.25" PointY="38.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.orden" Width="1.5" PointX="3" PointY="66.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.orden_articulo" Width="1.5" PointX="8.25" PointY="54.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.pais" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.pedido" Width="1.5" PointX="3" PointY="71.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.pedido_articulo" Width="1.5" PointX="8.25" PointY="58.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.periodicidad" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.permiso" Width="1.5" PointX="6.75" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.pos" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.pos_admin_settings" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.pos_control" Width="1.5" PointX="6" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.precio_temporal" Width="1.5" PointX="5.25" PointY="79.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.promocion" Width="1.5" PointX="8" PointY="62.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.promocion_articulo" Width="1.5" PointX="10.25" PointY="49.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.proveedor" Width="1.5" PointX="0.75" PointY="42.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.regimen_fiscal" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.salida" Width="1.5" PointX="3" PointY="25.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.salida_articulo" Width="1.5" PointX="5.25" PointY="35.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.tipo_comprobante" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.tipo_relacion" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.unidad_medida" Width="1.5" PointX="0.75" PointY="48.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.uso_cfdi" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.usuario" Width="1.5" PointX="3.75" PointY="29.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.usuario_permiso" Width="1.5" PointX="9" PointY="25.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.venta" Width="1.5" PointX="11" PointY="53.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.venta_articulo" Width="1.5" PointX="13.25" PointY="50.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.venta_cancelada" Width="1.5" PointX="6" PointY="31" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.venta_cancelada_articulo" Width="1.5" PointX="8.25" PointY="34.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.venta_devolucion" Width="1.5" PointX="14.25" PointY="42" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.venta_devolucion_articulo" Width="1.5" PointX="16.5" PointY="42.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pos_adminModel.productos_sin_iva" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
-        <AssociationConnector Association="pos_adminModel.fk_articulo_articulo" ManuallyRouted="false" />
-        <AssociationConnector Association="pos_adminModel.fk_articulo_articulos" ManuallyRouted="false" />
+      <Diagram DiagramId="58f0a03df6ac4f16bd2b278b3b293e44" Name="Diagram1">
+        <EntityTypeShape EntityType="pos_adminModel.articulo" Width="1.5" PointX="6" PointY="39.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.articulos" Width="1.5" PointX="3" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.clasificacion" Width="1.5" PointX="3.75" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.cliente" Width="1.5" PointX="3" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.compra" Width="1.5" PointX="5.25" PointY="59.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.compra_articulo" Width="1.5" PointX="11.25" PointY="50.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.comprobante" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.condicion_pago" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.control_errores" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.ctrl_errores" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.direccion_proveedor" Width="1.5" PointX="3" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.empleado" Width="1.5" PointX="6" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.empresa" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.entidad" Width="1.5" PointX="1.5" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.entrada" Width="1.5" PointX="6" PointY="51.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.entrada_articulo" Width="1.5" PointX="8.25" PointY="41.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.estadistica" Width="1.5" PointX="8.25" PointY="45.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.factura" Width="1.5" PointX="5.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.factura_articulo" Width="1.5" PointX="14.5" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.factura_venta" Width="1.5" PointX="14.25" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.generacion_codigos" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.inventario_articulo" Width="1.5" PointX="8.25" PointY="49.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.inventario_captura" Width="1.5" PointX="11.25" PointY="45.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.inventario_fisico" Width="1.5" PointX="3" PointY="48.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.inventario_fisico_articulo" Width="1.5" PointX="11.25" PointY="41.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.kit_articulos" Width="1.5" PointX="8.25" PointY="60.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.metodo_pago" Width="1.5" PointX="7.5" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.movimiento_almacen" Width="1.5" PointX="6.75" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.municipio" Width="1.5" PointX="0.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.oferta" Width="1.5" PointX="6" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.oferta_articulo" Width="1.5" PointX="8.25" PointY="37.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.orden" Width="1.5" PointX="3" PointY="71.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.orden_articulo" Width="1.5" PointX="8.25" PointY="55.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.pedido" Width="1.5" PointX="3" PointY="76.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.pedido_articulo" Width="1.5" PointX="11.25" PointY="59.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.permiso" Width="1.5" PointX="6.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.pos" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.pos_admin_settings" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.pos_control" Width="1.5" PointX="6" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.precio_temporal" Width="1.5" PointX="8.25" PointY="74.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.promocion" Width="1.5" PointX="12" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.promocion_articulo" Width="1.5" PointX="14.25" PointY="43.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.proveedor" Width="1.5" PointX="0.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.salida" Width="1.5" PointX="9" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.salida_articulo" Width="1.5" PointX="11.25" PointY="37.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.unidad_medida" Width="1.5" PointX="3.75" PointY="52.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.uso_cfdi" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.usuario" Width="1.5" PointX="3.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.usuario_permiso" Width="1.5" PointX="9" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.venta" Width="1.5" PointX="12" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.venta_articulo" Width="1.5" PointX="14.25" PointY="37.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.venta_cancelada" Width="1.5" PointX="12" PointY="63.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.venta_cancelada_articulo" Width="1.5" PointX="14.25" PointY="47" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.venta_devolucion" Width="1.5" PointX="17.25" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.venta_devolucion_articulo" Width="1.5" PointX="19.5" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.productos_sin_iva" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pos_adminModel.regimen_fiscal" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
         <AssociationConnector Association="pos_adminModel.fk_articulo_captura" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_articulo_compra" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_articulo_entrada" ManuallyRouted="false" />
@@ -100,12 +87,12 @@
         <AssociationConnector Association="pos_adminModel.fk_unidad_articulos" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_clasificacion_subclasificacion" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_cliente_factura" ManuallyRouted="false" />
-        <AssociationConnector Association="pos_adminModel.FK_direccion_cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_adminModel.fk_cliente_municipio" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_compra_articulo" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_pedido_compra" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_proveedor_compra" ManuallyRouted="false" />
-        <AssociationConnector Association="pos_adminModel.FK_direccion_entidad" ManuallyRouted="false" />
-        <AssociationConnector Association="pos_adminModel.FK_direccion_municipio" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_adminModel.fk_factura_comprobante" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_adminModel.fk_factura_condicion_pago" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_municipio_direccion" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_proveedor_direccion" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_usuario_empleado" ManuallyRouted="false" />
@@ -113,8 +100,8 @@
         <AssociationConnector Association="pos_adminModel.fk_entrada_articulo" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_movimiento_entrada" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_usuario_entrada" ManuallyRouted="false" />
-        <AssociationConnector Association="pos_adminModel.FK_factura_estatus" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_factura_articulo" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_adminModel.fk_factura_uso_cfdi" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_factura_venta" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_factura_unidad" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_venta_factura" ManuallyRouted="false" />
@@ -148,6 +135,7 @@
         <AssociationConnector Association="pos_adminModel.fk_venta_devolucion" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_venta_cancelada_articulo" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_venta_devolucion_articulo" ManuallyRouted="false" />
+        <AssociationConnector Association="pos_adminModel.factura_metodo_pago" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

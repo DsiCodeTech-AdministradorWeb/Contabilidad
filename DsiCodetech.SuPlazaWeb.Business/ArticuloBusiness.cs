@@ -56,13 +56,8 @@ namespace DsiCodetech.SuPlazaWeb.Business
                 descripcion = e.descripcion,
                 descripcion_corta = e.descripcion_corta,
                 fecha_registro = e.fecha_registro,
-                id_clasificacion = e.id_clasificacion,
-                id_proveedor = e.id_proveedor,
-                id_unidad = e.id_unidad,
-                iva = e.iva,
-                kit = e.kit,
-                kit_fecha_fin = e.kit_fecha_fin.Value,
-                kit_fecha_ini = e.kit_fecha_ini.Value,
+                iva=e.iva,
+                kit=e.kit,
                 last_update_inventory = e.last_update_inventory,
                 precio_compra = e.precio_compra,
                 precio_venta = e.precio_venta,
@@ -173,36 +168,112 @@ namespace DsiCodetech.SuPlazaWeb.Business
         /// <returns>la entidad del tipo ArticuloDM</returns>
         public ArticuloDM GetArticuloByCodigoBarras(string codigo)
         {
-            var result = repository.SingleOrDefault(a => a.cod_barras.Equals(codigo));
 
-            return new ArticuloDM
+            var result = repository.SingleOrDefault(p => p.cod_barras.Equals(codigo));
+
+            if (result != null)
             {
-                cod_barras = result.cod_barras,
-                articulo_disponible = result.articulo_disponible,
-                cantidad_um = result.cantidad_um,
-                cod_asociado = result?.cod_asociado,
-                cod_interno = result.cod_interno,
-                cve_producto = result.cve_producto,
-                descripcion = result.descripcion,
-                descripcion_corta = result.descripcion_corta,
-                fecha_registro = result.fecha_registro,
-                id_clasificacion = result.id_clasificacion,
-                id_proveedor = result.id_proveedor,
-                id_unidad = result.id_unidad,
-                iva = result.iva,
-                kit = result.kit,
-                kit_fecha_fin = result.kit_fecha_fin is null ? null : result.kit_fecha_fin.Value,
-                kit_fecha_ini = result.kit_fecha_ini is null ? null : result.kit_fecha_ini.Value,
-                precio_compra = result.precio_compra,
-                precio_venta = result.precio_venta,
-                stock = result.stock,
-                stock_max = result.stock_max,
-                stock_min = result.stock_min,
-                tipo_articulo = result.tipo_articulo,
-                utilidad = result.utilidad,
+                return new ArticuloDM
+                {
+                    cod_barras = result.cod_barras,
+                    articulo_disponible = result.articulo_disponible,
+                    cantidad_um = result.cantidad_um,
+                    cod_asociado = result.cod_asociado,
+                    cod_interno = result.cod_interno,
+                    cve_producto = result.cve_producto,
+                    descripcion = result.descripcion,
+                    descripcion_corta = result.descripcion_corta,
+                    fecha_registro = result.fecha_registro,
+                    iva = result.iva,
+                    kit = result.kit,
+                    precio_compra = result.precio_compra,
+                    precio_venta = result.precio_venta,
+                    stock = result.stock,
+                    stock_max = result.stock_max,
+                    stock_min = result.stock_min,
+                    tipo_articulo = result.tipo_articulo,
+                    utilidad = result.utilidad,
 
-            };
+                };
+            }
+            return null;   
         }
+
+        /// <summary>
+        /// Este metodo se encarga de insertar o actualizar  la entidad  articulo
+        /// </summary>
+        /// <param name="articuloDM">la entidad articulo del dominio del proyecto.</param>
+        /// <returns>regresa una entidad del tipo boolean</returns>
+        public bool AddUpdateArticulos(ArticuloDM articuloDM)
+        {
+            bool resultado = false;
+            if (articuloDM != null)
+            {
+                articulo articulo = repository.SingleOrDefault(p => p.cod_barras.Equals(articuloDM.cod_barras));
+                if (articuloDM.cod_barras.Equals(string.IsNullOrEmpty(articuloDM.cod_barras)))
+                {
+                    articulo.cantidad_um = articuloDM.cantidad_um;
+                    articulo.articulo_disponible = articuloDM.articulo_disponible;
+                    articulo.cod_asociado = articuloDM.cod_asociado;
+                    articulo.cod_barras = articuloDM.cod_barras;
+                    articulo.cod_interno = articuloDM.cod_interno;
+                    articulo.cve_producto = articuloDM.cve_producto;
+                    articulo.descripcion = articuloDM.descripcion;
+                    articulo.descripcion_corta = articuloDM.descripcion_corta;
+                    articulo.fecha_registro = articuloDM.fecha_registro;
+                    articulo.iva = articuloDM.iva;
+                    articulo.kit = articuloDM.kit;
+                    articulo.precio_venta = articuloDM.precio_venta;
+                    articulo.precio_compra = articuloDM.precio_compra;
+                    articulo.utilidad = articuloDM.utilidad;
+                    repository.Update(articulo);
+                    resultado = true;
+                }
+                else 
+                {
+                    articulo.cantidad_um = articuloDM.cantidad_um;
+                    articulo.articulo_disponible = articuloDM.articulo_disponible;
+                    articulo.cod_asociado = articuloDM.cod_asociado;
+                    articulo.cod_barras = articuloDM.cod_barras;
+                    articulo.cod_interno = articuloDM.cod_interno;
+                    articulo.cve_producto = articuloDM.cve_producto;
+                    articulo.descripcion = articuloDM.descripcion;
+                    articulo.descripcion_corta = articuloDM.descripcion_corta;
+                    articulo.fecha_registro = articuloDM.fecha_registro;
+                    articulo.iva = articuloDM.iva;
+                    articulo.kit = articuloDM.kit;
+                    articulo.precio_venta = articuloDM.precio_venta;
+                    articulo.precio_compra = articuloDM.precio_compra;
+                    articulo.utilidad = articuloDM.utilidad;
+                    repository.Insert(articulo);
+                    resultado = true;
+
+                }
+            }
+            return resultado;
+        }
+
+        /// <summary>
+        /// este metodo se encarga de eliminar un articulo de forma persistente
+        /// </summary>
+        /// <param name="articuloDM">la entidad del tipo articuloDM que se va a eliminar</param>
+        /// <returns>regresa un valor del tipo boolean</returns>
+        public bool DeleteArticulo(ArticuloDM articuloDM)
+        {
+            bool resultado = false;
+            if (articuloDM != null)
+            {
+                articulo articulo = repository.SingleOrDefault(p => p.cod_barras.Equals(articuloDM.cod_barras));
+                if (articulo != null || string.IsNullOrEmpty(articulo.cod_barras))
+                {
+                    repository.Delete(p=>p.cod_barras.Equals(  articulo));
+                    resultado = true;
+                }
+            }
+            return resultado;
+        }
+
+
 
     }
 }

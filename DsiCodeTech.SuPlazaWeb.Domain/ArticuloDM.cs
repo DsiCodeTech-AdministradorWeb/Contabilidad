@@ -10,13 +10,13 @@ namespace DsiCodeTech.SuPlazaWeb.Domain
     {
         public string cod_barras { get; set; }
         public string cod_asociado { get; set; }
-        public long id_clasificacion { get; set; }
+        //public long id_clasificacion { get; set; }
         public string cod_interno { get; set; }
         public string descripcion { get; set; }
         public string descripcion_corta { get; set; }
         public decimal cantidad_um { get; set; }
-        public Guid id_unidad { get; set; }
-        public Guid id_proveedor { get; set; }
+        //public Guid id_unidad { get; set; }
+        //public Guid id_proveedor { get; set; }
         public decimal precio_compra { get; set; }
         public decimal utilidad { get; set; }
         public decimal precio_venta { get; set; }
@@ -34,5 +34,7 @@ namespace DsiCodeTech.SuPlazaWeb.Domain
         public short puntos { get; set; }
         public DateTime last_update_inventory { get; set; }
         public string cve_producto { get; set; }
+
+        public ImpuestoDM impuestoDM { get; set; }
     }
 }

@@ -17,15 +17,12 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public entidad()
         {
-            this.direccion = new HashSet<direccion>();
             this.municipio = new HashSet<municipio>();
         }
     
         public short id_entidad { get; set; }
         public string nombre { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<direccion> direccion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<municipio> municipio { get; set; }
     }

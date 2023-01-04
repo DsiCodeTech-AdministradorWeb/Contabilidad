@@ -17,7 +17,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public municipio()
         {
-            this.direccion = new HashSet<direccion>();
+            this.cliente = new HashSet<cliente>();
             this.direccion_proveedor = new HashSet<direccion_proveedor>();
         }
     
@@ -26,7 +26,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         public string nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<direccion> direccion { get; set; }
+        public virtual ICollection<cliente> cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<direccion_proveedor> direccion_proveedor { get; set; }
         public virtual entidad entidad { get; set; }

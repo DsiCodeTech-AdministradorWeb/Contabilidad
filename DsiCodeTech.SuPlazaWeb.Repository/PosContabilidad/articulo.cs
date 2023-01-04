@@ -17,7 +17,6 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public articulo()
         {
-            this.articulo1 = new HashSet<articulo>();
             this.inventario_captura = new HashSet<inventario_captura>();
             this.compra_articulo = new HashSet<compra_articulo>();
             this.entrada_articulo = new HashSet<entrada_articulo>();
@@ -62,10 +61,6 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         public System.DateTime last_update_inventory { get; set; }
         public string cve_producto { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<articulo> articulo1 { get; set; }
-        public virtual articulo articulo2 { get; set; }
-        public virtual articulos articulos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<inventario_captura> inventario_captura { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

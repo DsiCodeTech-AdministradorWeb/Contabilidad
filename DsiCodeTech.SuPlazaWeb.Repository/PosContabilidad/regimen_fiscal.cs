@@ -14,11 +14,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
     
     public partial class regimen_fiscal
     {
-        public string id { get; set; }
+        public string id_regimen { get; set; }
         public string descripcion { get; set; }
-        public string persona_fisica { get; set; }
-        public string persona_moral { get; set; }
-        public Nullable<System.DateTime> fecha_inicio { get; set; }
-        public Nullable<System.DateTime> fecha_fin { get; set; }
     }
 }

@@ -30,7 +30,6 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         public bool articulo_disponible { get; set; }
         public System.DateTime fecha_registro { get; set; }
     
-        public virtual articulo articulo { get; set; }
         public virtual proveedor proveedor { get; set; }
         public virtual unidad_medida unidad_medida { get; set; }
     }

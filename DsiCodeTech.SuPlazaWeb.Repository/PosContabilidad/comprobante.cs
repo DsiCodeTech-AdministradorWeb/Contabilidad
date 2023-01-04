@@ -12,25 +12,19 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
     using System;
     using System.Collections.Generic;
     
-    public partial class cliente
+    public partial class comprobante
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public cliente()
+        public comprobante()
         {
             this.factura = new HashSet<factura>();
         }
     
-        public System.Guid id_cliente { get; set; }
-        public string rfc { get; set; }
-        public string razon_social { get; set; }
-        public string contacto { get; set; }
-        public string e_mail { get; set; }
-        public string e_mail2 { get; set; }
-        public Nullable<short> id_municipio { get; set; }
-        public Nullable<short> id_entidad { get; set; }
+        public string id_comprobante { get; set; }
+        public string documento { get; set; }
+        public string sat { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<factura> factura { get; set; }
-        public virtual municipio municipio { get; set; }
     }
 }

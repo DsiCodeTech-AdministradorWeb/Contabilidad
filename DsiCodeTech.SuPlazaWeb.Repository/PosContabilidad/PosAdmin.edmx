@@ -65,19 +65,6 @@
           <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="nivel_clasificacion" Type="smallint" Nullable="false" />
         </EntityType>
-        <EntityType Name="clave_producto_serv">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="120" Nullable="false" />
-          <Property Name="trasladado" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="ieps_trasladado" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="franja_fronteriza" Type="smallint" Nullable="false" />
-          <Property Name="palabras_similares" Type="varchar" MaxLength="252" />
-          <Property Name="fecha_inicio" Type="date" />
-          <Property Name="fecha_fin" Type="date" />
-        </EntityType>
         <EntityType Name="cliente">
           <Key>
             <PropertyRef Name="id_cliente" />
@@ -85,10 +72,11 @@
           <Property Name="id_cliente" Type="uniqueidentifier" Nullable="false" />
           <Property Name="rfc" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="razon_social" Type="varchar" MaxLength="120" Nullable="false" />
-          <Property Name="regimen_fiscal" Type="nvarchar" MaxLength="5" />
           <Property Name="contacto" Type="varchar" MaxLength="100" />
           <Property Name="e_mail" Type="varchar" MaxLength="80" />
           <Property Name="e_mail2" Type="varchar" MaxLength="80" />
+          <Property Name="id_municipio" Type="smallint" />
+          <Property Name="id_entidad" Type="smallint" />
         </EntityType>
         <EntityType Name="compra">
           <Key>
@@ -119,6 +107,21 @@
           <Property Name="no_captura" Type="smallint" Nullable="false" />
           <Property Name="no_entrega" Type="decimal" Precision="19" Scale="3" Nullable="false" />
         </EntityType>
+        <EntityType Name="comprobante">
+          <Key>
+            <PropertyRef Name="id_comprobante" />
+          </Key>
+          <Property Name="id_comprobante" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="documento" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="sat" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="condicion_pago">
+          <Key>
+            <PropertyRef Name="id_condicion" />
+          </Key>
+          <Property Name="id_condicion" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+        </EntityType>
         <EntityType Name="control_errores">
           <Key>
             <PropertyRef Name="id_error" />
@@ -142,20 +145,6 @@
           <Property Name="id_error" Type="uniqueidentifier" Nullable="false" />
           <Property Name="fecha_log" Type="datetime" Nullable="false" />
           <Property Name="descripcion" Type="ntext" Nullable="false" />
-        </EntityType>
-        <EntityType Name="direccion">
-          <Key>
-            <PropertyRef Name="id_direccion" />
-          </Key>
-          <Property Name="id_direccion" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="id_cliente" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="id_municipio" Type="smallint" Nullable="false" />
-          <Property Name="id_entidad" Type="smallint" Nullable="false" />
-          <Property Name="codigo_postal" Type="nvarchar" MaxLength="5" Nullable="false" />
-          <Property Name="colonia" Type="nvarchar" MaxLength="100" />
-          <Property Name="calle" Type="nvarchar" MaxLength="80" />
-          <Property Name="no_interior" Type="nvarchar" MaxLength="20" />
-          <Property Name="no_exterior" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="direccion_proveedor">
           <Key>
@@ -255,37 +244,18 @@
           <Property Name="nov" Type="decimal" Precision="19" Scale="3" Nullable="false" />
           <Property Name="dic" Type="decimal" Precision="19" Scale="3" Nullable="false" />
         </EntityType>
-        <EntityType Name="estatus">
-          <Key>
-            <PropertyRef Name="id_estatus" />
-          </Key>
-          <Property Name="id_estatus" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="exportacion">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="120" Nullable="false" />
-          <Property Name="fecha_inicio" Type="date" />
-          <Property Name="fecha_fin" Type="date" />
-        </EntityType>
         <EntityType Name="factura">
           <Key>
             <PropertyRef Name="id_factura" />
           </Key>
           <Property Name="id_factura" Type="bigint" Nullable="false" />
-          <Property Name="id_cliente" Type="uniqueidentifier" Nullable="false" />
           <Property Name="fecha_remision" Type="datetime" Nullable="false" />
-          <Property Name="uso_cfdi" Type="nvarchar" MaxLength="5" />
-          <Property Name="forma_pago" Type="nchar" MaxLength="10" />
-          <Property Name="metodo_pago" Type="nchar" MaxLength="10" />
-          <Property Name="tipo_comprobante" Type="nchar" MaxLength="10" />
-          <Property Name="exportaciones" Type="nchar" MaxLength="10" />
-          <Property Name="id_estatus" Type="smallint" />
-          <Property Name="factura_xml" Type="varchar(max)" />
-          <Property Name="uuid_sat" Type="uniqueidentifier" />
+          <Property Name="id_cliente" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="cfdi_relacionado" Type="varchar" MaxLength="50" />
+          <Property Name="uuid_relacionado" Type="varchar" MaxLength="100" />
+          <Property Name="id_comprobante" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="id_condicion" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="id_uso" Type="char" MaxLength="3" Nullable="false" />
         </EntityType>
         <EntityType Name="factura_articulo">
           <Key>
@@ -300,6 +270,14 @@
           <Property Name="iva" Type="decimal" Precision="4" Scale="3" Nullable="false" />
           <Property Name="precio_vta" Type="decimal" Precision="19" Scale="3" Nullable="false" />
         </EntityType>
+        <EntityType Name="factura_metodo_pago">
+          <Key>
+            <PropertyRef Name="id_factura" />
+            <PropertyRef Name="id_metodo" />
+          </Key>
+          <Property Name="id_factura" Type="bigint" Nullable="false" />
+          <Property Name="id_metodo" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
         <EntityType Name="factura_venta">
           <Key>
             <PropertyRef Name="id_pos" />
@@ -309,22 +287,6 @@
           <Property Name="id_venta" Type="uniqueidentifier" Nullable="false" />
           <Property Name="id_factura" Type="bigint" Nullable="false" />
           <Property Name="fecha_registro" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="forma_pago">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="120" Nullable="false" />
-          <Property Name="bancarizado" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="num_operacion" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="rfc_ordenante" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="cuenta_ordenante" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="rfc_beneficiario" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="cuenta_beneficiario" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="tipo_pago" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="fecha_inicio" Type="date" />
-          <Property Name="fecha_fin" Type="date" />
         </EntityType>
         <EntityType Name="generacion_codigos">
           <Key>
@@ -393,50 +355,12 @@
           <Property Name="cod_barras_pro" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="cantidad" Type="decimal" Precision="19" Scale="3" Nullable="false" />
         </EntityType>
-        <EntityType Name="Logs">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EventDateTime" Type="datetime" Nullable="false" />
-          <Property Name="EventLevel" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="MachineName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="EventMessage" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="ErrorSource" Type="nvarchar" MaxLength="100" />
-          <Property Name="ErrorClass" Type="nvarchar" MaxLength="500" />
-          <Property Name="ErrorMethod" Type="nvarchar(max)" />
-          <Property Name="ErrorMessage" Type="nvarchar(max)" />
-          <Property Name="InnerErrorMessage" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="mes">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="120" Nullable="false" />
-          <Property Name="fecha_inicio" Type="date" />
-          <Property Name="fecha_fin" Type="date" />
-        </EntityType>
         <EntityType Name="metodo_pago">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_metodo" />
           </Key>
-          <Property Name="id" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="120" Nullable="false" />
-          <Property Name="fecha_inicio" Type="date" />
-          <Property Name="fecha_fin" Type="date" />
-        </EntityType>
-        <EntityType Name="moneda">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="120" Nullable="false" />
-          <Property Name="decimales" Type="varchar" MaxLength="3" Nullable="false" />
-          <Property Name="porcentaje" Type="varchar" MaxLength="6" Nullable="false" />
-          <Property Name="fecha_inicio" Type="date" />
-          <Property Name="fecha_fin" Type="date" />
+          <Property Name="id_metodo" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="80" Nullable="false" />
         </EntityType>
         <EntityType Name="movimiento_almacen">
           <Key>
@@ -512,14 +436,6 @@
           <Property Name="por_surtir_pzas" Type="decimal" Precision="19" Scale="3" Nullable="false" />
           <Property Name="fecha_registro" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="pais">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="120" Nullable="false" />
-          <Property Name="agrupacion" Type="varchar" MaxLength="60" Nullable="false" />
-        </EntityType>
         <EntityType Name="pedido">
           <Key>
             <PropertyRef Name="id_pedido" />
@@ -548,15 +464,6 @@
           <Property Name="cantidad" Type="decimal" Precision="19" Scale="3" Nullable="false" />
           <Property Name="precio_articulo" Type="decimal" Precision="19" Scale="3" Nullable="false" />
           <Property Name="sugerido" Type="decimal" Precision="19" Scale="3" Nullable="false" />
-        </EntityType>
-        <EntityType Name="periodicidad">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="120" Nullable="false" />
-          <Property Name="fecha_inicio" Type="date" />
-          <Property Name="fecha_fin" Type="date" />
         </EntityType>
         <EntityType Name="permiso">
           <Key>
@@ -656,16 +563,15 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <Property Name="estatus" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="fecha_registro" Type="datetime" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'pos_admin.dbo.regimen_fiscal' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="regimen_fiscal">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_regimen" />
+            <PropertyRef Name="descripcion" />
           </Key>
-          <Property Name="id" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="120" Nullable="false" />
-          <Property Name="persona_fisica" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="persona_moral" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="fecha_inicio" Type="date" />
-          <Property Name="fecha_fin" Type="date" />
+          <Property Name="id_regimen" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="salida">
           <Key>
@@ -692,34 +598,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <Property Name="cant_reg" Type="decimal" Precision="19" Scale="3" Nullable="false" />
           <Property Name="costo" Type="decimal" Precision="19" Scale="3" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="tipo_comprobante">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="120" Nullable="false" />
-          <Property Name="fecha_inicio" Type="date" />
-          <Property Name="fecha_fin" Type="date" />
-        </EntityType>
-        <EntityType Name="tipo_relacion">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="120" Nullable="false" />
-          <Property Name="fecha_inicio" Type="date" />
-          <Property Name="fecha_fin" Type="date" />
-        </EntityType>
         <EntityType Name="unidad_medida">
           <Key>
             <PropertyRef Name="id_unidad" />
@@ -731,15 +609,10 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
         </EntityType>
         <EntityType Name="uso_cfdi">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_uso" />
           </Key>
-          <Property Name="id" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="120" Nullable="false" />
-          <Property Name="persona_fisica" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="persona_moral" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="regimen_fiscal_receptor" Type="varchar" MaxLength="252" />
-          <Property Name="fecha_inicio" Type="date" />
-          <Property Name="fecha_fin" Type="date" />
+          <Property Name="id_uso" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
@@ -865,30 +738,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="cantidad" Type="decimal" Precision="19" Scale="3" Nullable="false" />
         </EntityType>
-        <Association Name="fk_articulo_articulo">
-          <End Role="articulo" Type="Self.articulo" Multiplicity="0..1" />
-          <End Role="articulo1" Type="Self.articulo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="articulo">
-              <PropertyRef Name="cod_barras" />
-            </Principal>
-            <Dependent Role="articulo1">
-              <PropertyRef Name="cod_asociado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_articulo_articulos">
-          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
-          <End Role="articulos" Type="Self.articulos" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="articulo">
-              <PropertyRef Name="cod_barras" />
-            </Principal>
-            <Dependent Role="articulos">
-              <PropertyRef Name="cod_barras" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_articulo_captura">
           <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
           <End Role="inventario_captura" Type="Self.inventario_captura" Multiplicity="*" />
@@ -1105,6 +954,20 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_cliente_municipio">
+          <End Role="municipio" Type="Self.municipio" Multiplicity="0..1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="municipio">
+              <PropertyRef Name="id_municipio" />
+              <PropertyRef Name="id_entidad" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="id_municipio" />
+              <PropertyRef Name="id_entidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_compra_articulo">
           <End Role="compra" Type="Self.compra" Multiplicity="1" />
           <End Role="compra_articulo" Type="Self.compra_articulo" Multiplicity="*" />
@@ -1114,44 +977,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             </Principal>
             <Dependent Role="compra_articulo">
               <PropertyRef Name="id_compra" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_direccion_cliente">
-          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
-          <End Role="direccion" Type="Self.direccion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="cliente">
-              <PropertyRef Name="id_cliente" />
-            </Principal>
-            <Dependent Role="direccion">
-              <PropertyRef Name="id_cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_direccion_entidad">
-          <End Role="entidad" Type="Self.entidad" Multiplicity="1" />
-          <End Role="direccion" Type="Self.direccion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="entidad">
-              <PropertyRef Name="id_entidad" />
-            </Principal>
-            <Dependent Role="direccion">
-              <PropertyRef Name="id_entidad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_direccion_municipio">
-          <End Role="municipio" Type="Self.municipio" Multiplicity="1" />
-          <End Role="direccion" Type="Self.direccion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="municipio">
-              <PropertyRef Name="id_municipio" />
-              <PropertyRef Name="id_entidad" />
-            </Principal>
-            <Dependent Role="direccion">
-              <PropertyRef Name="id_municipio" />
-              <PropertyRef Name="id_entidad" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1191,15 +1016,39 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_factura_estatus">
-          <End Role="estatus" Type="Self.estatus" Multiplicity="0..1" />
+        <Association Name="fk_factura_comprobante">
+          <End Role="comprobante" Type="Self.comprobante" Multiplicity="1" />
           <End Role="factura" Type="Self.factura" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="estatus">
-              <PropertyRef Name="id_estatus" />
+            <Principal Role="comprobante">
+              <PropertyRef Name="id_comprobante" />
             </Principal>
             <Dependent Role="factura">
-              <PropertyRef Name="id_estatus" />
+              <PropertyRef Name="id_comprobante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_factura_condicion_pago">
+          <End Role="condicion_pago" Type="Self.condicion_pago" Multiplicity="1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condicion_pago">
+              <PropertyRef Name="id_condicion" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="id_condicion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_factura_metodo_pago">
+          <End Role="factura" Type="Self.factura" Multiplicity="1" />
+          <End Role="factura_metodo_pago" Type="Self.factura_metodo_pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="factura">
+              <PropertyRef Name="id_factura" />
+            </Principal>
+            <Dependent Role="factura_metodo_pago">
+              <PropertyRef Name="id_factura" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1212,6 +1061,18 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             </Principal>
             <Dependent Role="factura_articulo">
               <PropertyRef Name="id_unidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_factura_uso_cfdi">
+          <End Role="uso_cfdi" Type="Self.uso_cfdi" Multiplicity="1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uso_cfdi">
+              <PropertyRef Name="id_uso" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="id_uso" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1260,6 +1121,18 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             </Principal>
             <Dependent Role="inventario_fisico_articulo">
               <PropertyRef Name="id_inventario_fisico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_metodo_pago_factura">
+          <End Role="metodo_pago" Type="Self.metodo_pago" Multiplicity="1" />
+          <End Role="factura_metodo_pago" Type="Self.factura_metodo_pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="metodo_pago">
+              <PropertyRef Name="id_metodo" />
+            </Principal>
+            <Dependent Role="factura_metodo_pago">
+              <PropertyRef Name="id_metodo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1783,13 +1656,13 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <EntitySet Name="articulo" EntityType="Self.articulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="articulos" EntityType="Self.articulos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="clasificacion" EntityType="Self.clasificacion" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="clave_producto_serv" EntityType="Self.clave_producto_serv" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="compra" EntityType="Self.compra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="compra_articulo" EntityType="Self.compra_articulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comprobante" EntityType="Self.comprobante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="condicion_pago" EntityType="Self.condicion_pago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="control_errores" EntityType="Self.control_errores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ctrl_errores" EntityType="Self.ctrl_errores" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="direccion" EntityType="Self.direccion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="direccion_proveedor" EntityType="Self.direccion_proveedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="empleado" EntityType="Self.empleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="empresa" EntityType="Self.empresa" Schema="dbo" store:Type="Tables" />
@@ -1797,32 +1670,25 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <EntitySet Name="entrada" EntityType="Self.entrada" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="entrada_articulo" EntityType="Self.entrada_articulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="estadistica" EntityType="Self.estadistica" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="estatus" EntityType="Self.estatus" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="exportacion" EntityType="Self.exportacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="factura" EntityType="Self.factura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="factura_articulo" EntityType="Self.factura_articulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="factura_metodo_pago" EntityType="Self.factura_metodo_pago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="factura_venta" EntityType="Self.factura_venta" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="forma_pago" EntityType="Self.forma_pago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="generacion_codigos" EntityType="Self.generacion_codigos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="inventario_articulo" EntityType="Self.inventario_articulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="inventario_captura" EntityType="Self.inventario_captura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="inventario_fisico" EntityType="Self.inventario_fisico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="inventario_fisico_articulo" EntityType="Self.inventario_fisico_articulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="kit_articulos" EntityType="Self.kit_articulos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="mes" EntityType="Self.mes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="metodo_pago" EntityType="Self.metodo_pago" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="moneda" EntityType="Self.moneda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="movimiento_almacen" EntityType="Self.movimiento_almacen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="municipio" EntityType="Self.municipio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="oferta" EntityType="Self.oferta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="oferta_articulo" EntityType="Self.oferta_articulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="orden" EntityType="Self.orden" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="orden_articulo" EntityType="Self.orden_articulo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="pais" EntityType="Self.pais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pedido" EntityType="Self.pedido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pedido_articulo" EntityType="Self.pedido_articulo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="periodicidad" EntityType="Self.periodicidad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="permiso" EntityType="Self.permiso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pos" EntityType="Self.pos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pos_admin_settings" EntityType="Self.pos_admin_settings" Schema="dbo" store:Type="Tables" />
@@ -1831,12 +1697,8 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <EntitySet Name="promocion" EntityType="Self.promocion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="promocion_articulo" EntityType="Self.promocion_articulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="regimen_fiscal" EntityType="Self.regimen_fiscal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="salida" EntityType="Self.salida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="salida_articulo" EntityType="Self.salida_articulo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tipo_comprobante" EntityType="Self.tipo_comprobante" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tipo_relacion" EntityType="Self.tipo_relacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="unidad_medida" EntityType="Self.unidad_medida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="uso_cfdi" EntityType="Self.uso_cfdi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
@@ -1853,14 +1715,12 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
     [productos_sin_iva].[descripcion] AS [descripcion]
     FROM [dbo].[productos_sin_iva] AS [productos_sin_iva]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="fk_articulo_articulo" Association="Self.fk_articulo_articulo">
-            <End Role="articulo" EntitySet="articulo" />
-            <End Role="articulo1" EntitySet="articulo" />
-          </AssociationSet>
-          <AssociationSet Name="fk_articulo_articulos" Association="Self.fk_articulo_articulos">
-            <End Role="articulo" EntitySet="articulo" />
-            <End Role="articulos" EntitySet="articulos" />
-          </AssociationSet>
+          <EntitySet Name="regimen_fiscal" EntityType="Self.regimen_fiscal" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [regimen_fiscal].[id_regimen] AS [id_regimen], 
+    [regimen_fiscal].[descripcion] AS [descripcion]
+    FROM [dbo].[regimen_fiscal] AS [regimen_fiscal]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="fk_articulo_captura" Association="Self.fk_articulo_captura">
             <End Role="articulo" EntitySet="articulo" />
             <End Role="inventario_captura" EntitySet="inventario_captura" />
@@ -1933,21 +1793,13 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             <End Role="cliente" EntitySet="cliente" />
             <End Role="factura" EntitySet="factura" />
           </AssociationSet>
+          <AssociationSet Name="fk_cliente_municipio" Association="Self.fk_cliente_municipio">
+            <End Role="municipio" EntitySet="municipio" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
           <AssociationSet Name="fk_compra_articulo" Association="Self.fk_compra_articulo">
             <End Role="compra" EntitySet="compra" />
             <End Role="compra_articulo" EntitySet="compra_articulo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_direccion_cliente" Association="Self.FK_direccion_cliente">
-            <End Role="cliente" EntitySet="cliente" />
-            <End Role="direccion" EntitySet="direccion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_direccion_entidad" Association="Self.FK_direccion_entidad">
-            <End Role="entidad" EntitySet="entidad" />
-            <End Role="direccion" EntitySet="direccion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_direccion_municipio" Association="Self.FK_direccion_municipio">
-            <End Role="municipio" EntitySet="municipio" />
-            <End Role="direccion" EntitySet="direccion" />
           </AssociationSet>
           <AssociationSet Name="fk_entidad_municipio" Association="Self.fk_entidad_municipio">
             <End Role="entidad" EntitySet="entidad" />
@@ -1961,13 +1813,25 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             <End Role="factura" EntitySet="factura" />
             <End Role="factura_articulo" EntitySet="factura_articulo" />
           </AssociationSet>
-          <AssociationSet Name="FK_factura_estatus" Association="Self.FK_factura_estatus">
-            <End Role="estatus" EntitySet="estatus" />
+          <AssociationSet Name="fk_factura_comprobante" Association="Self.fk_factura_comprobante">
+            <End Role="comprobante" EntitySet="comprobante" />
             <End Role="factura" EntitySet="factura" />
+          </AssociationSet>
+          <AssociationSet Name="fk_factura_condicion_pago" Association="Self.fk_factura_condicion_pago">
+            <End Role="condicion_pago" EntitySet="condicion_pago" />
+            <End Role="factura" EntitySet="factura" />
+          </AssociationSet>
+          <AssociationSet Name="fk_factura_metodo_pago" Association="Self.fk_factura_metodo_pago">
+            <End Role="factura" EntitySet="factura" />
+            <End Role="factura_metodo_pago" EntitySet="factura_metodo_pago" />
           </AssociationSet>
           <AssociationSet Name="fk_factura_unidad" Association="Self.fk_factura_unidad">
             <End Role="unidad_medida" EntitySet="unidad_medida" />
             <End Role="factura_articulo" EntitySet="factura_articulo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_factura_uso_cfdi" Association="Self.fk_factura_uso_cfdi">
+            <End Role="uso_cfdi" EntitySet="uso_cfdi" />
+            <End Role="factura" EntitySet="factura" />
           </AssociationSet>
           <AssociationSet Name="fk_factura_venta" Association="Self.fk_factura_venta">
             <End Role="factura" EntitySet="factura" />
@@ -1984,6 +1848,10 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <AssociationSet Name="fk_inventario_fisico_articulo" Association="Self.fk_inventario_fisico_articulo">
             <End Role="inventario_fisico" EntitySet="inventario_fisico" />
             <End Role="inventario_fisico_articulo" EntitySet="inventario_fisico_articulo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_metodo_pago_factura" Association="Self.fk_metodo_pago_factura">
+            <End Role="metodo_pago" EntitySet="metodo_pago" />
+            <End Role="factura_metodo_pago" EntitySet="factura_metodo_pago" />
           </AssociationSet>
           <AssociationSet Name="fk_movimiento_entrada" Association="Self.fk_movimiento_entrada">
             <End Role="movimiento_almacen" EntitySet="movimiento_almacen" />
@@ -2189,9 +2057,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <Property Name="puntos" Type="Int16" Nullable="false" />
           <Property Name="last_update_inventory" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="cve_producto" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="articulo1" Relationship="Self.fk_articulo_articulo" FromRole="articulo" ToRole="articulo1" />
-          <NavigationProperty Name="articulo2" Relationship="Self.fk_articulo_articulo" FromRole="articulo1" ToRole="articulo" />
-          <NavigationProperty Name="articulos" Relationship="Self.fk_articulo_articulos" FromRole="articulo" ToRole="articulos" />
           <NavigationProperty Name="inventario_captura" Relationship="Self.fk_articulo_captura" FromRole="articulo" ToRole="inventario_captura" />
           <NavigationProperty Name="compra_articulo" Relationship="Self.fk_articulo_compra" FromRole="articulo" ToRole="compra_articulo" />
           <NavigationProperty Name="entrada_articulo" Relationship="Self.fk_articulo_entrada" FromRole="articulo" ToRole="entrada_articulo" />
@@ -2233,7 +2098,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <Property Name="iva" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
           <Property Name="articulo_disponible" Type="Boolean" Nullable="false" />
           <Property Name="fecha_registro" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="articulo" Relationship="Self.fk_articulo_articulos" FromRole="articulos" ToRole="articulo" />
           <NavigationProperty Name="proveedor" Relationship="Self.fk_proveedor_articulos" FromRole="articulos" ToRole="proveedor" />
           <NavigationProperty Name="unidad_medida" Relationship="Self.fk_unidad_articulos" FromRole="articulos" ToRole="unidad_medida" />
         </EntityType>
@@ -2249,19 +2113,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <NavigationProperty Name="clasificacion1" Relationship="Self.fk_clasificacion_subclasificacion" FromRole="clasificacion" ToRole="clasificacion1" />
           <NavigationProperty Name="clasificacion2" Relationship="Self.fk_clasificacion_subclasificacion" FromRole="clasificacion1" ToRole="clasificacion" />
         </EntityType>
-        <EntityType Name="clave_producto_serv">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="trasladado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ieps_trasladado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="franja_fronteriza" Type="Int16" Nullable="false" />
-          <Property Name="palabras_similares" Type="String" MaxLength="252" FixedLength="false" Unicode="false" />
-          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
-          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
-        </EntityType>
         <EntityType Name="cliente">
           <Key>
             <PropertyRef Name="id_cliente" />
@@ -2269,12 +2120,13 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <Property Name="id_cliente" Type="Guid" Nullable="false" />
           <Property Name="rfc" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="razon_social" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="regimen_fiscal" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="contacto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="e_mail" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="e_mail2" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="id_municipio" Type="Int16" />
+          <Property Name="id_entidad" Type="Int16" />
           <NavigationProperty Name="factura" Relationship="Self.fk_cliente_factura" FromRole="cliente" ToRole="factura" />
-          <NavigationProperty Name="direccion" Relationship="Self.FK_direccion_cliente" FromRole="cliente" ToRole="direccion" />
+          <NavigationProperty Name="municipio" Relationship="Self.fk_cliente_municipio" FromRole="cliente" ToRole="municipio" />
         </EntityType>
         <EntityType Name="compra">
           <Key>
@@ -2310,6 +2162,23 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <NavigationProperty Name="articulo" Relationship="Self.fk_articulo_compra" FromRole="compra_articulo" ToRole="articulo" />
           <NavigationProperty Name="compra" Relationship="Self.fk_compra_articulo" FromRole="compra_articulo" ToRole="compra" />
         </EntityType>
+        <EntityType Name="comprobante">
+          <Key>
+            <PropertyRef Name="id_comprobante" />
+          </Key>
+          <Property Name="id_comprobante" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="documento" Type="String" MaxLength="90" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sat" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="factura" Relationship="Self.fk_factura_comprobante" FromRole="comprobante" ToRole="factura" />
+        </EntityType>
+        <EntityType Name="condicion_pago">
+          <Key>
+            <PropertyRef Name="id_condicion" />
+          </Key>
+          <Property Name="id_condicion" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="factura" Relationship="Self.fk_factura_condicion_pago" FromRole="condicion_pago" ToRole="factura" />
+        </EntityType>
         <EntityType Name="control_errores">
           <Key>
             <PropertyRef Name="id_error" />
@@ -2333,23 +2202,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <Property Name="id_error" Type="Guid" Nullable="false" />
           <Property Name="fecha_log" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="direccion">
-          <Key>
-            <PropertyRef Name="id_direccion" />
-          </Key>
-          <Property Name="id_direccion" Type="Guid" Nullable="false" />
-          <Property Name="id_cliente" Type="Guid" Nullable="false" />
-          <Property Name="id_municipio" Type="Int16" Nullable="false" />
-          <Property Name="id_entidad" Type="Int16" Nullable="false" />
-          <Property Name="codigo_postal" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="colonia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="calle" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
-          <Property Name="no_interior" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="no_exterior" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="cliente" Relationship="Self.FK_direccion_cliente" FromRole="direccion" ToRole="cliente" />
-          <NavigationProperty Name="entidad" Relationship="Self.FK_direccion_entidad" FromRole="direccion" ToRole="entidad" />
-          <NavigationProperty Name="municipio" Relationship="Self.FK_direccion_municipio" FromRole="direccion" ToRole="municipio" />
         </EntityType>
         <EntityType Name="direccion_proveedor">
           <Key>
@@ -2406,7 +2258,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           </Key>
           <Property Name="id_entidad" Type="Int16" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="direccion" Relationship="Self.FK_direccion_entidad" FromRole="entidad" ToRole="direccion" />
           <NavigationProperty Name="municipio" Relationship="Self.fk_entidad_municipio" FromRole="entidad" ToRole="municipio" />
         </EntityType>
         <EntityType Name="entrada">
@@ -2460,42 +2311,25 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <Property Name="dic" Type="Decimal" Precision="19" Scale="3" Nullable="false" />
           <NavigationProperty Name="articulo" Relationship="Self.fk_articulo_estadistica" FromRole="estadistica" ToRole="articulo" />
         </EntityType>
-        <EntityType Name="estatus">
-          <Key>
-            <PropertyRef Name="id_estatus" />
-          </Key>
-          <Property Name="id_estatus" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="factura" Relationship="Self.FK_factura_estatus" FromRole="estatus" ToRole="factura" />
-        </EntityType>
-        <EntityType Name="exportacion">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
-          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
-        </EntityType>
         <EntityType Name="factura">
           <Key>
             <PropertyRef Name="id_factura" />
           </Key>
           <Property Name="id_factura" Type="Int64" Nullable="false" />
-          <Property Name="id_cliente" Type="Guid" Nullable="false" />
           <Property Name="fecha_remision" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="uso_cfdi" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="forma_pago" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="metodo_pago" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="tipo_comprobante" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="exportaciones" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="id_estatus" Type="Int16" />
-          <Property Name="factura_xml" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="uuid_sat" Type="Guid" />
+          <Property Name="id_cliente" Type="Guid" Nullable="false" />
+          <Property Name="cfdi_relacionado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uuid_relacionado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_comprobante" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_condicion" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="id_uso" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="cliente" Relationship="Self.fk_cliente_factura" FromRole="factura" ToRole="cliente" />
-          <NavigationProperty Name="estatus" Relationship="Self.FK_factura_estatus" FromRole="factura" ToRole="estatus" />
+          <NavigationProperty Name="comprobante" Relationship="Self.fk_factura_comprobante" FromRole="factura" ToRole="comprobante" />
+          <NavigationProperty Name="condicion_pago" Relationship="Self.fk_factura_condicion_pago" FromRole="factura" ToRole="condicion_pago" />
           <NavigationProperty Name="factura_articulo" Relationship="Self.fk_factura_articulo" FromRole="factura" ToRole="factura_articulo" />
+          <NavigationProperty Name="uso_cfdi" Relationship="Self.fk_factura_uso_cfdi" FromRole="factura" ToRole="uso_cfdi" />
           <NavigationProperty Name="factura_venta" Relationship="Self.fk_factura_venta" FromRole="factura" ToRole="factura_venta" />
+          <NavigationProperty Name="metodo_pago" Relationship="Self.factura_metodo_pago" FromRole="factura" ToRole="metodo_pago" />
         </EntityType>
         <EntityType Name="factura_articulo">
           <Key>
@@ -2523,22 +2357,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <Property Name="fecha_registro" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="factura" Relationship="Self.fk_factura_venta" FromRole="factura_venta" ToRole="factura" />
           <NavigationProperty Name="venta" Relationship="Self.fk_venta_factura" FromRole="factura_venta" ToRole="venta" />
-        </EntityType>
-        <EntityType Name="forma_pago">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="bancarizado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="num_operacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="rfc_ordenante" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cuenta_ordenante" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="rfc_beneficiario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cuenta_beneficiario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tipo_pago" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
-          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="generacion_codigos">
           <Key>
@@ -2618,50 +2436,13 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <NavigationProperty Name="articulo" Relationship="Self.fk_articulo_kit" FromRole="kit_articulos" ToRole="articulo" />
           <NavigationProperty Name="articulo1" Relationship="Self.fk_articulos_kit" FromRole="kit_articulos" ToRole="articulo" />
         </EntityType>
-        <EntityType Name="Logs">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EventDateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EventLevel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MachineName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="EventMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ErrorSource" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ErrorClass" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="ErrorMethod" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="InnerErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="mes">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
-          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
-        </EntityType>
         <EntityType Name="metodo_pago">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_metodo" />
           </Key>
-          <Property Name="id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
-          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
-        </EntityType>
-        <EntityType Name="moneda">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="decimales" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="porcentaje" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
-          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
+          <Property Name="id_metodo" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="factura" Relationship="Self.factura_metodo_pago" FromRole="metodo_pago" ToRole="factura" />
         </EntityType>
         <EntityType Name="movimiento_almacen">
           <Key>
@@ -2681,7 +2462,7 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <Property Name="id_entidad" Type="Int16" Nullable="false" />
           <Property Name="id_municipio" Type="Int16" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="direccion" Relationship="Self.FK_direccion_municipio" FromRole="municipio" ToRole="direccion" />
+          <NavigationProperty Name="cliente" Relationship="Self.fk_cliente_municipio" FromRole="municipio" ToRole="cliente" />
           <NavigationProperty Name="direccion_proveedor" Relationship="Self.fk_municipio_direccion" FromRole="municipio" ToRole="direccion_proveedor" />
           <NavigationProperty Name="entidad" Relationship="Self.fk_entidad_municipio" FromRole="municipio" ToRole="entidad" />
         </EntityType>
@@ -2751,14 +2532,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <NavigationProperty Name="articulo1" Relationship="Self.fk_orden_articulo_principal" FromRole="orden_articulo" ToRole="articulo" />
           <NavigationProperty Name="orden" Relationship="Self.fk_orden_articulo" FromRole="orden_articulo" ToRole="orden" />
         </EntityType>
-        <EntityType Name="pais">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="agrupacion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityType Name="pedido">
           <Key>
             <PropertyRef Name="id_pedido" />
@@ -2793,15 +2566,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <NavigationProperty Name="articulo" Relationship="Self.fk_articulo_pedido" FromRole="pedido_articulo" ToRole="articulo" />
           <NavigationProperty Name="articulo1" Relationship="Self.fk_articulo_pedido_anexo" FromRole="pedido_articulo" ToRole="articulo" />
           <NavigationProperty Name="pedido" Relationship="Self.fk_pedido_articulo" FromRole="pedido_articulo" ToRole="pedido" />
-        </EntityType>
-        <EntityType Name="periodicidad">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
-          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="permiso">
           <Key>
@@ -2905,17 +2669,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <NavigationProperty Name="orden" Relationship="Self.fk_order_proveedor" FromRole="proveedor" ToRole="orden" />
           <NavigationProperty Name="pedido" Relationship="Self.fk_proveedor_pedido" FromRole="proveedor" ToRole="pedido" />
         </EntityType>
-        <EntityType Name="regimen_fiscal">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="persona_fisica" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="persona_moral" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
-          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
-        </EntityType>
         <EntityType Name="salida">
           <Key>
             <PropertyRef Name="id_salida" />
@@ -2946,34 +2699,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <NavigationProperty Name="articulo" Relationship="Self.fk_articulo_salida" FromRole="salida_articulo" ToRole="articulo" />
           <NavigationProperty Name="salida" Relationship="Self.fk_salida_articulo" FromRole="salida_articulo" ToRole="salida" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="tipo_comprobante">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
-          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
-        </EntityType>
-        <EntityType Name="tipo_relacion">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
-          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
-        </EntityType>
         <EntityType Name="unidad_medida">
           <Key>
             <PropertyRef Name="id_unidad" />
@@ -2988,15 +2713,11 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
         </EntityType>
         <EntityType Name="uso_cfdi">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_uso" />
           </Key>
-          <Property Name="id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="persona_fisica" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="persona_moral" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="regimen_fiscal_receptor" Type="String" MaxLength="252" FixedLength="false" Unicode="false" />
-          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
-          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
+          <Property Name="id_uso" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="factura" Relationship="Self.fk_factura_uso_cfdi" FromRole="uso_cfdi" ToRole="factura" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
@@ -3167,30 +2888,14 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <Property Name="cod_barras" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="descripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <Association Name="fk_articulo_articulo">
-          <End Role="articulo" Type="Self.articulo" Multiplicity="0..1" />
-          <End Role="articulo1" Type="Self.articulo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="articulo">
-              <PropertyRef Name="cod_barras" />
-            </Principal>
-            <Dependent Role="articulo1">
-              <PropertyRef Name="cod_asociado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_articulo_articulos">
-          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
-          <End Role="articulos" Type="Self.articulos" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="articulo">
-              <PropertyRef Name="cod_barras" />
-            </Principal>
-            <Dependent Role="articulos">
-              <PropertyRef Name="cod_barras" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="regimen_fiscal">
+          <Key>
+            <PropertyRef Name="id_regimen" />
+            <PropertyRef Name="descripcion" />
+          </Key>
+          <Property Name="id_regimen" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <Association Name="fk_articulo_captura">
           <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
           <End Role="inventario_captura" Type="Self.inventario_captura" Multiplicity="*" />
@@ -3491,15 +3196,17 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_direccion_cliente">
-          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
-          <End Role="direccion" Type="Self.direccion" Multiplicity="*" />
+        <Association Name="fk_cliente_municipio">
+          <End Role="municipio" Type="Self.municipio" Multiplicity="0..1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="cliente">
-              <PropertyRef Name="id_cliente" />
+            <Principal Role="municipio">
+              <PropertyRef Name="id_municipio" />
+              <PropertyRef Name="id_entidad" />
             </Principal>
-            <Dependent Role="direccion">
-              <PropertyRef Name="id_cliente" />
+            <Dependent Role="cliente">
+              <PropertyRef Name="id_municipio" />
+              <PropertyRef Name="id_entidad" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3539,29 +3246,27 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_direccion_entidad">
-          <End Role="entidad" Type="Self.entidad" Multiplicity="1" />
-          <End Role="direccion" Type="Self.direccion" Multiplicity="*" />
+        <Association Name="fk_factura_comprobante">
+          <End Role="comprobante" Type="Self.comprobante" Multiplicity="1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="entidad">
-              <PropertyRef Name="id_entidad" />
+            <Principal Role="comprobante">
+              <PropertyRef Name="id_comprobante" />
             </Principal>
-            <Dependent Role="direccion">
-              <PropertyRef Name="id_entidad" />
+            <Dependent Role="factura">
+              <PropertyRef Name="id_comprobante" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_direccion_municipio">
-          <End Role="municipio" Type="Self.municipio" Multiplicity="1" />
-          <End Role="direccion" Type="Self.direccion" Multiplicity="*" />
+        <Association Name="fk_factura_condicion_pago">
+          <End Role="condicion_pago" Type="Self.condicion_pago" Multiplicity="1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="municipio">
-              <PropertyRef Name="id_municipio" />
-              <PropertyRef Name="id_entidad" />
+            <Principal Role="condicion_pago">
+              <PropertyRef Name="id_condicion" />
             </Principal>
-            <Dependent Role="direccion">
-              <PropertyRef Name="id_municipio" />
-              <PropertyRef Name="id_entidad" />
+            <Dependent Role="factura">
+              <PropertyRef Name="id_condicion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3651,18 +3356,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_factura_estatus">
-          <End Role="estatus" Type="Self.estatus" Multiplicity="0..1" />
-          <End Role="factura" Type="Self.factura" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="estatus">
-              <PropertyRef Name="id_estatus" />
-            </Principal>
-            <Dependent Role="factura">
-              <PropertyRef Name="id_estatus" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_factura_articulo">
           <End Role="factura" Type="Self.factura" Multiplicity="1" />
           <End Role="factura_articulo" Type="Self.factura_articulo" Multiplicity="*" />
@@ -3672,6 +3365,18 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             </Principal>
             <Dependent Role="factura_articulo">
               <PropertyRef Name="id_factura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_factura_uso_cfdi">
+          <End Role="uso_cfdi" Type="Self.uso_cfdi" Multiplicity="1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uso_cfdi">
+              <PropertyRef Name="id_uso" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="id_uso" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4081,17 +3786,21 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="factura_metodo_pago">
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <End Role="metodo_pago" Type="Self.metodo_pago" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="pos_adminEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="articulo" EntityType="Self.articulo" />
           <EntitySet Name="articulos" EntityType="Self.articulos" />
           <EntitySet Name="clasificacion" EntityType="Self.clasificacion" />
-          <EntitySet Name="clave_producto_serv" EntityType="Self.clave_producto_serv" />
           <EntitySet Name="cliente" EntityType="Self.cliente" />
           <EntitySet Name="compra" EntityType="Self.compra" />
           <EntitySet Name="compra_articulo" EntityType="Self.compra_articulo" />
+          <EntitySet Name="comprobante" EntityType="Self.comprobante" />
+          <EntitySet Name="condicion_pago" EntityType="Self.condicion_pago" />
           <EntitySet Name="control_errores" EntityType="Self.control_errores" />
           <EntitySet Name="ctrl_errores" EntityType="Self.ctrl_errores" />
-          <EntitySet Name="direccion" EntityType="Self.direccion" />
           <EntitySet Name="direccion_proveedor" EntityType="Self.direccion_proveedor" />
           <EntitySet Name="empleado" EntityType="Self.empleado" />
           <EntitySet Name="empresa" EntityType="Self.empresa" />
@@ -4099,32 +3808,24 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <EntitySet Name="entrada" EntityType="Self.entrada" />
           <EntitySet Name="entrada_articulo" EntityType="Self.entrada_articulo" />
           <EntitySet Name="estadistica" EntityType="Self.estadistica" />
-          <EntitySet Name="estatus" EntityType="Self.estatus" />
-          <EntitySet Name="exportacion" EntityType="Self.exportacion" />
           <EntitySet Name="factura" EntityType="Self.factura" />
           <EntitySet Name="factura_articulo" EntityType="Self.factura_articulo" />
           <EntitySet Name="factura_venta" EntityType="Self.factura_venta" />
-          <EntitySet Name="forma_pago" EntityType="Self.forma_pago" />
           <EntitySet Name="generacion_codigos" EntityType="Self.generacion_codigos" />
           <EntitySet Name="inventario_articulo" EntityType="Self.inventario_articulo" />
           <EntitySet Name="inventario_captura" EntityType="Self.inventario_captura" />
           <EntitySet Name="inventario_fisico" EntityType="Self.inventario_fisico" />
           <EntitySet Name="inventario_fisico_articulo" EntityType="Self.inventario_fisico_articulo" />
           <EntitySet Name="kit_articulos" EntityType="Self.kit_articulos" />
-          <EntitySet Name="Logs" EntityType="Self.Logs" />
-          <EntitySet Name="mes" EntityType="Self.mes" />
           <EntitySet Name="metodo_pago" EntityType="Self.metodo_pago" />
-          <EntitySet Name="moneda" EntityType="Self.moneda" />
           <EntitySet Name="movimiento_almacen" EntityType="Self.movimiento_almacen" />
           <EntitySet Name="municipio" EntityType="Self.municipio" />
           <EntitySet Name="oferta" EntityType="Self.oferta" />
           <EntitySet Name="oferta_articulo" EntityType="Self.oferta_articulo" />
           <EntitySet Name="orden" EntityType="Self.orden" />
           <EntitySet Name="orden_articulo" EntityType="Self.orden_articulo" />
-          <EntitySet Name="pais" EntityType="Self.pais" />
           <EntitySet Name="pedido" EntityType="Self.pedido" />
           <EntitySet Name="pedido_articulo" EntityType="Self.pedido_articulo" />
-          <EntitySet Name="periodicidad" EntityType="Self.periodicidad" />
           <EntitySet Name="permiso" EntityType="Self.permiso" />
           <EntitySet Name="pos" EntityType="Self.pos" />
           <EntitySet Name="pos_admin_settings" EntityType="Self.pos_admin_settings" />
@@ -4133,12 +3834,8 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <EntitySet Name="promocion" EntityType="Self.promocion" />
           <EntitySet Name="promocion_articulo" EntityType="Self.promocion_articulo" />
           <EntitySet Name="proveedor" EntityType="Self.proveedor" />
-          <EntitySet Name="regimen_fiscal" EntityType="Self.regimen_fiscal" />
           <EntitySet Name="salida" EntityType="Self.salida" />
           <EntitySet Name="salida_articulo" EntityType="Self.salida_articulo" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="tipo_comprobante" EntityType="Self.tipo_comprobante" />
-          <EntitySet Name="tipo_relacion" EntityType="Self.tipo_relacion" />
           <EntitySet Name="unidad_medida" EntityType="Self.unidad_medida" />
           <EntitySet Name="uso_cfdi" EntityType="Self.uso_cfdi" />
           <EntitySet Name="usuario" EntityType="Self.usuario" />
@@ -4150,14 +3847,7 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <EntitySet Name="venta_devolucion" EntityType="Self.venta_devolucion" />
           <EntitySet Name="venta_devolucion_articulo" EntityType="Self.venta_devolucion_articulo" />
           <EntitySet Name="productos_sin_iva" EntityType="Self.productos_sin_iva" />
-          <AssociationSet Name="fk_articulo_articulo" Association="Self.fk_articulo_articulo">
-            <End Role="articulo" EntitySet="articulo" />
-            <End Role="articulo1" EntitySet="articulo" />
-          </AssociationSet>
-          <AssociationSet Name="fk_articulo_articulos" Association="Self.fk_articulo_articulos">
-            <End Role="articulo" EntitySet="articulo" />
-            <End Role="articulos" EntitySet="articulos" />
-          </AssociationSet>
+          <EntitySet Name="regimen_fiscal" EntityType="Self.regimen_fiscal" />
           <AssociationSet Name="fk_articulo_captura" Association="Self.fk_articulo_captura">
             <End Role="articulo" EntitySet="articulo" />
             <End Role="inventario_captura" EntitySet="inventario_captura" />
@@ -4258,9 +3948,9 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             <End Role="cliente" EntitySet="cliente" />
             <End Role="factura" EntitySet="factura" />
           </AssociationSet>
-          <AssociationSet Name="FK_direccion_cliente" Association="Self.FK_direccion_cliente">
+          <AssociationSet Name="fk_cliente_municipio" Association="Self.fk_cliente_municipio">
+            <End Role="municipio" EntitySet="municipio" />
             <End Role="cliente" EntitySet="cliente" />
-            <End Role="direccion" EntitySet="direccion" />
           </AssociationSet>
           <AssociationSet Name="fk_compra_articulo" Association="Self.fk_compra_articulo">
             <End Role="compra" EntitySet="compra" />
@@ -4274,13 +3964,13 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             <End Role="proveedor" EntitySet="proveedor" />
             <End Role="compra" EntitySet="compra" />
           </AssociationSet>
-          <AssociationSet Name="FK_direccion_entidad" Association="Self.FK_direccion_entidad">
-            <End Role="entidad" EntitySet="entidad" />
-            <End Role="direccion" EntitySet="direccion" />
+          <AssociationSet Name="fk_factura_comprobante" Association="Self.fk_factura_comprobante">
+            <End Role="comprobante" EntitySet="comprobante" />
+            <End Role="factura" EntitySet="factura" />
           </AssociationSet>
-          <AssociationSet Name="FK_direccion_municipio" Association="Self.FK_direccion_municipio">
-            <End Role="municipio" EntitySet="municipio" />
-            <End Role="direccion" EntitySet="direccion" />
+          <AssociationSet Name="fk_factura_condicion_pago" Association="Self.fk_factura_condicion_pago">
+            <End Role="condicion_pago" EntitySet="condicion_pago" />
+            <End Role="factura" EntitySet="factura" />
           </AssociationSet>
           <AssociationSet Name="fk_municipio_direccion" Association="Self.fk_municipio_direccion">
             <End Role="municipio" EntitySet="municipio" />
@@ -4310,13 +4000,13 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             <End Role="usuario" EntitySet="usuario" />
             <End Role="entrada" EntitySet="entrada" />
           </AssociationSet>
-          <AssociationSet Name="FK_factura_estatus" Association="Self.FK_factura_estatus">
-            <End Role="estatus" EntitySet="estatus" />
-            <End Role="factura" EntitySet="factura" />
-          </AssociationSet>
           <AssociationSet Name="fk_factura_articulo" Association="Self.fk_factura_articulo">
             <End Role="factura" EntitySet="factura" />
             <End Role="factura_articulo" EntitySet="factura_articulo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_factura_uso_cfdi" Association="Self.fk_factura_uso_cfdi">
+            <End Role="uso_cfdi" EntitySet="uso_cfdi" />
+            <End Role="factura" EntitySet="factura" />
           </AssociationSet>
           <AssociationSet Name="fk_factura_venta" Association="Self.fk_factura_venta">
             <End Role="factura" EntitySet="factura" />
@@ -4450,6 +4140,10 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
             <End Role="venta_devolucion" EntitySet="venta_devolucion" />
             <End Role="venta_devolucion_articulo" EntitySet="venta_devolucion_articulo" />
           </AssociationSet>
+          <AssociationSet Name="factura_metodo_pago" Association="Self.factura_metodo_pago">
+            <End Role="factura" EntitySet="factura" />
+            <End Role="metodo_pago" EntitySet="metodo_pago" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -4520,30 +4214,17 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="clave_producto_serv">
-            <EntityTypeMapping TypeName="pos_adminModel.clave_producto_serv">
-              <MappingFragment StoreEntitySet="clave_producto_serv">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="trasladado" ColumnName="trasladado" />
-                <ScalarProperty Name="ieps_trasladado" ColumnName="ieps_trasladado" />
-                <ScalarProperty Name="franja_fronteriza" ColumnName="franja_fronteriza" />
-                <ScalarProperty Name="palabras_similares" ColumnName="palabras_similares" />
-                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="cliente">
             <EntityTypeMapping TypeName="pos_adminModel.cliente">
               <MappingFragment StoreEntitySet="cliente">
                 <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
                 <ScalarProperty Name="rfc" ColumnName="rfc" />
                 <ScalarProperty Name="razon_social" ColumnName="razon_social" />
-                <ScalarProperty Name="regimen_fiscal" ColumnName="regimen_fiscal" />
                 <ScalarProperty Name="contacto" ColumnName="contacto" />
                 <ScalarProperty Name="e_mail" ColumnName="e_mail" />
                 <ScalarProperty Name="e_mail2" ColumnName="e_mail2" />
+                <ScalarProperty Name="id_municipio" ColumnName="id_municipio" />
+                <ScalarProperty Name="id_entidad" ColumnName="id_entidad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4576,6 +4257,23 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="comprobante">
+            <EntityTypeMapping TypeName="pos_adminModel.comprobante">
+              <MappingFragment StoreEntitySet="comprobante">
+                <ScalarProperty Name="id_comprobante" ColumnName="id_comprobante" />
+                <ScalarProperty Name="documento" ColumnName="documento" />
+                <ScalarProperty Name="sat" ColumnName="sat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="condicion_pago">
+            <EntityTypeMapping TypeName="pos_adminModel.condicion_pago">
+              <MappingFragment StoreEntitySet="condicion_pago">
+                <ScalarProperty Name="id_condicion" ColumnName="id_condicion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="control_errores">
             <EntityTypeMapping TypeName="pos_adminModel.control_errores">
               <MappingFragment StoreEntitySet="control_errores">
@@ -4599,21 +4297,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
                 <ScalarProperty Name="id_error" ColumnName="id_error" />
                 <ScalarProperty Name="fecha_log" ColumnName="fecha_log" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="direccion">
-            <EntityTypeMapping TypeName="pos_adminModel.direccion">
-              <MappingFragment StoreEntitySet="direccion">
-                <ScalarProperty Name="id_direccion" ColumnName="id_direccion" />
-                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
-                <ScalarProperty Name="id_municipio" ColumnName="id_municipio" />
-                <ScalarProperty Name="id_entidad" ColumnName="id_entidad" />
-                <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
-                <ScalarProperty Name="colonia" ColumnName="colonia" />
-                <ScalarProperty Name="calle" ColumnName="calle" />
-                <ScalarProperty Name="no_interior" ColumnName="no_interior" />
-                <ScalarProperty Name="no_exterior" ColumnName="no_exterior" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4720,38 +4403,17 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="estatus">
-            <EntityTypeMapping TypeName="pos_adminModel.estatus">
-              <MappingFragment StoreEntitySet="estatus">
-                <ScalarProperty Name="id_estatus" ColumnName="id_estatus" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="exportacion">
-            <EntityTypeMapping TypeName="pos_adminModel.exportacion">
-              <MappingFragment StoreEntitySet="exportacion">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="factura">
             <EntityTypeMapping TypeName="pos_adminModel.factura">
               <MappingFragment StoreEntitySet="factura">
                 <ScalarProperty Name="id_factura" ColumnName="id_factura" />
-                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
                 <ScalarProperty Name="fecha_remision" ColumnName="fecha_remision" />
-                <ScalarProperty Name="uso_cfdi" ColumnName="uso_cfdi" />
-                <ScalarProperty Name="forma_pago" ColumnName="forma_pago" />
-                <ScalarProperty Name="metodo_pago" ColumnName="metodo_pago" />
-                <ScalarProperty Name="tipo_comprobante" ColumnName="tipo_comprobante" />
-                <ScalarProperty Name="exportaciones" ColumnName="exportaciones" />
-                <ScalarProperty Name="id_estatus" ColumnName="id_estatus" />
-                <ScalarProperty Name="factura_xml" ColumnName="factura_xml" />
-                <ScalarProperty Name="uuid_sat" ColumnName="uuid_sat" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="cfdi_relacionado" ColumnName="cfdi_relacionado" />
+                <ScalarProperty Name="uuid_relacionado" ColumnName="uuid_relacionado" />
+                <ScalarProperty Name="id_comprobante" ColumnName="id_comprobante" />
+                <ScalarProperty Name="id_condicion" ColumnName="id_condicion" />
+                <ScalarProperty Name="id_uso" ColumnName="id_uso" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4776,23 +4438,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
                 <ScalarProperty Name="id_venta" ColumnName="id_venta" />
                 <ScalarProperty Name="id_factura" ColumnName="id_factura" />
                 <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="forma_pago">
-            <EntityTypeMapping TypeName="pos_adminModel.forma_pago">
-              <MappingFragment StoreEntitySet="forma_pago">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="bancarizado" ColumnName="bancarizado" />
-                <ScalarProperty Name="num_operacion" ColumnName="num_operacion" />
-                <ScalarProperty Name="rfc_ordenante" ColumnName="rfc_ordenante" />
-                <ScalarProperty Name="cuenta_ordenante" ColumnName="cuenta_ordenante" />
-                <ScalarProperty Name="rfc_beneficiario" ColumnName="rfc_beneficiario" />
-                <ScalarProperty Name="cuenta_beneficiario" ColumnName="cuenta_beneficiario" />
-                <ScalarProperty Name="tipo_pago" ColumnName="tipo_pago" />
-                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4866,52 +4511,11 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Logs">
-            <EntityTypeMapping TypeName="pos_adminModel.Logs">
-              <MappingFragment StoreEntitySet="Logs">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
-                <ScalarProperty Name="EventLevel" ColumnName="EventLevel" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
-                <ScalarProperty Name="EventMessage" ColumnName="EventMessage" />
-                <ScalarProperty Name="ErrorSource" ColumnName="ErrorSource" />
-                <ScalarProperty Name="ErrorClass" ColumnName="ErrorClass" />
-                <ScalarProperty Name="ErrorMethod" ColumnName="ErrorMethod" />
-                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
-                <ScalarProperty Name="InnerErrorMessage" ColumnName="InnerErrorMessage" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="mes">
-            <EntityTypeMapping TypeName="pos_adminModel.mes">
-              <MappingFragment StoreEntitySet="mes">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="metodo_pago">
             <EntityTypeMapping TypeName="pos_adminModel.metodo_pago">
               <MappingFragment StoreEntitySet="metodo_pago">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_metodo" ColumnName="id_metodo" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="moneda">
-            <EntityTypeMapping TypeName="pos_adminModel.moneda">
-              <MappingFragment StoreEntitySet="moneda">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="decimales" ColumnName="decimales" />
-                <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
-                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4992,15 +4596,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="pais">
-            <EntityTypeMapping TypeName="pos_adminModel.pais">
-              <MappingFragment StoreEntitySet="pais">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="agrupacion" ColumnName="agrupacion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="pedido">
             <EntityTypeMapping TypeName="pos_adminModel.pedido">
               <MappingFragment StoreEntitySet="pedido">
@@ -5028,16 +4623,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
                 <ScalarProperty Name="precio_articulo" ColumnName="precio_articulo" />
                 <ScalarProperty Name="sugerido" ColumnName="sugerido" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="periodicidad">
-            <EntityTypeMapping TypeName="pos_adminModel.periodicidad">
-              <MappingFragment StoreEntitySet="periodicidad">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5136,18 +4721,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="regimen_fiscal">
-            <EntityTypeMapping TypeName="pos_adminModel.regimen_fiscal">
-              <MappingFragment StoreEntitySet="regimen_fiscal">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="persona_fisica" ColumnName="persona_fisica" />
-                <ScalarProperty Name="persona_moral" ColumnName="persona_moral" />
-                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="salida">
             <EntityTypeMapping TypeName="pos_adminModel.salida">
               <MappingFragment StoreEntitySet="salida">
@@ -5174,37 +4747,6 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="pos_adminModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tipo_comprobante">
-            <EntityTypeMapping TypeName="pos_adminModel.tipo_comprobante">
-              <MappingFragment StoreEntitySet="tipo_comprobante">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tipo_relacion">
-            <EntityTypeMapping TypeName="pos_adminModel.tipo_relacion">
-              <MappingFragment StoreEntitySet="tipo_relacion">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="unidad_medida">
             <EntityTypeMapping TypeName="pos_adminModel.unidad_medida">
               <MappingFragment StoreEntitySet="unidad_medida">
@@ -5218,13 +4760,8 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
           <EntitySetMapping Name="uso_cfdi">
             <EntityTypeMapping TypeName="pos_adminModel.uso_cfdi">
               <MappingFragment StoreEntitySet="uso_cfdi">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_uso" ColumnName="id_uso" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="persona_fisica" ColumnName="persona_fisica" />
-                <ScalarProperty Name="persona_moral" ColumnName="persona_moral" />
-                <ScalarProperty Name="regimen_fiscal_receptor" ColumnName="regimen_fiscal_receptor" />
-                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
-                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5359,6 +4896,22 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.productos_sin_iva' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="regimen_fiscal">
+            <EntityTypeMapping TypeName="pos_adminModel.regimen_fiscal">
+              <MappingFragment StoreEntitySet="regimen_fiscal">
+                <ScalarProperty Name="id_regimen" ColumnName="id_regimen" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="factura_metodo_pago" TypeName="pos_adminModel.factura_metodo_pago" StoreEntitySet="factura_metodo_pago">
+            <EndProperty Name="factura">
+              <ScalarProperty Name="id_factura" ColumnName="id_factura" />
+            </EndProperty>
+            <EndProperty Name="metodo_pago">
+              <ScalarProperty Name="id_metodo" ColumnName="id_metodo" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

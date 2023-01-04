@@ -230,6 +230,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Dto\ArticuloDto.cs" />
     <Compile Include="Dto\HttpResponseOnError.cs" />
+    <Compile Include="Dto\ImpuestoDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -334,7 +335,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DsiCodetech.SuPlazaWeb.Business\DsiCodeTech.SuPlazaWeb.Business.csproj">
-      <Project>{F7D2A71D-5282-44F4-8903-6B68D9D31A9D}</Project>
+      <Project>{f7d2a71d-5282-44f4-8903-6b68d9d31a9d}</Project>
       <Name>DsiCodeTech.SuPlazaWeb.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\DsiCodeTech.SuPlazaWeb.Domain\DsiCodeTech.SuPlazaWeb.Domain.csproj">
