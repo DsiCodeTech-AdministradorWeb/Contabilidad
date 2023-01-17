@@ -1,4 +1,5 @@
 ﻿using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure;
+using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure.Contract;
 using DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository
 {
     public class UsuarioRepository : BaseRepository<usuario>
     {
-        public UsuarioRepository() : base(unitOfWork)
+        public UsuarioRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
 
         }
