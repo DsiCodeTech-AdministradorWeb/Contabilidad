@@ -21,6 +21,7 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IArticuloBusiness, ArticuloBusiness>();
             container.RegisterType<IUsuarioBusiness, UsuarioBusiness>();
+            container.RegisterType<IImpuestosBusiness, ImpuestosBusiness>();
             DependencyResolver.SetResolver(new Unity.Mvc5.UnityDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

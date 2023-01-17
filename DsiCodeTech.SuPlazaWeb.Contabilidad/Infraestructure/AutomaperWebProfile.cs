@@ -14,6 +14,7 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Infraestructure
         {
             CreateMap<ArticuloDto, ArticuloDM>().ReverseMap();
             CreateMap<UsuarioDto, UsuarioDM>().ReverseMap();
+            CreateMap<ImpuestoDto, ImpuestoDM>().ReverseMap();
         }
         public static void Run()
         {

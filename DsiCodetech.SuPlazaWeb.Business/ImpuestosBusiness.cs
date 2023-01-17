@@ -1,4 +1,5 @@
-﻿using DsiCodeTech.SuPlazaWeb.Domain;
+﻿using DsiCodetech.SuPlazaWeb.Business.Interface;
+using DsiCodeTech.SuPlazaWeb.Domain;
 using DsiCodeTech.SuPlazaWeb.Repository;
 using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure.Contract;
 using DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DsiCodetech.SuPlazaWeb.Business
 {
-    public class ImpuestosBusiness
+    public class ImpuestosBusiness: IImpuestosBusiness
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly ImpuestosRepository repository;
