@@ -11,7 +11,7 @@ namespace DsiCodeTech.SuPlazaWeb.Domain
         public int id { get; set; }
         public string  cod_barras { get; set; }
         public string descripcion { get; set; }
-        public string porcentaje { get; set; }
+        public decimal porcentaje { get; set; }
         public DateTime fecha_registro { get; set; }
     }
 }

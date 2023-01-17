@@ -20,6 +20,11 @@ namespace DsiCodetech.SuPlazaWeb.Business
             repository = new ImpuestosRepository(unitOfWork);
         }
 
+        /// <summary>
+        /// Este metodo se encarga de actualizar o insertar una entidad impuesto
+        /// </summary>
+        /// <param name="impuestoDM">la entidad impuestoDM</param>
+        /// <returns>retorno de un valor true/false</returns>
         public bool AddUpdateImpuesto(ImpuestoDM impuestoDM) {
             bool respuesta = false;
             if (impuestoDM != null) 
@@ -28,9 +33,25 @@ namespace DsiCodetech.SuPlazaWeb.Business
                 if (impuestoDM.id > 0)
                 {
                     impuesto.cod_barras = impuestoDM.cod_barras;
-                    impuesto.descripcion = impuestoDM.des
+                    impuesto.descripcion = impuestoDM.descripcion;
+                    impuesto.porcentaje = impuestoDM.porcentaje;
+                    impuesto.fecha_registro = DateTime.Now;
+                    repository.Update(impuesto);
+                    respuesta = true;
                 }
+                else 
+                {
+                    impuesto = new impuestos();
+                    impuesto.cod_barras = impuestoDM.cod_barras;
+                    impuesto.descripcion = impuestoDM.descripcion;
+                    impuesto.porcentaje = impuestoDM.porcentaje;
+                    impuesto.fecha_registro = DateTime.Now;
+                    repository.Insert(impuesto);
+                    respuesta = true;
+                }
+
             }
+            return respuesta;
         }
 
     }
