@@ -10,9 +10,10 @@ namespace DsiCodetech.SuPlazaWeb.Business
     public class ImpuestosBusiness
     {
         private readonly IUnitOfWork unitOfWork;
-        public ImpuestosBusiness()
-        {
 
+        public ImpuestosBusiness(IUnitOfWork _unitOfWork)
+        {
+            unitOfWork = _unitOfWork;
         }
     }
 }
