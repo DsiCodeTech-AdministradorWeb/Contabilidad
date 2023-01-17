@@ -15,7 +15,7 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ContabilidadController : Controller
     {
-        
+
         private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
         private readonly IArticuloBusiness _articuloBusiness;
 
@@ -31,6 +31,15 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
             ViewBag.IdTiposImpuestos = new SelectList(this.GetTasasDeImpuestos());
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult mostrar(
+        ArticuloDto articuloDto,string IdTiposImpuestos)
+        {
+            return View();
+        }
+
 
 
         [HttpGet]
