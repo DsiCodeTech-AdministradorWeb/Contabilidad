@@ -36,32 +36,37 @@
                                 </p>
                             </div>
                         </div>
-                        <form action="#" class="signin-form">
+                        @using (Html.BeginForm("Login", "Seguridad", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
                             <div class="form-group mb-3">
                                 <label class="label" for="name">Username</label>
-                                <input type="text" class="form-control" placeholder="Username" required="">
+                                @Html.TextBoxFor(model => model.User_name, null, new { @class = "form-control form-control-sm", placeholder = "Nombre de Usuario", required = "required" })
+
                             </div>
                             <div class="form-group mb-3">
                                 <label class="label" for="password">Password</label>
-                                <input type="password" class="form-control" placeholder="Password" required="">
+                                @Html.PasswordFor(model => model.Password, new { @class = "form-control form-control-sm", placeholder = "Password", required = "required" })
+
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign In</button>
+                                <button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>
                             </div>
                             <div class="form-group d-md-flex">
                                 <div class="w-50 text-left">
                                     <label class="checkbox-wrap checkbox-primary mb-0">
-                                        Remember Me
+                                        Recordarme
                                         <input type="checkbox" checked="">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
                                 <div class="w-50 text-md-right">
-                                    <a href="#">Forgot Password</a>
+                                    <a href="#">Olvidaste el Password?</a>
                                 </div>
                             </div>
-                        </form>
-                        <p class="text-center">Not a member? <a data-toggle="tab" href="#signup">Sign Up</a></p>
+
+                        }
+                        <p class="text-center">No eres un miembro? <a data-toggle="tab" href="#">Registrate</a></p>
                     </div>
                 </div>
             </div>
