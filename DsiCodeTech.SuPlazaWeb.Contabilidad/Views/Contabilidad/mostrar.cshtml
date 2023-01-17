@@ -1,6 +1,6 @@
 ﻿@model DsiCodeTech.SuPlazaWeb.Contabilidad.Dto.ArticuloDto
 @{
-    ViewBag.Title = "mostrar";
+    ViewBag.Title = "Mostrar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -23,9 +23,9 @@
                     </div>
                 </div>
             </div>
-            @using (Html.BeginForm("mostrar", "Contabilidad", FormMethod.Post))
+            @using (Html.BeginForm("mostrar", "Contabilidad"))
             {
-                @Html.AntiForgeryToken()
+                @*@Html.AntiForgeryToken()*@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">

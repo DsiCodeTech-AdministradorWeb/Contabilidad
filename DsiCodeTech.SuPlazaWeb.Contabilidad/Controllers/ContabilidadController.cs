@@ -33,10 +33,9 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult mostrar(
-        ArticuloDto articuloDto,string IdTiposImpuestos)
+        public ActionResult mostrar(ArticuloDto articuloDto)
         {
+            ViewBag.IdTiposImpuestos = new SelectList(this.GetTasasDeImpuestos());
             return View();
         }
 

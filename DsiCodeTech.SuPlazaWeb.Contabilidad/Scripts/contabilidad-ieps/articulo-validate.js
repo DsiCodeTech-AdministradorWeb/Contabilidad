@@ -61,8 +61,32 @@ $(document).ready(function () {
 
             $('#btnActualizar').prop('disabled', false);
         }
-        
+
     });
 
+    $('#btnActualizar').click(function () {
 
-})
+        var ArticuloDto = {};
+        var ImpuestoDto = {};
+
+        ArticuloDto.cod_barras = $('#cod_barras').val();
+        ImpuestoDto.cod_barras = $('#cod_barras').val();
+        ImpuestoDto.descripcion = $('#IdTiposImpuestos').val();
+        ImpuestoDto.porcentaje = $('#porcentaje').val();
+        ArticuloDto.ImpuestoDto = ImpuestoDto;
+        alert(ArticuloDto.ImpuestoDto.cod_barras + " " + ArticuloDto.ImpuestoDto.descripcion);
+        $.ajax({
+            type: "Post",
+            url: "/Contabilidad/mostrar/",
+            data: { articuloDto: ArticuloDto },
+            success: function (data) {
+                toastr.success('La información se guardo de forma correcta');
+                //console.log(ArticuloDto.cod_barras);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                toastr.error('La información no se pudo procesar');
+                console.log(textStatus);
+            }
+        })
+    });
+});
