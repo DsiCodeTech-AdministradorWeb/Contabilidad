@@ -13,6 +13,7 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Infraestructure
         public AutomaperWebProfile()
         {
             CreateMap<ArticuloDto, ArticuloDM>().ReverseMap();
+            CreateMap<UsuarioDto, UsuarioDM>().ReverseMap();
         }
         public static void Run()
         {

@@ -1,4 +1,5 @@
-﻿using DsiCodeTech.SuPlazaWeb.Contabilidad.Handler.ExceptionHandler;
+﻿using DsiCodeTech.SuPlazaWeb.Contabilidad.Dto;
+using DsiCodeTech.SuPlazaWeb.Contabilidad.Handler.ExceptionHandler;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,17 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login([Bind(Include = "User_name,Password")] UsuarioDto usuarioDto) 
+        {
+            if (ModelState.IsValid)
+            {
+
+                RedirectToAction("Login","Seguridad");
+            }
             return View();
         }
     }
