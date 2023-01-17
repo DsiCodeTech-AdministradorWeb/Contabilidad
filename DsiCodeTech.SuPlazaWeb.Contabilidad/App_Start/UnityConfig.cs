@@ -20,7 +20,7 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IArticuloBusiness, ArticuloBusiness>();
-            
+            container.RegisterType<IUsuarioBusiness, UsuarioBusiness>();
             DependencyResolver.SetResolver(new Unity.Mvc5.UnityDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

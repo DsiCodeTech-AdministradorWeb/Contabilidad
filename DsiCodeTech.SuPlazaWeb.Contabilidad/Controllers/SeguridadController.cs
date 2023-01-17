@@ -10,6 +10,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using System.Security.Claims;
+using DsiCodetech.SuPlazaWeb.Business.Interface;
+using DsiCodeTech.SuPlazaWeb.Domain;
 
 namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
 {
@@ -18,7 +20,11 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
     public class SeguridadController : Controller
     {
         private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
-
+        private readonly IUsuarioBusiness usuarioBusiness;
+        public SeguridadController(IUsuarioBusiness _usuarioBusiness)
+        {
+            usuarioBusiness = _usuarioBusiness;
+        }
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -30,23 +36,37 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
         [HttpPost]
         public ActionResult Login([Bind(Include = "User_name,Password")] UsuarioDto usuarioDto, string returnUrl) 
         {
+            
             if (ModelState.IsValid)
             {
+                ActionResult result;
+                var usuario = AutoMapper.Mapper.Map<UsuarioDM>(usuarioDto);
+                var usuarioDM = usuarioBusiness.ValidarUsuario(usuario);
+                if (usuarioDM != null)
+                {
+                    //Asignamos todos los permisos de usuario a los claims
+                    result = SigInUser(usuarioDM, true, returnUrl);
+                    return result;
+                }
+                else
+                {
+                    return View();
+                }
 
-                RedirectToAction("Login","Seguridad");
             }
+
             return View();
         }
 
 
         #region Metodo SigIn
-        private ActionResult SigInUser(UsuarioDto usuarioDto, bool recuerdame, string returnUrl)
+        private ActionResult SigInUser(UsuarioDM usuarioDM, bool recuerdame, string returnUrl)
         {
             ActionResult Result;
             //un claims puede almacenar cualquier tipo de informacion del usuario, nombre, mail, password, lo que sea
             List<Claim> Claims = new List<Claim>(); //listado de claims
-            Claims.Add(new Claim(ClaimTypes.NameIdentifier, usuarioDto.User_name)); //primer claims
-            Claims.Add(new Claim(ClaimTypes.Name, usuarioDto.User_name));
+            Claims.Add(new Claim(ClaimTypes.NameIdentifier, usuarioDM.User_name)); //primer claims
+            Claims.Add(new Claim(ClaimTypes.Name, usuarioDM.User_name));
             ///estos claims se almacenan en la cookie para identificar al usuario y sus atributos o permisos
             var Identity = new ClaimsIdentity(Claims, DefaultAuthenticationTypes.ApplicationCookie); 
             ///cuando el usuario se logea se crea una cookie de autenticacion 
