@@ -59,6 +59,14 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
         }
 
 
+        public ActionResult LogOff()
+        {
+            IAuthenticationManager authenticationManager = HttpContext.GetOwinContext().Authentication;
+            authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+            return RedirectToAction("Login", "Seguridad");
+        }
+
         #region Metodo SigIn
         private ActionResult SigInUser(UsuarioDM usuarioDM, bool recuerdame, string returnUrl)
         {
