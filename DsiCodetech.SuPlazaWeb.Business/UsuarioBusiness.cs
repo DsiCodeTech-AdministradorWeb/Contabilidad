@@ -38,6 +38,11 @@ namespace DsiCodetech.SuPlazaWeb.Business
             return respuesta;
         }
 
+        /// <summary>
+        /// Este metodo se encarga de validar un usuario por password y nombre de usuario
+        /// </summary>
+        /// <param name="usuarioDM">la entidad del tipo usuarioDM</param>
+        /// <returns>retorna una entidad del tipo usuarioDM</returns>
         public UsuarioDM ValidarUsuario(UsuarioDM usuarioDM)
         {
             var usuario = repository.SingleOrDefault(u => u.user_name.Equals(usuarioDM.User_name) && u.password.Equals(usuarioDM.Password));
