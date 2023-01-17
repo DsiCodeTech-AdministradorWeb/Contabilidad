@@ -26,6 +26,7 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
 
 
         // GET: Contabilidad
+        [HttpGet]
         public ActionResult mostrar()
         {
             ViewBag.IdTiposImpuestos = new SelectList(this.GetTasasDeImpuestos());
