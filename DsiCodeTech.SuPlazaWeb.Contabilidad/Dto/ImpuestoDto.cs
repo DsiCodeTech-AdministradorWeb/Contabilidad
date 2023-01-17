@@ -9,7 +9,8 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Dto
     {
         public int id { get; set; }
         public string cod_barras { get; set; }
-        public double ieps { get; set; }
+        public string descripcion { get; set; }
+        public double porcentaje { get; set; } 
         public DateTime fecha_registro { get; set; }
     }
 }

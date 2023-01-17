@@ -32,6 +32,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
             this.kit_articulos1 = new HashSet<kit_articulos>();
             this.orden_articulo = new HashSet<orden_articulo>();
             this.orden_articulo1 = new HashSet<orden_articulo>();
+            this.impuestos = new HashSet<impuestos>();
         }
     
         public string cod_barras { get; set; }
@@ -97,5 +98,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         public virtual ICollection<orden_articulo> orden_articulo1 { get; set; }
         public virtual proveedor proveedor { get; set; }
         public virtual unidad_medida unidad_medida { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<impuestos> impuestos { get; set; }
     }
 }

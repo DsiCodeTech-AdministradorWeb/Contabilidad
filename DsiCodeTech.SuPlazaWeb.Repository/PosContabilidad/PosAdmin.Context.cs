@@ -82,5 +82,6 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad
         public virtual DbSet<venta_devolucion_articulo> venta_devolucion_articulo { get; set; }
         public virtual DbSet<productos_sin_iva> productos_sin_iva { get; set; }
         public virtual DbSet<regimen_fiscal> regimen_fiscal { get; set; }
+        public virtual DbSet<impuestos> impuestos { get; set; }
     }
 }

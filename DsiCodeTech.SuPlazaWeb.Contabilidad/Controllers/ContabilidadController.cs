@@ -28,6 +28,7 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
         // GET: Contabilidad
         public ActionResult mostrar()
         {
+            ViewBag.IdTiposImpuestos = new SelectList(this.GetTasasDeImpuestos());
             return View();
         }
 
@@ -48,5 +49,24 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
                 throw;
             }
         }
+
+
+
+        #region Utilitario Impuestos
+        /// <summary>
+        /// Este metodo se encarga de almacenar todos los impuestos  aplicables a un articulo
+        /// </summary>
+        /// <returns>lista de impuestos aplicables a un articulo</returns>
+        private List<string> GetTasasDeImpuestos()
+        {
+            var impuestos = new List<string>();
+            impuestos.Add(Recursos.recursos_tasas_impuestos.Seleccionar);
+            impuestos.Add(Recursos.recursos_tasas_impuestos.iva_general);
+            impuestos.Add(Recursos.recursos_tasas_impuestos.iva_cero);
+            impuestos.Add(Recursos.recursos_tasas_impuestos.ieps);
+            impuestos.Add(Recursos.recursos_tasas_impuestos.iva_exento);
+            return impuestos;
+        }
+        #endregion
     }
 }

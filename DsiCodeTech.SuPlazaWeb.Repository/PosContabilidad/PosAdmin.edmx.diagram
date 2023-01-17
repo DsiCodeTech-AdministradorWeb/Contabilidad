@@ -136,6 +136,8 @@
         <AssociationConnector Association="pos_adminModel.fk_venta_cancelada_articulo" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.fk_venta_devolucion_articulo" ManuallyRouted="false" />
         <AssociationConnector Association="pos_adminModel.factura_metodo_pago" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="pos_adminModel.impuestos" Width="1.5" PointX="8.25" PointY="62.875" />
+        <AssociationConnector Association="pos_adminModel.Fk_impuesto_articulos" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

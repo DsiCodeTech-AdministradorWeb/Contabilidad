@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="pos_adminModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="pos_adminModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="articulo">
           <Key>
             <PropertyRef Name="cod_barras" />
@@ -296,6 +296,16 @@
           <Property Name="cod_barras" Type="decimal" Precision="18" Scale="0" />
           <Property Name="cod_pesable" Type="decimal" Precision="18" Scale="0" />
           <Property Name="cod_inpesable" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="impuestos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cod_barras" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="porcentaje" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="fecha_registro" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="inventario_articulo">
           <Key>
@@ -1088,6 +1098,18 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.regimen_fiscal' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Fk_impuesto_articulos">
+          <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+          <End Role="impuestos" Type="Self.impuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulo">
+              <PropertyRef Name="cod_barras" />
+            </Principal>
+            <Dependent Role="impuestos">
+              <PropertyRef Name="cod_barras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_inventario_articulo">
           <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
           <End Role="inventario_articulo" Type="Self.inventario_articulo" Multiplicity="0..1" />
@@ -1675,6 +1697,7 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.regimen_fiscal' no tiene defin
           <EntitySet Name="factura_metodo_pago" EntityType="Self.factura_metodo_pago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="factura_venta" EntityType="Self.factura_venta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="generacion_codigos" EntityType="Self.generacion_codigos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="impuestos" EntityType="Self.impuestos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="inventario_articulo" EntityType="Self.inventario_articulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="inventario_captura" EntityType="Self.inventario_captura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="inventario_fisico" EntityType="Self.inventario_fisico" Schema="dbo" store:Type="Tables" />
@@ -1836,6 +1859,10 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.regimen_fiscal' no tiene defin
           <AssociationSet Name="fk_factura_venta" Association="Self.fk_factura_venta">
             <End Role="factura" EntitySet="factura" />
             <End Role="factura_venta" EntitySet="factura_venta" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_impuesto_articulos" Association="Self.Fk_impuesto_articulos">
+            <End Role="articulo" EntitySet="articulo" />
+            <End Role="impuestos" EntitySet="impuestos" />
           </AssociationSet>
           <AssociationSet Name="fk_inventario_articulo" Association="Self.fk_inventario_articulo">
             <End Role="articulo" EntitySet="articulo" />
@@ -2022,8 +2049,7 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.regimen_fiscal' no tiene defin
             <End Role="pos_control" EntitySet="pos_control" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="pos_adminModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2078,6 +2104,7 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.regimen_fiscal' no tiene defin
           <NavigationProperty Name="orden_articulo1" Relationship="Self.fk_orden_articulo_principal" FromRole="articulo" ToRole="orden_articulo" />
           <NavigationProperty Name="proveedor" Relationship="Self.fk_proveedor_articulo" FromRole="articulo" ToRole="proveedor" />
           <NavigationProperty Name="unidad_medida" Relationship="Self.fk_unidad_articulo" FromRole="articulo" ToRole="unidad_medida" />
+          <NavigationProperty Name="impuestos" Relationship="pos_adminModel.Fk_impuesto_articulos" FromRole="articulo" ToRole="impuestos" />
         </EntityType>
         <EntityType Name="articulos">
           <Key>
@@ -4144,7 +4171,35 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.regimen_fiscal' no tiene defin
             <End Role="factura" EntitySet="factura" />
             <End Role="metodo_pago" EntitySet="metodo_pago" />
           </AssociationSet>
+          <EntitySet Name="impuestos" EntityType="pos_adminModel.impuestos" />
+          <AssociationSet Name="Fk_impuesto_articulos" Association="pos_adminModel.Fk_impuesto_articulos">
+            <End Role="articulo" EntitySet="articulo" />
+            <End Role="impuestos" EntitySet="impuestos" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="impuestos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cod_barras" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="porcentaje" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="fecha_registro" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="articulo" Relationship="pos_adminModel.Fk_impuesto_articulos" FromRole="impuestos" ToRole="articulo" />
+        </EntityType>
+        <Association Name="Fk_impuesto_articulos">
+          <End Type="pos_adminModel.articulo" Role="articulo" Multiplicity="1" />
+          <End Type="pos_adminModel.impuestos" Role="impuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articulo">
+              <PropertyRef Name="cod_barras" />
+            </Principal>
+            <Dependent Role="impuestos">
+              <PropertyRef Name="cod_barras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4912,6 +4967,17 @@ advertencia 6002: La tabla o vista 'pos_admin.dbo.regimen_fiscal' no tiene defin
               <ScalarProperty Name="id_metodo" ColumnName="id_metodo" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="impuestos">
+            <EntityTypeMapping TypeName="pos_adminModel.impuestos">
+              <MappingFragment StoreEntitySet="impuestos">
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="cod_barras" ColumnName="cod_barras" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
