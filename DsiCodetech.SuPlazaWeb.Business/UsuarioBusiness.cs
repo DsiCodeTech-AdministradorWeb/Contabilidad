@@ -1,4 +1,5 @@
-﻿using DsiCodeTech.SuPlazaWeb.Domain;
+﻿using DsiCodetech.SuPlazaWeb.Business.Interface;
+using DsiCodeTech.SuPlazaWeb.Domain;
 using DsiCodeTech.SuPlazaWeb.Repository;
 using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure.Contract;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DsiCodetech.SuPlazaWeb.Business
 {
-    public class UsuarioBusiness
+    public class UsuarioBusiness: IUsuarioBusiness
     {
         /// <summary>
         /// implementacion de la unidad de trabajo
