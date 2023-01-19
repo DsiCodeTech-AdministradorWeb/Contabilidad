@@ -72,22 +72,23 @@ $(document).ready(function () {
 
     $('#btnActualizar').click(function () {
 
-        var ArticuloDto = {};
+        //var ArticuloDto = {};
         var ImpuestoDto = {};
 
-        ArticuloDto.cod_barras = $('#cod_barras').val();
+        ///ArticuloDto.cod_barras = $('#cod_barras').val();
         ImpuestoDto.cod_barras = $('#cod_barras').val();
         ImpuestoDto.descripcion = $('#IdTiposImpuestos').val();
         ImpuestoDto.porcentaje = $('#porcentaje').val();
-        ArticuloDto.ImpuestoDto = ImpuestoDto;
+        ///ArticuloDto.ImpuestoDto = ImpuestoDto;
         
         $.ajax({
-            type: "Post",
-            url: "/Contabilidad/mostrar/",
-            data: { articuloDto: ArticuloDto },
+            type: "POST",
+            url: "https://localhost:44307/api/articulos/insertarimpuestos/",                                /// "/Contabilidad/mostrar/",
+            dataType: "Json",
+            data: { impuestoDto: ImpuestoDto },      //////  { articuloDto: ArticuloDto },
             success: function (data) {
+                alert(data);
                 toastr.success('La información se guardo de forma correcta');
-                
             },
             error: function (xhr, textStatus, errorThrown) {
                 toastr.error('La información no se pudo procesar');

@@ -1,6 +1,7 @@
 ﻿using DsiCodetech.SuPlazaWeb.Business.Interface;
 using DsiCodeTech.SuPlazaWeb.Contabilidad.Dto;
 using DsiCodeTech.SuPlazaWeb.Contabilidad.Handler.ExceptionHandler;
+using DsiCodeTech.SuPlazaWeb.Domain;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,14 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
     {
         private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
         private readonly IArticuloBusiness _articuloBusiness;
-        public ArticulosController(IArticuloBusiness articuloBusiness)
+        private readonly IImpuestosBusiness _impuestosBusiness;
+
+        public ArticulosController(IArticuloBusiness articuloBusiness, IImpuestosBusiness impuestosBusiness)
         {
             this._articuloBusiness = articuloBusiness;
+            this._impuestosBusiness = impuestosBusiness;
         }
-        
+
 
         [ResponseType(typeof(ArticuloDto))]
         [Route("getcodigobarras")]
@@ -42,5 +46,32 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
             }
             
         }
+
+        
+        [Route("insertarimpuestos")]
+        [HttpPost]
+        public IHttpActionResult InsertArticuloImpuesto(ImpuestoDto impuestoDto)
+        {
+            try
+            {
+                if (impuestoDto.cod_barras != null)
+                {
+                    var impuestoDM = AutoMapper.Mapper.Map<ImpuestoDM>(impuestoDto);
+                    _impuestosBusiness.AddUpdateImpuesto(impuestoDM);
+                    return Ok();
+                }
+                else {
+                    return BadRequest("No se pudo encontrar la ruta especificada");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                loggerdb.Error(ex);
+                throw;
+            }
+        }
+
+
     }
 }
