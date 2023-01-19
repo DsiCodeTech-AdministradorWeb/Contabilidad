@@ -1,6 +1,7 @@
 ﻿using DsiCodetech.SuPlazaWeb.Business.Interface;
 using DsiCodeTech.SuPlazaWeb.Contabilidad.Dto;
 using DsiCodeTech.SuPlazaWeb.Contabilidad.Handler.ExceptionHandler;
+using DsiCodeTech.SuPlazaWeb.Domain;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,11 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
 
         private static readonly Logger loggerdb = LogManager.GetLogger("databaseLogger");
         private readonly IArticuloBusiness _articuloBusiness;
-
-        public ContabilidadController(IArticuloBusiness articuloBusiness)
+        private readonly IImpuestosBusiness impuestosBusiness;
+        public ContabilidadController(IArticuloBusiness articuloBusiness, IImpuestosBusiness _impuestosBusiness)
         {
             _articuloBusiness = articuloBusiness;
+            impuestosBusiness = _impuestosBusiness;
         }
 
 
@@ -36,6 +38,21 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Controllers
         [HttpPost]
         public ActionResult mostrar(ArticuloDto articuloDto)
         {
+
+            if(articuloDto.cod_barras != null)
+            {
+                var impuesto = new ImpuestoDM
+                {
+                    cod_barras = articuloDto.ImpuestoDto.cod_barras,
+                    descripcion = articuloDto.ImpuestoDto.descripcion,
+                    porcentaje = articuloDto.ImpuestoDto.porcentaje,
+                    fecha_registro = articuloDto.ImpuestoDto.fecha_registro,
+                };
+                impuestosBusiness.AddUpdateImpuesto(impuesto);
+                ViewBag.IdTiposImpuestos = new SelectList(this.GetTasasDeImpuestos());
+                return View();
+            }
+            //falta regresar un error al momento de que la entidad vaya vacia
             ViewBag.IdTiposImpuestos = new SelectList(this.GetTasasDeImpuestos());
             return View();
         }

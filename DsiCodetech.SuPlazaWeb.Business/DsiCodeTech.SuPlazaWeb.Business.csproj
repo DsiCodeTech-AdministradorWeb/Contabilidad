@@ -57,6 +57,7 @@
     <Compile Include="ArticuloBusiness.cs" />
     <Compile Include="ImpuestosBusiness.cs" />
     <Compile Include="Interface\IArticuloBusiness.cs" />
+    <Compile Include="Interface\IImpuestosBusiness.cs" />
     <Compile Include="Interface\IUsuarioBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioBusiness.cs" />
