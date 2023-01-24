@@ -48,24 +48,25 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
             }
             
         }
-
-        
-        [Route("insertarimpuestos")]
+      
         [HttpPost]
+        [Route("insertarimpuestos")]
+        [ResponseType(typeof(ResponseWrapper<HttpResponseOnError>))]
         public IHttpActionResult InsertArticuloImpuesto(ImpuestoDto impuestoDto)
         {
             try
             {
-                if (impuestoDto.cod_barras != null)
-                {
-                    var impuestoDM = AutoMapper.Mapper.Map<ImpuestoDM>(impuestoDto);
-                    _impuestosBusiness.AddUpdateImpuesto(impuestoDM);
-                    return Ok( new Response
-                        );
-                }
-                else {
-                    return BadRequest("No se pudo encontrar la ruta especificada");
-                }
+                
+                var impuestoDM = AutoMapper.Mapper.Map<ImpuestoDM>(impuestoDto);
+                _impuestosBusiness.AddUpdateImpuesto(impuestoDM);
+                return Ok( new ResponseWrapper<HttpResponseOnError> {
+                        StatusCode=System.Net.HttpStatusCode.OK,
+                        Message ="Tarea ejecutada exitosamente.",
+                        Data= new HttpResponseOnError() { 
+                            Id="POSADM-CMP-001",
+                            Description="Se inserto de forma correcta el impuesto"
+                        }
+                });
             }
             catch (Exception ex)
             {
