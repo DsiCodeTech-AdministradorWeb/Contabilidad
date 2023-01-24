@@ -29,16 +29,24 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
         }
 
 
-        [ResponseType(typeof(ArticuloDto))]
-        [Route("getcodigobarras")]
         [HttpGet]
+        [Route("getcodigobarras")]
+        [ResponseType(typeof(ResponseWrapper<ArticuloDto>))]
         public IHttpActionResult GetArticulosByCodigoBarras(string codigo)
         {
             try 
             {
-                var articulo = _articuloBusiness.GetArticuloByCodigoBarras(codigo);
-                var articuloDto = AutoMapper.Mapper.Map<ArticuloDto>(articulo);
-                return Ok( articuloDto);
+
+                return Ok(new ResponseWrapper<ArticuloDto>
+                {
+
+                    StatusCode= System.Net.HttpStatusCode.OK,
+                    Message= "Tarea ejecutada exitosamente",
+                    Data= AutoMapper.Mapper.Map<ArticuloDto>(this._articuloBusiness.GetArticuloByCodigoBarras(codigo))
+
+                });
+
+               
             }
             catch (Exception ex)
             {
