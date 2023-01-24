@@ -1,5 +1,6 @@
 ﻿using DsiCodetech.SuPlazaWeb.Business.Interface;
 using DsiCodeTech.SuPlazaWeb.Domain;
+using DsiCodeTech.SuPlazaWeb.Domain.Exception;
 using DsiCodeTech.SuPlazaWeb.Domain.Extensions;
 using DsiCodeTech.SuPlazaWeb.Domain.Filter.Model;
 using DsiCodeTech.SuPlazaWeb.Domain.Filter.Page;
@@ -168,11 +169,13 @@ namespace DsiCodetech.SuPlazaWeb.Business
         /// <returns>la entidad del tipo ArticuloDM</returns>
         public ArticuloDM GetArticuloByCodigoBarras(string codigo)
         {
-
-            var result = repository.SingleOrDefault(p => p.cod_barras.Equals(codigo));
-
-            if (result != null)
+            try
             {
+                var result = repository.SingleOrDefault(p => p.cod_barras.Equals(codigo));
+                if (result is null)
+                {
+                    throw new BusinessException("Recurso no encontrado.");
+                }
                 return new ArticuloDM
                 {
                     cod_barras = result.cod_barras,
@@ -195,8 +198,14 @@ namespace DsiCodetech.SuPlazaWeb.Business
                     utilidad = result.utilidad,
 
                 };
+
             }
-            return null;   
+            catch (Exception ex) 
+            {
+                throw new BusinessException("",ex);
+            }
+                                 
+            
         }
 
         /// <summary>
