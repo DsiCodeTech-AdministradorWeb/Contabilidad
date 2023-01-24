@@ -265,6 +265,7 @@
     </Compile>
     <Compile Include="Handler\ExceptionHandler\SuPlazaExceptionFilterAttribute.cs" />
     <Compile Include="Handler\ExceptionHandler\SuPlazaExceptionHandler.cs" />
+    <Compile Include="Handler\ValidateModelFilterAttribute.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recursos\recursos_tasas_impuestos.Designer.cs">

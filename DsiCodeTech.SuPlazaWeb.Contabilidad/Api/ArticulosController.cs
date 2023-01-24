@@ -1,5 +1,6 @@
 ﻿using DsiCodetech.SuPlazaWeb.Business.Interface;
 using DsiCodeTech.SuPlazaWeb.Contabilidad.Dto;
+using DsiCodeTech.SuPlazaWeb.Contabilidad.Handler;
 using DsiCodeTech.SuPlazaWeb.Contabilidad.Handler.ExceptionHandler;
 using DsiCodeTech.SuPlazaWeb.Domain;
 using NLog;
@@ -12,6 +13,7 @@ using System.Web.Http.Description;
 namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
 {
     [SuPlazaExceptionFilter]
+    [ValidateModelFilterAttribute]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix(prefix: "api/articulos")]
     public class ArticulosController : ApiController
@@ -58,7 +60,8 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
                 {
                     var impuestoDM = AutoMapper.Mapper.Map<ImpuestoDM>(impuestoDto);
                     _impuestosBusiness.AddUpdateImpuesto(impuestoDM);
-                    return Ok();
+                    return Ok( new Response
+                        );
                 }
                 else {
                     return BadRequest("No se pudo encontrar la ruta especificada");
