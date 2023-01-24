@@ -258,6 +258,8 @@
     <Compile Include="Dto\ArticuloDto.cs" />
     <Compile Include="Dto\HttpResponseOnError.cs" />
     <Compile Include="Dto\ImpuestoDto.cs" />
+    <Compile Include="Dto\RequestWrapper.cs" />
+    <Compile Include="Dto\ResponseWrapper.cs" />
     <Compile Include="Dto\UsuarioDto.cs" />
     <Compile Include="Enums\EnumTasasImpuestos.cs" />
     <Compile Include="Global.asax.cs">
