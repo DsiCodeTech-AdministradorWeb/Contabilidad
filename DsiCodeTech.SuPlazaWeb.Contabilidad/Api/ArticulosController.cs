@@ -4,8 +4,10 @@ using DsiCodeTech.SuPlazaWeb.Contabilidad.Handler;
 using DsiCodeTech.SuPlazaWeb.Contabilidad.Handler.ExceptionHandler;
 using DsiCodeTech.SuPlazaWeb.Domain;
 using NLog;
+using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
@@ -60,6 +62,9 @@ namespace DsiCodeTech.SuPlazaWeb.Contabilidad.Api
         [HttpPost]
         [Route("insertarimpuestos")]
         [ResponseType(typeof(ResponseWrapper<HttpResponseOnError>))]
+        [SwaggerResponse(HttpStatusCode.OK, "Successfully get users by user name.", typeof(ResponseWrapper<bool>))]
+        [SwaggerResponse(HttpStatusCode.InternalServerError, "There was an unexpected error in get users by user name.")]
+        [SwaggerOperation("Devuelve un valor boleano true/false dependiendo de la respuesta de la operación.")]
         public IHttpActionResult InsertArticuloImpuesto(ImpuestoDto impuestoDto)
         {
             try
