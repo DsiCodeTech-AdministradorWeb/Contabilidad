@@ -39,6 +39,8 @@ $(document).ready(function () {
                     }
                     else
                     {
+                        console.log(data);
+                        /*
                         $('#cod_barras').val(data.cod_barras);
                         $('#cod_asociado').val(data.cod_asociado);
                         $('#cod_interno').val(data.cod_interno);
@@ -55,7 +57,7 @@ $(document).ready(function () {
                         $('#iva').val(data.iva);
                         $('#fecha_registro').val(data.fecha_registro);
                         $('#IdTiposImpuestos').prop('disabled', false);
-                        $('#porcentaje').prop('disabled', false);
+                        $('#porcentaje').prop('disabled', false);*/
                         toastr.success('La información se proceso de forma correcta');
                     }
                 },
