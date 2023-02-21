@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsiCodeTech.SuPlazaWeb.Busi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsiCodeTech.SuPlazaWeb.Repository", "..\DsiCodeTech.SuPlazaWeb.Repository\DsiCodeTech.SuPlazaWeb.Repository.csproj", "{BB94F8BE-2BFB-49AC-8DBF-17E6A48BC90A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsiCodeTech.Common", "..\DsiCodeTech.Common\DsiCodeTech.Common.csproj", "{273B46C6-CD8B-420B-BA09-DEA0CB5B34D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{BB94F8BE-2BFB-49AC-8DBF-17E6A48BC90A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB94F8BE-2BFB-49AC-8DBF-17E6A48BC90A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB94F8BE-2BFB-49AC-8DBF-17E6A48BC90A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{273B46C6-CD8B-420B-BA09-DEA0CB5B34D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{273B46C6-CD8B-420B-BA09-DEA0CB5B34D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{273B46C6-CD8B-420B-BA09-DEA0CB5B34D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{273B46C6-CD8B-420B-BA09-DEA0CB5B34D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

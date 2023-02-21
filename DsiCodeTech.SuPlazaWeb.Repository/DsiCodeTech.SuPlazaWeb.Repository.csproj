@@ -193,6 +193,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PosAdmin.edmx</DependentUpon>
     </Compile>
+    <Compile Include="PosContabilidad\pos_adminEntities.cs" />
     <Compile Include="PosContabilidad\pos_admin_settings.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
     </Compile>

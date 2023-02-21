@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\DsiCodeTech.SuPlazaWeb",
+    "\\DsiCodetech.SuPlazaWeb.Business",
+    "\\DsiCodeTech.SuPlazaWeb.Contabilidad",
+    "\\DsiCodeTech.SuPlazaWeb.Contabilidad\\Api"
   ],
-  "SelectedNode": "\\DsiCodeTech.SuPlazaWeb.Contabilidad.sln",
+  "SelectedNode": "\\DsiCodeTech.SuPlazaWeb.Contabilidad\\Api\\ArticulosController.cs",
   "PreviewInSolutionExplorer": false
 }

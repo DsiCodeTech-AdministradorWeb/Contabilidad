@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using DsiCodeTech.Common.DataAccess.Infraestructure.Contract;
+using DsiCodeTech.Common.Util;
+
+
 namespace DsiCodeTech.SuPlazaWeb.Repository.Infraestructure
 {
     public class UnitOfWork : IUnitOfWork
@@ -15,7 +19,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.Infraestructure
 
         public UnitOfWork()
         {
-            _dbContext = new pos_adminEntities();
+            _dbContext = new pos_adminEntities(SqlInjectConnection.ConnectionString());
         }
 
         public DbContext Db

@@ -13,5 +13,8 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.Infraestructure.Contract
         /// Return the database reference for this UOW
         /// </summary>
         DbContext Db { get; }
+
+
+
     }
 }
