@@ -63,6 +63,10 @@
     <Compile Include="UsuarioBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DsiCodeTech.Common\DsiCodeTech.Common.csproj">
+      <Project>{273B46C6-CD8B-420B-BA09-DEA0CB5B34D1}</Project>
+      <Name>DsiCodeTech.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DsiCodeTech.SuPlazaWeb.Domain\DsiCodeTech.SuPlazaWeb.Domain.csproj">
       <Project>{530a6d1e-46c9-47db-95d3-3b5a2b1f4f3e}</Project>
       <Name>DsiCodeTech.SuPlazaWeb.Domain</Name>

@@ -1,19 +1,15 @@
-﻿using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure;
-using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure.Contract;
+﻿using DsiCodeTech.Common.DataAccess.Infraestructure.Contract;
+using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure;
 using DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad;
+using LinqKit.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using LinqKit;
-using LinqKit.Core;
-using DsiCodeTech.Common.DataAccess.Infraestructure.Contract;
 
 namespace DsiCodeTech.SuPlazaWeb.Repository
 {
-    public class ArticuloRepository : BaseRepository<articulo>, IPagingAndSortingRepository<articulo>
+    public class ArticuloRepository : BaseRepository<articulo>, Common.DataAccess.Infraestructure.Contract.IPagingAndSortingRepository<articulo>
     {
         public ArticuloRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
