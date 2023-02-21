@@ -1,12 +1,7 @@
 ﻿using DsiCodetech.SuPlazaWeb.Business.Interface;
+using DsiCodeTech.Common.DataAccess.Infraestructure.Contract;
 using DsiCodeTech.SuPlazaWeb.Domain;
 using DsiCodeTech.SuPlazaWeb.Repository;
-using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure.Contract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DsiCodetech.SuPlazaWeb.Business
 {
@@ -15,12 +10,12 @@ namespace DsiCodetech.SuPlazaWeb.Business
         /// <summary>
         /// implementacion de la unidad de trabajo
         /// </summary>
-        private readonly IUnitOfWorks unitOfWork;
+        private readonly IUnitOfWork unityfWork;
         private readonly UsuarioRepository repository;
-        public UsuarioBusiness(IUnitOfWorks _unitOfWork)
+        public UsuarioBusiness(IUnitOfWork _unitOfWork)
         {
-            unitOfWork = _unitOfWork;
-            repository = new UsuarioRepository(unitOfWork);
+            unityfWork = _unitOfWork;
+            repository = new UsuarioRepository(unityfWork);
         }
 
         /// <summary>

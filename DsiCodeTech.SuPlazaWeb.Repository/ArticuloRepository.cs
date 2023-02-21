@@ -9,12 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using LinqKit;
 using LinqKit.Core;
+using DsiCodeTech.Common.DataAccess.Infraestructure.Contract;
 
 namespace DsiCodeTech.SuPlazaWeb.Repository
 {
     public class ArticuloRepository : BaseRepository<articulo>, IPagingAndSortingRepository<articulo>
     {
-        public ArticuloRepository(IUnitOfWorks unitOfWork) : base(unitOfWork)
+        public ArticuloRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
 
         }

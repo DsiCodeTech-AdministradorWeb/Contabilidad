@@ -1,4 +1,5 @@
 ﻿using DsiCodetech.SuPlazaWeb.Business.Interface;
+using DsiCodeTech.Common.DataAccess.Infraestructure.Contract;
 using DsiCodeTech.SuPlazaWeb.Domain;
 using DsiCodeTech.SuPlazaWeb.Domain.Exception;
 using DsiCodeTech.SuPlazaWeb.Domain.Extensions;
@@ -23,14 +24,14 @@ namespace DsiCodetech.SuPlazaWeb.Business
         /// <summary>
         /// implementacion de la unidad de trabajo
         /// </summary>
-        private readonly IUnitOfWorks unitOfWork;
+        private readonly IUnitOfWork unitOfWork;
         /// <summary>
         /// Implementacion del repositorio Articulo
         /// </summary>
         private readonly ArticuloRepository repository;
 
 
-        public ArticuloBusiness(IUnitOfWorks _unitOfWork)
+        public ArticuloBusiness(IUnitOfWork _unitOfWork)
         {
             unitOfWork = _unitOfWork;
             repository = new ArticuloRepository(unitOfWork);
