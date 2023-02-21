@@ -1,5 +1,6 @@
 using DsiCodetech.SuPlazaWeb.Business;
 using DsiCodetech.SuPlazaWeb.Business.Interface;
+using DsiCodeTech.Common.DataAccess.Infraestructure.Contract;
 using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure;
 using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure.Contract;
 using System.Web.Http;

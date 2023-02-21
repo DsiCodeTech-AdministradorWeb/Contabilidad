@@ -62,7 +62,7 @@
     <Compile Include="Infraestructure\BaseRepository.cs" />
     <Compile Include="Infraestructure\Contract\IBaseRepository.cs" />
     <Compile Include="Infraestructure\Contract\IPagingAndSortingRepository.cs" />
-    <Compile Include="Infraestructure\Contract\IUnitOfWork.cs" />
+    <Compile Include="Infraestructure\Contract\IUnitOfWorks.cs" />
     <Compile Include="Infraestructure\UnitOfWork.cs" />
     <Compile Include="PosContabilidad\articulo.cs">
       <DependentUpon>PosAdmin.tt</DependentUpon>
@@ -271,7 +271,12 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DsiCodeTech.Common\DsiCodeTech.Common.csproj">
+      <Project>{273b46c6-cd8b-420b-ba09-dea0cb5b34d1}</Project>
+      <Name>DsiCodeTech.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="PosContabilidad\PosAdmin.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

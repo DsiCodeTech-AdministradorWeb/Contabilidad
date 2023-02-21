@@ -14,7 +14,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository
 {
     public class ArticuloRepository : BaseRepository<articulo>, IPagingAndSortingRepository<articulo>
     {
-        public ArticuloRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public ArticuloRepository(IUnitOfWorks unitOfWork) : base(unitOfWork)
         {
 
         }

@@ -12,3 +12,8 @@ C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Repository\obj\D
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Repository\obj\Debug\DsiCodeTech.SuPlazaWeb.Repository.csproj.CopyComplete
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Repository\obj\Debug\DsiCodeTech.SuPlazaWeb.Repository.dll
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Repository\obj\Debug\DsiCodeTech.SuPlazaWeb.Repository.pdb
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Repository\bin\Debug\DsiCodeTech.Common.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Repository\bin\Debug\Newtonsoft.Json.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Repository\bin\Debug\DsiCodeTech.Common.pdb
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Repository\bin\Debug\DsiCodeTech.Common.dll.config
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Repository\bin\Debug\Newtonsoft.Json.xml

@@ -13,9 +13,9 @@ namespace DsiCodetech.SuPlazaWeb.Business
 {
     public class ImpuestosBusiness: IImpuestosBusiness
     {
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IUnitOfWorks unitOfWork;
         private readonly ImpuestosRepository repository;
-        public ImpuestosBusiness(IUnitOfWork _unitOfWork)
+        public ImpuestosBusiness(IUnitOfWorks _unitOfWork)
         {
             unitOfWork = _unitOfWork;
             repository = new ImpuestosRepository(unitOfWork);

@@ -6,7 +6,7 @@ namespace DsiCodeTech.SuPlazaWeb.Repository
 {
     public  class ImpuestosRepository : BaseRepository<impuestos>
     {
-        public ImpuestosRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public ImpuestosRepository(IUnitOfWorks unitOfWork) : base(unitOfWork)
         {
 
         }

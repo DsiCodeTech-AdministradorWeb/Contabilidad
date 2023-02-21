@@ -11,11 +11,11 @@ namespace DsiCodeTech.SuPlazaWeb.Repository.Infraestructure
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWorks _unitOfWork;
 
         internal DbSet<T> dbSet;
 
-        public BaseRepository(IUnitOfWork unitOfWork)
+        public BaseRepository(IUnitOfWorks unitOfWork)
         {
             if (unitOfWork == null) throw new ArgumentNullException("unitOfWork");
             _unitOfWork = unitOfWork;

@@ -491,6 +491,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DsiCodeTech.Common\DsiCodeTech.Common.csproj">
+      <Project>{273B46C6-CD8B-420B-BA09-DEA0CB5B34D1}</Project>
+      <Name>DsiCodeTech.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DsiCodetech.SuPlazaWeb.Business\DsiCodeTech.SuPlazaWeb.Business.csproj">
       <Project>{f7d2a71d-5282-44f4-8903-6b68d9d31a9d}</Project>
       <Name>DsiCodeTech.SuPlazaWeb.Business</Name>

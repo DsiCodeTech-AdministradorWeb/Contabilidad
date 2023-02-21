@@ -245,3 +245,6 @@ C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\System.Text.Json.xml
 C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\DsiCodeTech.Common.dll
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\DsiCodeTech.Common.pdb
+C:\Users\erikg\source\repos\Contabilidad\DsiCodeTech.SuPlazaWeb.Contabilidad\bin\DsiCodeTech.Common.dll.config

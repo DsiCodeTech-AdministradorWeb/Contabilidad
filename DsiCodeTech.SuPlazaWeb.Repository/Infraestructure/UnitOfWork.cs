@@ -1,14 +1,7 @@
-﻿using DsiCodeTech.SuPlazaWeb.Repository.Infraestructure.Contract;
-using DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using DsiCodeTech.Common.DataAccess.Infraestructure.Contract;
+﻿using DsiCodeTech.Common.DataAccess.Infraestructure.Contract;
 using DsiCodeTech.Common.Util;
+using DsiCodeTech.SuPlazaWeb.Repository.PosContabilidad;
+using System.Data.Entity;
 
 
 namespace DsiCodeTech.SuPlazaWeb.Repository.Infraestructure

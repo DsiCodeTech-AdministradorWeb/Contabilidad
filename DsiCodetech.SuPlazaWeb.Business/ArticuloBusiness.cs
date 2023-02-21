@@ -23,14 +23,14 @@ namespace DsiCodetech.SuPlazaWeb.Business
         /// <summary>
         /// implementacion de la unidad de trabajo
         /// </summary>
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IUnitOfWorks unitOfWork;
         /// <summary>
         /// Implementacion del repositorio Articulo
         /// </summary>
         private readonly ArticuloRepository repository;
 
 
-        public ArticuloBusiness(IUnitOfWork _unitOfWork)
+        public ArticuloBusiness(IUnitOfWorks _unitOfWork)
         {
             unitOfWork = _unitOfWork;
             repository = new ArticuloRepository(unitOfWork);
